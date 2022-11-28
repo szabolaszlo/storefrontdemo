@@ -1,0 +1,27 @@
+{% extends '@webshop/base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+
+
+    <form action="{{ path('app_registration') }}" method="post">
+        <div>
+            <label for="email">Id:</label>
+            <label>{{ customer.getId }}</label>
+        </div>
+        <div>
+            <label for="password">Email:</label>
+            <label>{{ customer.getEmail }}</label>
+        </div>
+        <div>
+            <label for="firstname">Firstname:</label>
+            <label>{{ customer.getFirstname }}</label>
+        </div>
+        <div>
+            <label for="lastname">Lastname:</label>
+            <label>{{ customer.getLastname }}</label>
+        </div>
+
+    </form>
+{% endblock %}

@@ -1,0 +1,68 @@
+version: '3.7'
+
+services:
+  storefront_php:
+    build:
+      context: Storefront/Docker/services/php
+      dockerfile: Dockerfile
+    container_name: 'storefront_php'
+    environment:
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
+      - APP_ENV=${APP_ENV}
+    volumes:
+      - ${APP_PATH}:${WORKING_DIR}
+      - ./Storefront/Docker/services/php/php.ini:/usr/local/etc/php/conf.d/php.override.ini:ro
+    working_dir: '${WORKING_DIR}'
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  storefront_nginx:
+    build:
+      context: Storefront/Docker/services/nginx
+      dockerfile: Dockerfile
+    container_name: 'storefront_nginx'
+    volumes:
+      - ${APP_PATH}:${WORKING_DIR}
+      - ./Storefront/Docker/services/nginx/logs:/var/log/nginx
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./Storefront/Docker/services/nginx/app.conf:/etc/nginx/conf.d/app.conf
+      - ./Storefront/Docker/services/nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - storefront_php
+    ports:
+      - 80:80
+      - 443:443
+
+  storefront_rabbit-mq:
+    image: rabbitmq:3-management
+    volumes:
+      - ./rabbitmq/:/var/lib/rabbitmq:rw
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_DEFAULT_VHOST=/
+  db:
+    image: mysql:8.0.19
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    links:
+      - db
+    environment:
+      - PMA_HOST=db
+volumes:
+  mysql-data:
+

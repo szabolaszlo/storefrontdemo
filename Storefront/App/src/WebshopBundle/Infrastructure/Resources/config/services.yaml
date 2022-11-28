@@ -1,0 +1,21 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\WebshopBundle\:
+        resource: '../../../../WebshopBundle'
+        exclude:
+            - './WebshopBundle/DependencyInjection/'
+            - './WebshopBundle/Entity/'
+            - './WebshopBundle/Kernel.php'
+
+    App\WebshopBundle\Presentation\Web\Controller\: # assuming you have namespace like that
+        resource: '../../../Presentation/Web/Controller'
+        tags: [ 'controller.service_arguments' ]
+
+    App\WebshopBundle\Application\RegisterCustomer\RegisterCustomerHandler:
+        tags:
+            - name: messenger.message_handler
+              bus: command.bus
+              handles: App\WebshopBundle\Application\RegisterCustomer\RegisterCustomerCommand
