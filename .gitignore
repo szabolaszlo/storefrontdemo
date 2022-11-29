@@ -1,2 +1,3 @@
-/rabbitmq/
+rabbitmq/
 /node_modules/
+.idea/
