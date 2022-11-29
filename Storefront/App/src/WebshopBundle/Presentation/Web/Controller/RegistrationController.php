@@ -22,15 +22,17 @@ class RegistrationController extends AbstractController
     public function registration(Request $request): Response
     {
         if ($request->isMethod('POST')){
+
             $customer = $this->handle(
                 new RegisterCustomerCommand(
                     $request->get('firstname'),
                     $request->get('lastname'),
                     $request->get('email'),
                     $request->get('password'),
-                    $request->get('newsletter',false),
+                    $request->request->get('newsletter',false)
                 )
             );
+
             return $this->render('@webshop/registration_complete.html.twig', array("customer"=>$customer));
         }
 
