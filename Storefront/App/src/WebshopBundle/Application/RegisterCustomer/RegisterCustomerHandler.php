@@ -24,6 +24,7 @@ class RegisterCustomerHandler
         $customer->setFirstName($command->getFirstname());
         $customer->setLastName($command->getLastname());
         $customer->setPassword($command->getPassword());
+        $customer->setNewsletter($command->getNewsletter());
 
         return $this->customerService->register($customer);
     }

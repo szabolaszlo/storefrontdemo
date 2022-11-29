@@ -32,7 +32,8 @@ class RegistrationController extends AbstractController
                     $data->firstname,
                     $data->lastname,
                     $data->email,
-                    $data->password
+                    $data->password,
+                    isset($data->newsletter)
                 )
             );
 
@@ -42,6 +43,7 @@ class RegistrationController extends AbstractController
                 "first"=>$customer->getFirstname(),
                 "lastname"=>$customer->getLastName(),
                 "password"=>$customer->getPassword(),
+                "newsletter"=>$customer->getNewsletter(),
             )
         );
     }

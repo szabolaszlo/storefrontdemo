@@ -11,13 +11,17 @@ class RegisterCustomerCommand
     protected $lastname;
     protected $email;
     protected $password;
+    protected $newsletter;
 
-    public function __construct($firstname,$lastname,$email,$password)
+
+
+    public function __construct($firstname,$lastname,$email,$password,$newsletter)
     {
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->email = $email;
         $this->password = $password;
+        $this->newsletter = $newsletter;
     }
 
     /**
@@ -50,5 +54,13 @@ class RegisterCustomerCommand
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNewsletter()
+    {
+        return $this->newsletter;
     }
 }

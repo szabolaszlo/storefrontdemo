@@ -32,7 +32,6 @@ services:
     ports:
       - 80:80
       - 443:443
-
   storefront_rabbit-mq:
     image: rabbitmq:3-management
     volumes:
@@ -44,6 +43,17 @@ services:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
       - RABBITMQ_DEFAULT_VHOST=/
+  customer_api:
+    build:
+      context: Customer
+      dockerfile: Docker/Dockerfile
+    container_name: 'customer_api'
+    volumes:
+      - ./Customer/App:/src
+      - /src/node_modules
+    ports:
+      - "8081:8081"
+    command: ["node", "server.js"]
   db:
     image: mysql:8.0.19
     ports:

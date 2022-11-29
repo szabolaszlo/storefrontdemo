@@ -10,6 +10,23 @@ class Customer
     protected string $email;
     protected string $password;
     protected string $firstName;
+    protected bool $newsletter = false;
+
+    /**
+     * @return bool
+     */
+    public function hasNewsletter()
+    {
+        return $this->newsletter;
+    }
+
+    /**
+     * @param bool $newsletter
+     */
+    public function setNewsletter($newsletter)
+    {
+        $this->newsletter = $newsletter;
+    }
 
     /**
      * @return int

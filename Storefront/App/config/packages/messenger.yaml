@@ -25,5 +25,4 @@ framework:
 #            Symfony\Component\Notifier\Message\SmsMessage: async
 
             # Route your messages to the transports
-             App\AuditLogBundle\Application\LogUserEvent\LogUserEventCommand: async
-             App\Shared\Infrastructure\Event\ContextTransferEvent: sync
+

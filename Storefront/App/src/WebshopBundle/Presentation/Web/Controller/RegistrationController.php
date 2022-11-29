@@ -27,7 +27,8 @@ class RegistrationController extends AbstractController
                     $request->get('firstname'),
                     $request->get('lastname'),
                     $request->get('email'),
-                    $request->get('password')
+                    $request->get('password'),
+                    $request->get('newsletter',false),
                 )
             );
             return $this->render('@webshop/registration_complete.html.twig', array("customer"=>$customer));
