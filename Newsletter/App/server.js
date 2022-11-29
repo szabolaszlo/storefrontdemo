@@ -31,10 +31,10 @@ db.sequelize.sync()
 // });
 
 
-require("./app/routes/customer.routes")(app);
+require("./app/routes/subscriber.routes")(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 8082;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

@@ -54,6 +54,17 @@ services:
     ports:
       - "8081:8081"
     command: ["node", "server.js"]
+  newsletter_api:
+    build:
+      context: Newsletter
+      dockerfile: Docker/Dockerfile
+    container_name: 'newsletter_api'
+    volumes:
+      - ./Newsletter/App:/src
+      - /src/node_modules
+    ports:
+      - "8082:8082"
+    command: ["node", "server.js"]
   db:
     image: mysql:8.0.19
     ports:
