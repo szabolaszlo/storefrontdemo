@@ -22,12 +22,10 @@
             <label for="lastname">Lastname:</label>
             <label>{{ customer.getLastname }}</label>
         </div>
-        {% if customer.hasNewsletter %}
         <div>
             <label for="newsletter">Newsletter:</label>
-            <label>{{ customer.hasNewsletter.getEmail }}</label>
+            <label>{{ customer.hasNewsletterSubscription  }}</label>
         </div>
-        {% endif %}
 
     </form>
 {% endblock %}

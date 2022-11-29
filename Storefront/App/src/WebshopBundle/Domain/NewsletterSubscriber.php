@@ -10,7 +10,6 @@ class NewsletterSubscriber
     protected $firstname;
     protected $lastname;
     protected $email;
-    protected $customerId = null;
 
     /**
      * @return mixed
@@ -74,22 +73,6 @@ class NewsletterSubscriber
     public function setEmail($email)
     {
         $this->email = $email;
-    }
-
-    /**
-     * @return null
-     */
-    public function getCustomerId()
-    {
-        return $this->customerId;
-    }
-
-    /**
-     * @param null $customerId
-     */
-    public function setCustomerId($customerId)
-    {
-        $this->customerId = $customerId;
     }
 
 }

@@ -20,6 +20,7 @@ class CustomerService implements CustomerRepositoryInterface
             'lastname' => $customer->getLastName(),
             'password'   => $customer->getPassword(),
             'email'   => $customer->getEmail(),
+            'newsletterSubscriptionId'   => $customer->getNewsletterSubscriptionId(),
         ];
 
         // for sending data as json type
@@ -48,6 +49,7 @@ class CustomerService implements CustomerRepositoryInterface
         $createdCustomer->setFirstName($response->firstname);
         $createdCustomer->setLastName($response->lastname);
         $createdCustomer->setPassword($response->password);
+        $createdCustomer->setNewsletterSubscriptionId($response->newsletterSubscriptionId);
 
         return $createdCustomer;
     }

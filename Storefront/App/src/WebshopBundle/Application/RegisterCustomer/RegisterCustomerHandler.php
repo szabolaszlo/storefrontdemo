@@ -30,17 +30,19 @@ class RegisterCustomerHandler
         $customer->setLastName($command->getLastname());
         $customer->setPassword($command->getPassword());
 
-        $customer = $this->customerService->register($customer);
+
 
         if ($command->getNewsletter()){
             $subscriber = new NewsletterSubscriber();
             $subscriber->setEmail($customer->getEmail());
-            $subscriber->setCustomerId($customer->getId());
             $subscriber->setFirstname($customer->getFirstName());
             $subscriber->setLastname($customer->getLastname());
-            $this->newsletterSubscriberService->subscribe($subscriber);
-            $customer->setNewsletterSubscription($subscriber);
+            $subscriber = $this->newsletterSubscriberService->subscribe($subscriber);
+
+            $customer->setNewsletterSubscriptionId($subscriber->getId());
         }
+
+        $customer = $this->customerService->register($customer);
         return $customer;
     }
 }

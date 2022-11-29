@@ -18,7 +18,6 @@ class NewsletterSubscriberService implements NewsletterSubscriberInterface
         $fields = [
             'firstname' => $subscriber->getFirstName(),
             'lastname' => $subscriber->getLastName(),
-            'customerId'   => $subscriber->getCustomerId(),
             'email'   => $subscriber->getEmail(),
         ];
 
@@ -47,7 +46,6 @@ class NewsletterSubscriberService implements NewsletterSubscriberInterface
         $createdCustomer->setEmail($response->email);
         $createdCustomer->setFirstName($response->firstname);
         $createdCustomer->setLastName($response->lastname);
-        $createdCustomer->setCustomerId($response->customerId);
 
         return $createdCustomer;
     }

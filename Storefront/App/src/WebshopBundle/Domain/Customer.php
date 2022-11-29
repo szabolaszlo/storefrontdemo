@@ -10,22 +10,27 @@ class Customer
     protected string $email;
     protected string $password;
     protected string $firstName;
-    protected $newsletterSubscription;
+    protected $newsletterSubscriptionId = false;
 
     /**
      * @return bool
      */
-    public function hasNewsletter()
+    public function hasNewsletterSubscription()
     {
-        return $this->newsletterSubscription;
+        return (bool) $this->newsletterSubscriptionId;
     }
 
     /**
      * @param bool $newsletter
      */
-    public function setNewsletterSubscription(NewsletterSubscriber $newsletter)
+    public function setNewsletterSubscriptionId($id)
     {
-        $this->newsletterSubscription = $newsletter;
+        $this->newsletterSubscriptionId = $id;
+    }
+
+    public function getNewsletterSubscriptionId()
+    {
+        return $this->newsletterSubscriptionId;
     }
 
     /**
