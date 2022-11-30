@@ -14,8 +14,20 @@ services:
         resource: '../../../Presentation/Web/Controller'
         tags: [ 'controller.service_arguments' ]
 
-    App\WebshopBundle\Application\RegisterCustomer\RegisterCustomerHandler:
+    App\WebshopBundle\Application\CreateCustomer\CreateCustomerHandler:
         tags:
             - name: messenger.message_handler
               bus: command.bus
-              handles: App\WebshopBundle\Application\RegisterCustomer\RegisterCustomerCommand
+              handles: App\WebshopBundle\Application\CreateCustomer\CreateCustomerCommand
+
+    App\WebshopBundle\Application\SubscribeToNewsletter\SubscribeToNewsletterHandler:
+        tags:
+            - name: messenger.message_handler
+              bus: command.bus
+              handles: App\WebshopBundle\Application\SubscribeToNewsletter\SubscribeToNewsletterCommand
+
+    App\WebshopBundle\Application\QueryCustomer\QueryCustomerHandler:
+        tags:
+            - name: messenger.message_handler
+              bus: command.bus
+              handles: App\WebshopBundle\Application\QueryCustomer\QueryCustomerCommand

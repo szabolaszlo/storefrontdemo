@@ -1,6 +1,10 @@
 app_registration:
     path: /
-    controller:  App\WebshopBundle\Presentation\Web\Controller\RegistrationController::registration
+    controller:  App\WebshopBundle\Presentation\Web\Controller\CustomerController::registration
+
+app_account:
+    path: /account
+    controller:  App\WebshopBundle\Presentation\Web\Controller\CustomerController::account
 
 api_registration:
     path: /api/registration

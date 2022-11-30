@@ -8,6 +8,10 @@ module.exports = (sequelize, Sequelize) => {
     },
     email: {
       type: Sequelize.STRING
+    },
+    customer: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: 0
     }
   });
 

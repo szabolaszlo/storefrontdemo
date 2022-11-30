@@ -19,6 +19,7 @@ class NewsletterSubscriberService implements NewsletterSubscriberInterface
             'firstname' => $subscriber->getFirstName(),
             'lastname' => $subscriber->getLastName(),
             'email'   => $subscriber->getEmail(),
+            'customer'   => $subscriber->getCustomer(),
         ];
 
         // for sending data as json type
@@ -46,6 +47,7 @@ class NewsletterSubscriberService implements NewsletterSubscriberInterface
         $createdCustomer->setEmail($response->email);
         $createdCustomer->setFirstName($response->firstname);
         $createdCustomer->setLastName($response->lastname);
+        $createdCustomer->setCustomer($response->customer);
 
         return $createdCustomer;
     }

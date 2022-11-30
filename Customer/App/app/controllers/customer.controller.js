@@ -18,7 +18,7 @@ exports.create = (req, res) => {
     lastname: req.body.lastname,
     email: req.body.email,
     password: req.body.password,
-    newsletterSubscriptionId:req.body.newsletterSubscriptionId || false,
+    newsletterSubscriptionId: req.body.newsletterSubscriptionId
   };
 
   // Save customer in the database

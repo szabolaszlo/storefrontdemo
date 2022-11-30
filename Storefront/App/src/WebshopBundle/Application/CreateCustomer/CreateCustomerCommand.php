@@ -1,27 +1,26 @@
 <?php
 
 
-namespace App\WebshopBundle\Application\RegisterCustomer;
+namespace App\WebshopBundle\Application\CreateCustomer;
 
 
-class RegisterCustomerCommand
+class CreateCustomerCommand
 {
 
     protected $firstname;
     protected $lastname;
     protected $email;
     protected $password;
-    protected $newsletter;
+    protected $newsletterId;
 
 
-
-    public function __construct($firstname,$lastname,$email,$password,$newsletter)
+    public function __construct($firstname,$lastname,$email,$password,$newsletterId = null)
     {
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->email = $email;
         $this->password = $password;
-        $this->newsletter = $newsletter;
+        $this->newsletterId = $newsletterId;
     }
 
     /**
@@ -59,8 +58,17 @@ class RegisterCustomerCommand
     /**
      * @return mixed
      */
-    public function getNewsletter()
+    public function getNewsletterId()
     {
-        return $this->newsletter;
+        return $this->newsletterId;
     }
+
+    /**
+     * @param mixed $newsletterId
+     */
+    public function setNewsletterId($newsletterId): void
+    {
+        $this->newsletterId = $newsletterId;
+    }
+
 }
