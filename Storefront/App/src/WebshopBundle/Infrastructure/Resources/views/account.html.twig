@@ -8,7 +8,7 @@
     <form action="{{ path('app_registration') }}" method="post">
         <div>
             <label for="email">Id:</label>
-            <label>{{ customer.getId }}</label>
+            <label>{{ customer.getCustomerId }}</label>
         </div>
         <div>
             <label for="password">Email:</label>
@@ -24,7 +24,12 @@
         </div>
         <div>
             <label for="newsletter">Newsletter:</label>
-            <label>{{ customer.hasNewsletterSubscription  }}</label>
+            {% if customer.getSubscriptionId %}
+                <label>yes</label>
+            {% else %}
+                <label>no</label>
+            {% endif %}
+
         </div>
 
     </form>

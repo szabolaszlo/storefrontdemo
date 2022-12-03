@@ -2,6 +2,7 @@
 namespace App\WebshopBundle\Presentation\Api\Rest;
 
 use App\WebshopBundle\Application\RegisterCustomer\RegisterCustomerCommand;
+use App\WebshopBundle\Application\Registration\RegistrationCommand;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +29,7 @@ class RegistrationController extends AbstractController
         $data = json_decode($request->getContent());
 
         $customer  =  $this->handle(
-                new RegisterCustomerCommand(
+                new RegistrationCommand(
                     $data->firstname,
                     $data->lastname,
                     $data->email,
@@ -39,11 +40,10 @@ class RegistrationController extends AbstractController
 
         return new JsonResponse(
             array(
-                "id"=>$customer->getId(),
+                "id"=>$customer->getCustomerId(),
                 "first"=>$customer->getFirstname(),
                 "lastname"=>$customer->getLastName(),
-                "password"=>$customer->getPassword(),
-                "newsletter"=>$customer->hasNewsletterSubscription(),
+                "newsletter"=>$customer->getSubscriptionId(),
             )
         );
     }

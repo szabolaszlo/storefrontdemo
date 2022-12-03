@@ -2,8 +2,9 @@
 
 namespace App\WebshopBundle\Presentation\Web\Controller;
 
-use App\WebshopBundle\Application\CreateCustomer\CreateCustomerCommand;
-use App\WebshopBundle\Application\QueryCustomer\QueryCustomerCommand;
+use App\WebshopBundle\Application\Account\QueryCustomerAccountCommand;
+
+use App\WebshopBundle\Application\Registration\RegistrationCommand;
 use App\WebshopBundle\Application\SubscribeToNewsletter\SubscribeToNewsletterCommand;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,31 +26,18 @@ class CustomerController extends AbstractController
     {
         if ($request->isMethod('POST')){
 
-            $newsletterId = null;
-
-            if($request->get('newsletter',false)){
-                $subscriber = $this->handle(
-                    new SubscribeToNewsletterCommand(
-                        $request->get('firstname'),
-                        $request->get('lastname'),
-                        $request->get('email'),
-                        true
-                    )
-                );
-                $newsletterId = $subscriber->getId();
-            }
 
             $customer = $this->handle(
-                new CreateCustomerCommand(
+                new RegistrationCommand(
                     $request->get('firstname'),
                     $request->get('lastname'),
                     $request->get('email'),
                     $request->get('password'),
-                    $newsletterId
+                    $request->get('newsletter',false)
                 )
             );
 
-            return $this->redirectToRoute('app_account',array('id'=>$customer->getId()));
+            return $this->redirectToRoute('app_account',array('id'=>$customer->getCustomerId()));
 
         }
 
@@ -59,7 +47,7 @@ class CustomerController extends AbstractController
     public function account(Request $request): Response
     {
 
-        $query = new QueryCustomerCommand($request->get('id'));
+        $query = new QueryCustomerAccountCommand($request->get('id'));
         $customer = $this->handle($query);
 
         return $this->render('@webshop/account.html.twig', array("customer"=>$customer));

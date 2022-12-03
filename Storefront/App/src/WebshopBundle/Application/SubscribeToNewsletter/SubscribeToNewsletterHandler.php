@@ -4,13 +4,13 @@
 namespace App\WebshopBundle\Application\SubscribeToNewsletter;
 
 use App\WebshopBundle\Domain\NewsletterSubscriber;
-use App\WebshopBundle\Domain\NewsletterSubscriberInterface;
+use App\WebshopBundle\Domain\NewsletterSubscriberRepositoryInterface;
 
 class SubscribeToNewsletterHandler
 {
     protected $newsletterSubscriberService;
 
-    public function __construct(NewsletterSubscriberInterface $subscriberService)
+    public function __construct(NewsletterSubscriberRepositoryInterface $subscriberService)
     {
         $this->newsletterSubscriberService = $subscriberService;
     }

@@ -10,22 +10,22 @@ class NewsletterSubscriber
     protected $firstname;
     protected $lastname;
     protected $email;
-    protected $customer = false;
+    protected $customerId = null;
 
     /**
      * @return mixed
      */
-    public function getCustomer()
+    public function getCustomerId()
     {
-        return $this->customer;
+        return $this->customerId;
     }
 
     /**
      * @param mixed $customerId
      */
-    public function setCustomer($customer): void
+    public function setCustomerId($customerId): void
     {
-        $this->customer = $customer;
+        $this->customerId = $customerId;
     }
 
     /**

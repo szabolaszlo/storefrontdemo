@@ -11,10 +11,6 @@ module.exports = (sequelize, Sequelize) => {
     },
     password: {
       type: Sequelize.STRING
-    },
-    newsletterSubscriptionId: {
-      type: Sequelize.INTEGER,
-      allowNull: true
     }
   });
 

@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\WebshopBundle\Application\QueryCustomer;
+namespace App\WebshopBundle\Application\Account;
 
 
-class QueryCustomerCommand
+class QueryCustomerAccountCommand
 {
     protected $id;
 

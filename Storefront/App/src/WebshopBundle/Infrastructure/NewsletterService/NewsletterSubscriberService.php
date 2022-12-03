@@ -3,15 +3,13 @@
 
 namespace App\WebshopBundle\Infrastructure\NewsletterService;
 
-
-use App\WebshopBundle\Domain\Customer;
 use App\WebshopBundle\Domain\NewsletterSubscriber;
-use App\WebshopBundle\Domain\NewsletterSubscriberInterface;
+use App\WebshopBundle\Domain\NewsletterSubscriberRepositoryInterface;
 
-class NewsletterSubscriberService implements NewsletterSubscriberInterface
+class NewsletterSubscriberService implements NewsletterSubscriberRepositoryInterface
 {
 
-    public function subscribe(NewsletterSubscriber $subscriber)
+    public function add(NewsletterSubscriber $subscriber)
     {
         $url = 'http://newsletter_api:8082/api/subscribers';
 
@@ -19,7 +17,7 @@ class NewsletterSubscriberService implements NewsletterSubscriberInterface
             'firstname' => $subscriber->getFirstName(),
             'lastname' => $subscriber->getLastName(),
             'email'   => $subscriber->getEmail(),
-            'customer'   => $subscriber->getCustomer(),
+            'customerId'   => $subscriber->getCustomerId(),
         ];
 
         // for sending data as json type
@@ -47,8 +45,37 @@ class NewsletterSubscriberService implements NewsletterSubscriberInterface
         $createdCustomer->setEmail($response->email);
         $createdCustomer->setFirstName($response->firstname);
         $createdCustomer->setLastName($response->lastname);
-        $createdCustomer->setCustomer($response->customer);
+        $createdCustomer->setCustomerId($response->customerId);
 
         return $createdCustomer;
+    }
+
+    public function remove(NewsletterSubscriber $subscriber)
+    {
+        // TODO: Implement remove() method.
+    }
+
+    public function findByCustomerId($id)
+    {
+        $url = 'http://newsletter_api:8082/api/subscribers';
+
+        $params = array('customerId' => $id);
+        $url = $url . '?' . http_build_query($params);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response=curl_exec($ch);
+        curl_close($ch);
+        $response = json_decode($response);
+        $response = $response[0];
+
+        $subscriber = new NewsletterSubscriber();
+        $subscriber->setCustomerId($response->customerId);
+        $subscriber->setEmail($response->email);
+        $subscriber->setFirstname($response->firstname);
+        $subscriber->setLastname($response->lastname);
+        $subscriber->setId($response->id);
+
+        return $subscriber;
     }
 }

@@ -11,7 +11,6 @@ class Customer
     protected string $password;
     protected string $firstName;
     protected string $lastName;
-    protected $newsletterSubscriptionId = null;
 
 
     /**
@@ -93,26 +92,5 @@ class Customer
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
-    }
-
-    public function hasNewsletterSubscription()
-    {
-        return (bool) $this->newsletterSubscriptionId;
-    }
-
-    /**
-     * @return null
-     */
-    public function getNewsletterSubscriptionId()
-    {
-        return $this->newsletterSubscriptionId;
-    }
-
-    /**
-     * @param null $newsletterSubscriptionId
-     */
-    public function setNewsletterSubscriptionId($newsletterSubscriptionId): void
-    {
-        $this->newsletterSubscriptionId = $newsletterSubscriptionId;
     }
 }

@@ -16,7 +16,7 @@ exports.create = (req, res) => {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,
-    customer: req.body.customer || false,
+    customerId: req.body.customerId || false,
   };
 
   // Save customer in the database
@@ -32,18 +32,21 @@ exports.create = (req, res) => {
     });
 };
 
+// Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
+  const customerId = req.query.customerId;
+  var condition = customerId ? { customerId: customerId } : null;
 
-  Subscriber.findAll()
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving subscribers."
+  Subscriber.findAll({ where: condition })
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+              err.message || "Some error occurred while retrieving tutorials."
+        });
       });
-    });
 };
 
 // Find a single Customer with an id
