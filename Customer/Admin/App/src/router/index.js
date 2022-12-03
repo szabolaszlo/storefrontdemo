@@ -14,7 +14,7 @@ export default new Router({
             children: [],
         },
         {
-            path: '/detail',
+            path: '/detail/:id',
             component: () => import('@/components/Detail'),
             children: [],
         },

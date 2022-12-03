@@ -1,8 +1,12 @@
 <template>
   <div>
-    <h2>Detail page</h2>
+    <p id="links">
+      <router-link to="/">List</router-link>
+    </p>
     <p>
-      If you are seeing this is due to you navigated from List page.
+      ID: {{ customer.id }} <br/>
+      Name: {{ customer.firstname }} {{ customer.lastname }} <br/>
+      Email: {{ customer.email }} <br/>
     </p>
   </div>
 </template>
@@ -10,6 +14,30 @@
 <script>
 export default {
   name: 'Detail',
+  data() {
+    return {
+      customer: null,
+    };
+  },
+
+  methods: {
+    getData(id) {
+      this.$http.get(
+          "http://localhost:8081/api/customers/"+id
+      )
+          .then(response => {
+            this.customer = response.data;
+            console.log(response.data);
+          })
+          .catch(e => {
+            console.log(e);
+          });
+    },
+  },
+
+  mounted() {
+    this.getData(this.$route.params.id);
+  },
 };
 </script>
 

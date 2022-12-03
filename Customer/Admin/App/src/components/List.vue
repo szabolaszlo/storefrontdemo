@@ -1,16 +1,38 @@
 <template>
   <div>
-    <h2>List page</h2>
-    <p>
-      This is the initial page. You'll see this page when navigate
-      to Vue section from navbar.
-    </p>
+    <div v-for="customer in customers" v-bind:key="customer.id">
+      <span>{{ customer.id }} -- </span>
+      <router-link :to="'/detail/'+customer.id " ><span>{{ customer.email }}</span></router-link>
+    </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'List',
+  data() {
+    return {
+      customers: [],
+    };
+  },
+
+  methods: {
+    async getData() {
+      try {
+        const response = await this.$http.get(
+            "http://localhost:8081/api/customers"
+        );
+        this.customers = response.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+
+  mounted() {
+    this.getData();
+  },
 };
 </script>
 
