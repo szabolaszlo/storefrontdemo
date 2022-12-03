@@ -10,8 +10,8 @@ const apps = [
     activeWhen: location => location.pathname.startsWith('/customers')
   },
   {
-    name: 'app-two',
-    app: () => System.import('app-two'),
+    name: '@newsletter/admin',
+    app: () => System.import('@newsletter/admin'),
     activeWhen: location => location.pathname.startsWith('/subscribers')
   }
 ]

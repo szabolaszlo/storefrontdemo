@@ -4,30 +4,30 @@
       <router-link to="/">List</router-link>
     </p>
     <p>
-      ID: {{ customer.id }} <br/>
-      Name: {{ customer.firstname }} {{ customer.lastname }} <br/>
-      Email: {{ customer.email }} <br/>
+      ID: {{ subscriber.id }} <br/>
+      Name: {{ subscriber.firstname }} {{ subscriber.lastname }} <br/>
+      Email: {{ subscriber.email }} <br/>
+      CustomerID: {{ subscriber.customerId }} <br/>
     </p>
   </div>
 </template>
 
 <script>
 export default {
-
-  name: 'Detail',
+  name: 'Details',
   data() {
     return {
-      customer: null,
+      subscriber: null,
     };
   },
 
   methods: {
     getData(id) {
       this.$http.get(
-          "http://localhost:8081/api/customers/"+id
+          "http://localhost:8082/api/subscribers/"+id
       )
           .then(response => {
-            this.customer = response.data;
+            this.subscriber = response.data;
             console.log(response.data);
           })
           .catch(e => {
@@ -36,7 +36,7 @@ export default {
     },
   },
 
-  mounted() {
+  created() {
     this.getData(this.$route.params.id);
   },
 };

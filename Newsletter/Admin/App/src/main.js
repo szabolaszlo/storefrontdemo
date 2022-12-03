@@ -7,6 +7,10 @@ import router from './router';
 
 Vue.config.productionTip = false;
 
+import axios from 'axios';
+
+Vue.prototype.$http = axios;
+
 const vueLifecycles = singleSpaVue({
     Vue,
     appOptions: {

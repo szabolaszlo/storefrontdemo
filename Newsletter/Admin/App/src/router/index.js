@@ -10,12 +10,12 @@ export default new Router({
     routes: [
         {
             path: '/',
-            component: () => import('@/components/List'),
+            component: () => import('@/components/Lists'),
             children: [],
         },
         {
-            path: '/detail',
-            component: () => import('@/components/Detail'),
+            path: '/details/:id',
+            component: () => import('@/components/Details'),
             children: [],
         },
     ],

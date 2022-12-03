@@ -1,12 +1,4 @@
-# Orchestrator
-> The app responsible for loading dependencies and loading micro frontends
 
-### Install dependencies
-
-```npm i```
-
-### Run app
-
-```npm run serve```
-
-App will run on `http://localhost:5000`
+##TODO
+- fejlécre normális megoldás hogy ne legyen ujratöltés
+- az ugyanolyan nevű komponensek összeakadnak
