@@ -32,6 +32,7 @@ services:
     ports:
       - 80:80
       - 443:443
+
   storefront_rabbit-mq:
     image: rabbitmq:3-management
     volumes:
@@ -43,28 +44,75 @@ services:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
       - RABBITMQ_DEFAULT_VHOST=/
+
   customer_api:
     build:
-      context: Customer
+      context: Customer/Api
       dockerfile: Docker/Dockerfile
     container_name: 'customer_api'
     volumes:
-      - ./Customer/App:/src
+      - ./Customer/Api/App:/src
       - /src/node_modules
     ports:
       - "8081:8081"
     command: ["node", "server.js"]
+
   newsletter_api:
     build:
-      context: Newsletter
+      context: Newsletter/Api
       dockerfile: Docker/Dockerfile
     container_name: 'newsletter_api'
     volumes:
-      - ./Newsletter/App:/src
+      - ./Newsletter/Api/App:/src
       - /src/node_modules
     ports:
       - "8082:8082"
     command: ["node", "server.js"]
+
+  admin:
+    build:
+      context: Admin
+      dockerfile: Docker/Dockerfile
+    container_name: 'admin'
+    volumes:
+      - ./Admin/App:/src
+      - /src/node_modules
+    ports:
+      - "5000:5000"
+    command: ["npm", "run","serve"]
+
+  customer_admin:
+    build:
+      context: Customer/Admin
+      dockerfile: Docker/Dockerfile
+    container_name: 'customer_admin'
+    volumes:
+      - ./Customer/Admin/App:/src
+      - /src/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - HOST_PORT
+      - HOST_URL
+    ports:
+      - "5001:5001"
+    command: ["npm", "run", "serve"]
+
+  newsletter_admin:
+    build:
+      context: Newsletter/Admin
+      dockerfile: Docker/Dockerfile
+    container_name: 'newsletter_admin'
+    volumes:
+      - ./Newsletter/Admin/App:/src
+      - /src/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - HOST_PORT
+      - HOST_URL
+    ports:
+      - "5002:5002"
+    command: ["npm", "run", "serve"]
+
   db:
     image: mysql:8.0.19
     ports:
@@ -76,6 +124,7 @@ services:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:

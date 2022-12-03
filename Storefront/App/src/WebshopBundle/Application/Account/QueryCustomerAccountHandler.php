@@ -26,7 +26,12 @@ class QueryCustomerAccountHandler
         $customer = $this->customerService->getById($command->getId());
         $subscriber = $this->newsletterService->findByCustomerId($customer->getId());
 
-        return new QueryCustomerAccountResponse($customer,$subscriber->getId());
+        $id = null;
+        if ($subscriber){
+            $id = $subscriber->getId();
+        }
+
+        return new QueryCustomerAccountResponse($customer,$id);
 
     }
 }

@@ -67,6 +67,11 @@ class NewsletterSubscriberService implements NewsletterSubscriberRepositoryInter
         $response=curl_exec($ch);
         curl_close($ch);
         $response = json_decode($response);
+
+        if (!isset($response[0])){
+            return false;
+        }
+
         $response = $response[0];
 
         $subscriber = new NewsletterSubscriber();
