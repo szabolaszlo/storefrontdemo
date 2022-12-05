@@ -103,5 +103,4 @@ dist
 # TernJS port file
 .tern-port
 
-# Import Map for Local Development
-local-importmap.json
+
