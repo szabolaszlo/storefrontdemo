@@ -1,13 +1,13 @@
-##Projekt célja
+## Projekt célja
 A egy adott business igény megvalósításának bemutatása microservice környezetben.
 
-##Business igény
+## Business igény
 A rendszerbe lehessen regisztrálni és lehessen hírlevél feliratkozókat nyilvántartani. Ha valaki regisztrál,
 egy kapcsolóval tudja megadni hogy egyben a hírlevélre is szeretne feliratkozni vagy sem.
 A regisztráció után elérhető felhasználói adatokat listázó oldalon legyen kiírva hogy feliratkozott e az adott felhasználó a hírlevélre vagy sem.
 
 
-##Beállítás
+## Beállítás
 - docker-compose up -d
 - lépj be a phpmyadminba (http://localhost:8080)
 - hozz létre egy newsletter és egy customer adatbázist
