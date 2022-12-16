@@ -1,11 +1,9 @@
 {% extends '@webshop/base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Sign Up{% endblock %}
 
 {% block body %}
-
-
-    <form action="{{ path('app_registration') }}" method="post">
+    <form action="{{ path('app_signup') }}" method="post">
         <div>
             <label for="email">Email:</label>
             <input type="text" id="email" name="email" value=""/>
@@ -28,6 +26,6 @@
         </div>
 
 
-        <button type="submit">login</button>
+        <button type="submit">Sign Up</button>
     </form>
 {% endblock %}

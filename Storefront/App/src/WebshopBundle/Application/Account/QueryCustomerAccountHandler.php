@@ -8,6 +8,7 @@ use App\WebshopBundle\Application\Account\QueryCustomerAccountResponse;
 use App\WebshopBundle\Domain\CustomerRepositoryInterface;
 use App\WebshopBundle\Domain\NewsletterSubscriberRepositoryInterface;
 use App\WebshopBundle\Infrastructure\CustomerService\CustomerService;
+use function dd;
 
 class QueryCustomerAccountHandler
 {
@@ -23,7 +24,7 @@ class QueryCustomerAccountHandler
 
     public function __invoke(QueryCustomerAccountCommand $command)
     {
-        $customer = $this->customerService->getById($command->getId());
+        $customer = $command->getId() ? $this->customerService->getById($command->getId()) : $this->customerService->getByEmail();
         $subscriber = $this->newsletterService->findByCustomerId($customer->getId());
 
         $id = null;

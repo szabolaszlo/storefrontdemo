@@ -17,4 +17,10 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
+    App\WebshopBundle\Infrastructure\Security\ClientCredentialsOauthClient:
+        arguments:
+            - '%env(OAUTH_CLIENT_ID)%'
+            - '%env(OAUTH_CLIENT_SECRET)%'
+            - 'http://oauth_server_ngnix_php:8090/token'
+
 

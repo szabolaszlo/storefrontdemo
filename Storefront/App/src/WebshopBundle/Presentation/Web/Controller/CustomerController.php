@@ -22,7 +22,7 @@ class CustomerController extends AbstractController
         $this->messageBus = $messageBus;
     }
 
-    public function registration(Request $request): Response
+    public function signUp(Request $request): Response
     {
         if ($request->isMethod('POST')){
 
@@ -41,15 +41,18 @@ class CustomerController extends AbstractController
 
         }
 
-        return $this->render('@webshop/registration.html.twig', array());
+        return $this->render('@webshop/registration.html.twig', []);
     }
 
     public function account(Request $request): Response
     {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
 
-        $query = new QueryCustomerAccountCommand($request->get('id'));
+        $query = new QueryCustomerAccountCommand($this->getUser()->getId());
         $customer = $this->handle($query);
 
-        return $this->render('@webshop/account.html.twig', array("customer"=>$customer));
+        return $this->render('@webshop/account.html.twig', ["customer"=>$customer]);
     }
 }

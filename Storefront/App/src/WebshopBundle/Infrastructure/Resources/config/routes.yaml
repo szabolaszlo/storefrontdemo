@@ -1,6 +1,22 @@
-app_registration:
+app_home:
     path: /
-    controller:  App\WebshopBundle\Presentation\Web\Controller\CustomerController::registration
+    controller: App\WebshopBundle\Presentation\Web\Controller\HomeController::index
+
+app_login:
+    path: /login
+    controller: App\WebshopBundle\Presentation\Web\Controller\LoginController::index
+
+app_oauth_connect:
+    path: /auth/connect
+    controller:  App\WebshopBundle\Presentation\Web\Controller\OauthLoginController::connect
+
+app_connect_check:
+    path: /auth/connect_check
+    controller:  App\WebshopBundle\Presentation\Web\Controller\OauthLoginController::connectCheck
+
+app_signup:
+    path: /signup
+    controller:  App\WebshopBundle\Presentation\Web\Controller\CustomerController::signUp
 
 app_account:
     path: /account
@@ -9,3 +25,7 @@ app_account:
 api_registration:
     path: /api/registration
     controller:  App\WebshopBundle\Presentation\Api\Rest\RegistrationController::registration
+
+app_logout:
+    path: /logout
+    methods: GET

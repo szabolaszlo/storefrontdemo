@@ -3,9 +3,6 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-
-
-    <form action="{{ path('app_registration') }}" method="post">
         <div>
             <label for="email">Id:</label>
             <label>{{ customer.getCustomerId }}</label>
@@ -31,6 +28,7 @@
             {% endif %}
 
         </div>
-
-    </form>
+    <div>
+        <a href="{{ path('app_logout') }}">LogOut</a>
+    </div>
 {% endblock %}
