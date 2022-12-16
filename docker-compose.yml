@@ -1,6 +1,40 @@
 version: '3.7'
 
 services:
+  api_gateway_nginx:
+    build:
+      context: APIGateway/Docker
+      dockerfile: Dockerfile
+    container_name: 'api_gateway_nginx'
+    volumes:
+      - ./APIGateway/Docker/nginx.conf:/etc/nginx/nginx.conf
+      - ./APIGateway/Docker/api-gateway.conf:/etc/nginx/conf.d/api-gateway.conf
+      - ./APIGateway/Docker/oauth2.js:/etc/nginx/oauth2.js
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - storefront_nginx
+      - storefront_php
+      - oauth_server_nginx_php
+      - customer_api
+      - newsletter_api
+    ports:
+      - 8090:8080
+
+  oauth_server_ngnix_php:
+    build:
+      context: OauthServer/Docker
+      dockerfile: Dockerfile
+    container_name: 'oauth_server_nginx_php'
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./OauthServer/App:/var/www/html
+      - ./OauthServer/Docker/php.ini:/etc/php81/conf.d/settings.ini
+      - ./OauthServer/Docker/nginx.conf:/etc/nginx/conf.d/server.conf
+    ports:
+      - 8085:8090
+
   storefront_php:
     build:
       context: Storefront/Docker/services/php
