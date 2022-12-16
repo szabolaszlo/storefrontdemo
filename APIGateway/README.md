@@ -25,4 +25,17 @@ Készíthetünk új végpontokat a meglévők mellé
 TODO
 
 ## Implementáció
-TODO
+A Storefront alkalmazás customer service adaptere lett felkészítve arra, hogy igényeljen az OauthServertől magának Client Credential Grant alkalmazásával egy JWT access tokent, melyet a API Gateway customer proxy végpontja az oauth serverre ellenőriztet.
+
+A működés:
+Egy reverse proxyként működik ez a szerver.
+A szerver figyeli, hogy a hívott url-ben, ami hozzá érkezik, a host után mi áll:
+- /customer/
+- /newsletter/ TODO: a Storefront NewsletterService majd kell hogy használja
+
+Majd a megfelelő upstreamre irányítunk.
+Közben a /customer/ végponton átmenő forgalomnál csinálunk egy sub reqestet, amely az OauthServerrel validáltatja a tokent. Ha okés, tovább engedi a customer_api felé a hívást.
+
+Ezt olvas el a jobb megértés érdekében: https://www.nginx.com/blog/validating-oauth-2-0-access-tokens-nginx/
+
+
