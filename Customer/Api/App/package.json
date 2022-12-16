@@ -12,6 +12,7 @@
     "rest",
     "api",
     "sequelize",
+    "jsonwebtoken",
     "mysql"
   ],
   "author": "bezkoder",
@@ -19,6 +20,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.0.2",
     "sequelize": "^6.21.0"
   }

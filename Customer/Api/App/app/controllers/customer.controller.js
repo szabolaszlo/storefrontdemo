@@ -2,10 +2,60 @@ const db = require("../models");
 const Customer = db.customers;
 const Op = db.Sequelize.Op;
 
+exports.getByEmail = (req, res) => {
+  if (!req.body.email) {
+    res.status(400).send({
+      message: "Email can not be empty!"
+    });
+    return;
+  }
+
+  Customer.findOne({where: {email: req.body.email}})
+      .then(data => {
+        if (data) {
+          res.send(data);
+        } else {
+          res.status(401).send({
+            message: `Customer is not found`
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error on getting Customer"
+        });
+      });
+}
+
+exports.auth = (req, res) => {
+  if (!req.body.email || !req.body.password) {
+    res.status(400).send({
+      message: "Email and password can not be empty!"
+    });
+    return;
+  }
+
+  Customer.findOne({where: {email: req.body.email, password: req.body.password}})
+      .then(data => {
+        if (data) {
+          res.send(data);
+        } else {
+          res.status(403).send({
+            message: `Authentication is failed`
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error on authentication"
+        });
+      });
+}
+
 // Create and Save a new Customer
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.email) {
+  if (!req.body.email || !req.body.password) {
     res.status(400).send({
       message: "Email can not be empty!"
     });
