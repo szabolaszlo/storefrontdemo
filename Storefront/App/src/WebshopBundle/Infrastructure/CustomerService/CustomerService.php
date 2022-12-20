@@ -111,7 +111,9 @@ class CustomerService implements CustomerRepositoryInterface
 
     public function getByEmail(string $email): ?Customer
     {
+
         $this->accessTokenHandling();
+
         /** @var AccessToken $accessToken */
         $accessToken = $this->requestStack->getSession()->get('customer_service.access_token');
 
@@ -140,12 +142,6 @@ class CustomerService implements CustomerRepositoryInterface
         if (curl_errno($ch)){
             throw new DomainException(curl_error($ch));
         }
-
-        if ($httpCode === 401){
-            return null;
-        }
-
-        curl_close($ch);
 
         $response = json_decode($response);
 
@@ -217,7 +213,7 @@ class CustomerService implements CustomerRepositoryInterface
     {
         $session = $this->requestStack->getSession();
         if (!$session->has('customer_service.access_token')) {
-            $this->client->getAccessToken();
+
             $session->set('customer_service.access_token', $this->client->getAccessToken());
         } else {
             if ($session->get('customer_service.access_token')->hasExpired()) {

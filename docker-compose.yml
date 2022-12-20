@@ -15,7 +15,7 @@ services:
     depends_on:
       - storefront_nginx
       - storefront_php
-      - oauth_server_nginx_php
+      - oauth_server_ngnix_php
       - customer_api
       - newsletter_api
     ports:
@@ -26,8 +26,6 @@ services:
       context: OauthServer/Docker
       dockerfile: Dockerfile
     container_name: 'oauth_server_nginx_php'
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     volumes:
       - ./OauthServer/App:/var/www/html
       - ./OauthServer/Docker/php.ini:/etc/php81/conf.d/settings.ini

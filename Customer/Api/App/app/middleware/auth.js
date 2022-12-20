@@ -12,9 +12,10 @@ const verifyToken = (req, res, next) => {
 
     try {
         cert = fs.readFileSync(__dirname + '/../../keys/public.pem')
-        const decoded = jwt.verify(token, cert);
+        const decoded = jwt.verify(token, cert, {ignoreNotBefore:true});
         req.user = decoded;
     } catch (err) {
+        console.log(err);
         return res.status(401).send("Invalid Token");
     }
     return next();
