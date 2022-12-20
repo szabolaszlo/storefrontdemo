@@ -1,0 +1,23 @@
+knpu_oauth2_client:
+    clients:
+        oauth_server_oauth:
+            type: generic
+            provider_class: League\OAuth2\Client\Provider\GenericProvider
+
+            # optional: a class that extends OAuth2Client
+            # client_class: Some\Custom\Client
+
+            # optional: if your provider has custom constructor options
+            provider_options: {
+                urlAuthorize: 'http://localhost:8085/authorize',
+                urlAccessToken: 'http://oauth_server_ngnix_php:8090/token',
+                urlResourceOwnerDetails: null
+            }
+
+            # now, all the normal options!
+            client_id: '%env(OAUTH_CLIENT_ID)%'
+            client_secret: '%env(OAUTH_CLIENT_SECRET)%'
+            redirect_route: app_connect_check
+            redirect_params: {}
+            # whether to check OAuth2 "state": defaults to true
+            use_state: false
