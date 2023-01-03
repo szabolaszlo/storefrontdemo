@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'admin-panel',
+  name: 'newsletter-admin',
   components: {},
 };
 </script>

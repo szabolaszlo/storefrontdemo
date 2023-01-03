@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'app-one',
+  name: 'customer-admin',
   components: {},
 };
 </script>

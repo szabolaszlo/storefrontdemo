@@ -1,7 +1,7 @@
 <template>
   <div>
     <p id="links">
-      <router-link to="/">List</router-link>
+      <router-link to="/customers">List</router-link>
     </p>
     <p>
       ID: {{ customer.id }} <br/>
@@ -13,11 +13,14 @@
 
 <script>
 export default {
-
-  name: 'Detail',
   data() {
     return {
-      customer: null,
+      customer:{
+        id:'',
+        firstname:'',
+        lastname:'',
+        email:'',
+      },
     };
   },
 

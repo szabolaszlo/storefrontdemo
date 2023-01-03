@@ -5,13 +5,13 @@ import {
 
 const apps = [
   {
-    name: 'app-one',
-    app: () => System.import('app-one'),
+    name: 'customer-admin',
+    app: () => System.import('customer-admin'),
     activeWhen: location => location.pathname.startsWith('/customers')
   },
   {
-    name: '@newsletter/admin',
-    app: () => System.import('@newsletter/admin'),
+    name: 'newsletter-admin',
+    app: () => System.import('newsletter-admin'),
     activeWhen: location => location.pathname.startsWith('/subscribers')
   }
 ]

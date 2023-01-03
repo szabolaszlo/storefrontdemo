@@ -2,7 +2,7 @@ const auth = require('../middleware/auth')
 const customers = require('../controllers/customer.controller')
 module.exports = app => {
   const customers = require("../controllers/customer.controller.js");
-  const auth = require("../middleware/auth");
+  //const auth = require("../middleware/auth");
 
   var router = require("express").Router();
 
@@ -10,11 +10,11 @@ module.exports = app => {
 
   router.get("/", customers.findAll);
 
-  router.post("/auth", auth, customers.auth);
+  router.post("/auth", customers.auth);
 
-  router.post("/by_email", auth, customers.getByEmail);
+  router.post("/by_email", customers.getByEmail);
 
-  router.get("/:id", auth, customers.findOne);
+  router.get("/:id", customers.findOne);
 
   router.put("/:id", customers.update);
 

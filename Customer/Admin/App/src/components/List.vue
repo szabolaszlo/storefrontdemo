@@ -2,7 +2,7 @@
   <div>
     <div v-for="customer in customers" v-bind:key="customer.id">
       <span>{{ customer.id }} -- </span>
-      <router-link :to="'/detail/'+customer.id " ><span>{{ customer.email }}</span></router-link>
+      <router-link :to="'/customers/details/'+customer.id " ><span>{{ customer.email }}</span></router-link>
     </div>
   </div>
 </template>
@@ -10,7 +10,6 @@
 <script>
 
 export default {
-  name: 'List',
   data() {
     return {
       customers: [],
@@ -30,7 +29,7 @@ export default {
     },
   },
 
-  mounted() {
+  beforeMount() {
     this.getData();
   },
 };

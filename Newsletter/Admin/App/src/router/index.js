@@ -6,15 +6,15 @@ Vue.use(Router);
 
 export default new Router({
     mode: 'history',
-    base: '/subscribers',
+    base: process.env.BASE_URL,
     routes: [
         {
-            path: '/',
+            path: '/subscribers',
             component: () => import('@/components/Lists'),
             children: [],
         },
         {
-            path: '/details/:id',
+            path: '/subscribers/details/:id',
             component: () => import('@/components/Details'),
             children: [],
         },

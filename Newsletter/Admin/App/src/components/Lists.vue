@@ -2,7 +2,7 @@
   <div>
     <div v-for="subscriber in subscribers" v-bind:key="subscriber.id">
       <span>{{ subscriber.id }} -- </span>
-      <router-link :to="'/details/'+subscriber.id " ><span>{{ subscriber.email }}</span></router-link>
+      <router-link :to="'/subscribers/details/'+subscriber.id " ><span>{{ subscriber.email }}</span></router-link>
     </div>
   </div>
 </template>
@@ -10,7 +10,7 @@
 <script>
 
 export default {
-  name: 'Lists',
+  name: 'newsletter-list',
   data() {
     return {
       subscribers: [],
@@ -30,7 +30,7 @@ export default {
     },
   },
 
-  created() {
+  beforeMount() {
     this.getData();
   },
 };

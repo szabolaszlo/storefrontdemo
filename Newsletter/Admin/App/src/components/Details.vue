@@ -1,7 +1,7 @@
 <template>
   <div>
     <p id="links">
-      <router-link to="/">List</router-link>
+      <router-link to="/subscribers">List</router-link>
     </p>
     <p>
       ID: {{ subscriber.id }} <br/>
@@ -14,10 +14,16 @@
 
 <script>
 export default {
-  name: 'Details',
+  name: 'newsletter-detail',
   data() {
     return {
-      subscriber: null,
+      subscriber: {
+        id:'',
+        firstname:'',
+        lastname:'',
+        email:'',
+        customerId:'',
+      },
     };
   },
 
@@ -36,7 +42,7 @@ export default {
     },
   },
 
-  created() {
+  mounted() {
     this.getData(this.$route.params.id);
   },
 };
