@@ -1,7 +1,0 @@
-{
-    "imports": {
-        "admin": "http://localhost:5000/main.js",
-        "customer-admin": "http://localhost:5001/app.js",
-        "newsletter-admin": "http://localhost:5002/app.js"
-    }
-}

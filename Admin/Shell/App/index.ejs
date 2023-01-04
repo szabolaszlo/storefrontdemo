@@ -22,11 +22,9 @@
 
   <body>
     <script>
+      System.import('admin-auth')
       System.import('admin');
     </script>
-    <a href="/" onclick="singleSpaNavigate(event)">home</a>
-    <a href="/customers" onclick="singleSpaNavigate(event)">customers</a>
-    <a href="/subscribers" onclick="singleSpaNavigate(event)">subscribers</a>
     <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
   </body>
   <style type="text/css">

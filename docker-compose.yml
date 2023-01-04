@@ -101,16 +101,52 @@ services:
       - "8082:8082"
     command: ["node", "server.js"]
 
-  admin:
+  admin_shell:
     build:
-      context: Admin
+      context: Admin/Shell
       dockerfile: Docker/Dockerfile
-    container_name: 'admin'
+    container_name: 'admin_shell'
     volumes:
-      - ./Admin/App:/src
+      - ./Admin/Shell/App:/src
       - /src/node_modules
     ports:
       - "5000:5000"
+    command: ["npm", "run","serve"]
+
+  admin_login:
+    build:
+      context: Admin/Login
+      dockerfile: Docker/Dockerfile
+    container_name: 'admin_login'
+    volumes:
+      - ./Admin/Login/App:/src
+      - /src/node_modules
+    ports:
+      - "5003:5003"
+    command: ["npm", "run","serve"]
+
+  admin_auth:
+    build:
+      context: Admin/Auth
+      dockerfile: Docker/Dockerfile
+    container_name: 'admin_auth'
+    volumes:
+      - ./Admin/Auth/App:/src
+      - /src/node_modules
+    ports:
+      - "5004:5004"
+    command: ["npm", "run","serve"]
+
+  admin_navbar:
+    build:
+      context: Admin/Navbar
+      dockerfile: Docker/Dockerfile
+    container_name: 'admin_navbar'
+    volumes:
+      - ./Admin/Navbar/App:/src
+      - /src/node_modules
+    ports:
+      - "5005:5005"
     command: ["npm", "run","serve"]
 
   customer_admin:
