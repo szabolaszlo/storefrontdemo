@@ -19,7 +19,8 @@ module.exports = {
 
         config.externals([
             'vue',
-            'vue-router'
+            'vue-router',
+            'admin-shared'
         ]);
     },
     lintOnSave: true,

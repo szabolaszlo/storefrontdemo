@@ -7,9 +7,9 @@ import router from './router';
 
 Vue.config.productionTip = false;
 
-import axios from 'axios';
+import { axiosApiInstance} from 'admin-shared';
 
-Vue.prototype.$http = axios;
+Vue.prototype.$http = axiosApiInstance;
 
 const vueLifecycles = singleSpaVue({
     Vue,

@@ -4,7 +4,7 @@
         "admin-login": "http://localhost:5003/app.js",
         "customer-admin": "http://localhost:5001/app.js",
         "newsletter-admin": "http://localhost:5002/app.js",
-        "admin-auth": "http://localhost:5004/app.js",
+        "admin-shared": "http://localhost:5004/app.js",
         "admin-navbar": "http://localhost:5005/app.js"
     }
 }

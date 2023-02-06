@@ -27,11 +27,10 @@ export default {
   methods: {
     getData(id) {
       this.$http.get(
-          "http://localhost:8081/api/customers/"+id
+          "http://localhost:8090/customer/api/customers/"+id
       )
           .then(response => {
             this.customer = response.data;
-            console.log(response.data);
           })
           .catch(e => {
             console.log(e);

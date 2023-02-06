@@ -3,6 +3,8 @@
 namespace App\WebshopBundle\Infrastructure\Security;
 
 use App\WebshopBundle\Infrastructure\CustomerService\CustomerService;
+use League\OAuth2\Client\Provider\GenericProvider;
+use League\OAuth2\Client\Token\AccessToken;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
@@ -11,12 +13,43 @@ use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
-class CustomerUserProvider implements UserProviderInterface, PasswordUpgraderInterface
+class CustomerUserProvider implements UserProviderInterface
 {
+    private GenericProvider $genericProvider;
+
+    /** @var AccessToken $accessToken */
+    private $accessToken;
+
     public function __construct(
-        private CustomerService $customerService
-    )
-    {
+        string $clientId,
+        string $clientSecret,
+        string $urlAccessToken
+    ) {
+        $this->genericProvider = new GenericProvider([
+            'clientId'                => $clientId,    // The client ID assigned to you by the provider
+            'clientSecret'            => $clientSecret,    // The client password assigned to you by the provider
+            'redirectUri'             => null,
+            'urlAuthorize'            => null,
+            'urlAccessToken'          => $urlAccessToken,
+            'urlResourceOwnerDetails' => null
+        ]);
+
+    }
+
+    private function getAccessToken(){
+
+        if ($this->accessToken){
+            if ($this->accessToken->hasExpired()){
+                $this->accessToken = $this->genericProvider->getAccessToken('refresh_token', [
+                    'refresh_token' => $this->accessToken->getRefreshToken()
+                ]);
+            }
+            return $this->accessToken;
+        }
+
+        $this->accessToken = $this->genericProvider->getAccessToken('client_credentials');
+
+        return $this->accessToken;
     }
 
     /**
@@ -69,15 +102,6 @@ class CustomerUserProvider implements UserProviderInterface, PasswordUpgraderInt
         return CustomerUser::class === $class || is_subclass_of($class, CustomerUser::class);
     }
 
-    /**
-     * Upgrades the hashed password of a user, typically for using a better hash algorithm.
-     */
-    public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
-    {
-        // TODO: when hashed passwords are in use, this method should:
-        // 1. persist the new password in the user storage
-        // 2. update the $user object with $user->setPassword($newHashedPassword);
-    }
 
     /**
      * @param string $identifier
@@ -86,15 +110,31 @@ class CustomerUserProvider implements UserProviderInterface, PasswordUpgraderInt
      */
     private function getCustomerUser(string $identifier): CustomerUser
     {
-        $customer = $this->customerService->getByEmail($identifier);
 
-        if (!$customer) {
-            throw new UserNotFoundException();
-        }
+        $ch = curl_init('http://api_gateway_nginx:8080/customer/api/customers/by_email');
+        curl_setopt(
+            $ch,
+            CURLOPT_HTTPHEADER,
+            array(
+                'Content-Type: application/json',
+                'Authorization: Bearer ' . $this->getAccessToken()->getToken()
+            )
+        );
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode(["email"=>$identifier]));
+
+
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        $response = json_decode($response);
 
         $user = new CustomerUser();
-        $user->setId($customer->getId());
-        $user->setEmail($customer->getEmail());
+        $user->setEmail($response->email);
+        $user->setId($response->id);
+
         return $user;
     }
 }

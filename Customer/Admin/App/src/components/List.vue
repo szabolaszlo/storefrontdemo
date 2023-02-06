@@ -8,7 +8,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -20,7 +19,7 @@ export default {
     async getData() {
       try {
         const response = await this.$http.get(
-            "http://localhost:8081/api/customers"
+            "http://localhost:8090/customer/api/customers"
         );
         this.customers = response.data;
       } catch (error) {

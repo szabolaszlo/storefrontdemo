@@ -12,6 +12,7 @@ RUN apk add --no-cache \
   php81-simplexml \
   php81-pdo \
   php81-pdo_mysql\
+  php81-pecl-xdebug\
   php81-posix
 
 USER nobody

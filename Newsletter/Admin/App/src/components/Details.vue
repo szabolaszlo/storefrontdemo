@@ -30,11 +30,11 @@ export default {
   methods: {
     getData(id) {
       this.$http.get(
-          "http://localhost:8082/api/subscribers/"+id
+          "http://localhost:8090/newsletter/api/subscribers/"+id
       )
           .then(response => {
             this.subscriber = response.data;
-            console.log(response.data);
+
           })
           .catch(e => {
             console.log(e);

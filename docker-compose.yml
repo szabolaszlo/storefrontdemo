@@ -32,6 +32,8 @@ services:
       - ./OauthServer/Docker/nginx.conf:/etc/nginx/conf.d/server.conf
     ports:
       - 8085:8090
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   storefront_php:
     build:
@@ -113,29 +115,34 @@ services:
       - "5000:5000"
     command: ["npm", "run","serve"]
 
-  admin_login:
+
+  admin_auth_api:
     build:
-      context: Admin/Login
+      context: Admin/Auth/Api
       dockerfile: Docker/Dockerfile
-    container_name: 'admin_login'
+    container_name: 'admin_auth_api'
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
-      - ./Admin/Login/App:/src
+      - ./Admin/Auth/Api/App:/src
       - /src/node_modules
     ports:
-      - "5003:5003"
-    command: ["npm", "run","serve"]
+      - "5007:5007"
+    command: [ "node", "server.js" ]
 
-  admin_auth:
+  admin_shared:
     build:
-      context: Admin/Auth
+      context: Admin/Shared
       dockerfile: Docker/Dockerfile
-    container_name: 'admin_auth'
+    container_name: 'admin_shared'
     volumes:
-      - ./Admin/Auth/App:/src
+      - ./Admin/Shared/App:/src
       - /src/node_modules
     ports:
       - "5004:5004"
     command: ["npm", "run","serve"]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   admin_navbar:
     build:

@@ -30,3 +30,17 @@ services:
             - '@security.password_hasher'
         tags:
             - { name: kernel.event_listener, event: league.oauth2_server.event.user_resolve, method: onUserResolve }
+
+    App\Grant\Customer:
+        arguments:
+            - '@App\Repository\CustomerRepository'
+            - '@league.oauth2_server.repository.refresh_token'
+        tags:
+            - 'league.oauth2_server.authorization_server.grant'
+
+    App\Grant\Admin:
+        arguments:
+            - '@App\Repository\AdminRepository'
+            - '@league.oauth2_server.repository.refresh_token'
+        tags:
+            - 'league.oauth2_server.authorization_server.grant'

@@ -3,6 +3,7 @@
 namespace App\WebshopBundle\Infrastructure\Security;
 
 use App\WebshopBundle\Infrastructure\CustomerService\CustomerService;
+use App\WebshopBundle\Infrastructure\Security\Token\OauthToken;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -18,6 +19,7 @@ use Symfony\Component\Security\Http\Authenticator\AbstractLoginFormAuthenticator
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\CustomCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
+use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPassport;
 use Symfony\Component\Security\Http\HttpUtils;
 use Symfony\Component\Security\Http\ParameterBagUtils;
 use function method_exists;
@@ -32,8 +34,9 @@ class CustomerUserAuthenticator extends AbstractLoginFormAuthenticator
     private $options;
     private $httpKernel;
     private CustomerService $customerService;
+    private OauthClient $oauthClient;
 
-    public function __construct(HttpUtils $httpUtils, UserProviderInterface $userProvider, CustomerService $customerService)
+    public function __construct(HttpUtils $httpUtils, UserProviderInterface $userProvider, OauthClient $oauthClient)
     {
         $this->httpUtils = $httpUtils;
         $this->userProvider = $userProvider;
@@ -49,7 +52,7 @@ class CustomerUserAuthenticator extends AbstractLoginFormAuthenticator
             'csrf_parameter' => '_csrf_token',
             'csrf_token_id' => 'authenticate',
         ];
-        $this->customerService = $customerService;
+        $this->oauthClient = $oauthClient;
     }
 
     protected function getLoginUrl(Request $request): string
@@ -67,19 +70,19 @@ class CustomerUserAuthenticator extends AbstractLoginFormAuthenticator
     public function authenticate(Request $request): Passport
     {
         $credentials = $this->getCredentials($request);
+      //  do not copy to production
+        $accessToken = $this->oauthClient->getAccessToken($credentials['username'], $credentials['password']);
 
-        return new Passport(
-            new UserBadge($credentials['username']),
-            new CustomCredentials(function ($credentials, UserInterface $user) {
-                $customer = $this->customerService->authenticate($credentials['username'], $credentials['password']);
-                return (boolean) $customer;
-            }, $credentials)
-        );
+        $passport = new SelfValidatingPassport(new UserBadge($credentials['username']));
+
+        $passport->setAttribute('access_token',$accessToken);
+
+        return $passport;
     }
 
     public function createToken(Passport $passport, string $firewallName): TokenInterface
     {
-        return new UsernamePasswordToken($passport->getUser(), $firewallName, $passport->getUser()->getRoles());
+        return new OauthToken($passport->getUser(),$passport->getAttribute('access_token'));
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response

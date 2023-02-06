@@ -1,13 +1,8 @@
 import {start, registerApplication, navigateToUrl} from 'single-spa';
-import { auth$ } from 'admin-auth';
+import { auth$ } from 'admin-shared';
+import  axios  from 'axios';
 
 let authenticated = false;
-
-const ROUTES = {
-  ROOT: '/',
-  LOGIN: '/login',
-};
-
 
 const apps = [
   {
@@ -15,12 +10,6 @@ const apps = [
     app: () => System.import('admin-navbar'),
     activeWhen: (location) =>
         location.pathname.startsWith('/') && authenticated,
-  },
-  {
-    name: 'admin-login',
-    app: () => System.import('admin-login'),
-    activeWhen: (location) =>
-        [ROUTES.ROOT, ROUTES.LOGIN].includes(location.pathname) && !authenticated,
   },
   {
     name: 'customer-admin',
@@ -31,21 +20,37 @@ const apps = [
     name: 'newsletter-admin',
     app: () => System.import('newsletter-admin'),
     activeWhen: location => location.pathname.startsWith('/subscribers') && authenticated,
-  }
+  },
 ]
 
 Promise.all([
   System.import('pubsub-js'),
   System.import('snackbar'),
+
+  axios
+      .get("http://localhost:5007/token",{ withCredentials: true })
+      .then((response) => {
+        if (response.data.token !== ''){
+          authenticated = response.data.token;
+          auth$.next({
+            sessionToken: response.data.token,
+            error: false,
+          });
+        }
+      })
+      .catch((err) => console.log(err))
+
 ]).then(() => {
+
   apps.forEach(app =>  registerApplication(app) );
+
 
   auth$.subscribe(({ sessionToken }) => {
     authenticated = !!sessionToken;
-    if (!authenticated && window.location.pathname !== ROUTES.LOGIN)
-      navigateToUrl(ROUTES.LOGIN);
-    if (authenticated && window.location.pathname === ROUTES.LOGIN)
-      navigateToUrl(ROUTES.ROOT);
+    if (!authenticated)
+      window.location.href = 'http://localhost:5007/auth';
+    if (authenticated )
+      navigateToUrl("/");
   });
 
   start();

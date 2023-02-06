@@ -51,6 +51,6 @@ module.exports = env => ({
     'single-spa',
     'vue',
     'vue-router',
-    'admin-auth',
+    'admin-shared',
   ]
 });

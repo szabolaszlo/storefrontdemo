@@ -21,7 +21,7 @@ export default {
     async getData() {
       try {
         const response = await this.$http.get(
-            "http://localhost:8082/api/subscribers"
+            "http://localhost:8090/newsletter/api/subscribers",
         );
         this.subscribers = response.data;
       } catch (error) {

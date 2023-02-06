@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { logout } from "admin-auth";
+import { logout } from "admin-shared";
 export default {
   props: {
 

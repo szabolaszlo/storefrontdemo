@@ -17,6 +17,7 @@ class UserResolveListener
 
     public function onUserResolve(UserResolveEvent $event): void
     {
+
         try {
             $user = $this->userRepository->loadUserByIdentifier($event->getUsername());
         } catch (AuthenticationException $e) {
