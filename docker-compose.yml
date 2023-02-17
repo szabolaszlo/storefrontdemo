@@ -79,6 +79,20 @@ services:
       - RABBITMQ_DEFAULT_PASS=guest
       - RABBITMQ_DEFAULT_VHOST=/
 
+  catalog_api:
+    build:
+      context: Catalog/Api
+      dockerfile: Docker/Dockerfile
+    container_name: 'catalog_api'
+    volumes:
+      - ./Catalog/Api/App:/src
+      - /src/node_modules
+    ports:
+      - "8083:8083"
+    depends_on:
+      - db
+    command: [ "node", "server.js" ]
+
   customer_api:
     build:
       context: Customer/Api
