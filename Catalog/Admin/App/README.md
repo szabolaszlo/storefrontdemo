@@ -1,4 +1,5 @@
 ## Projekt célja
 
-Az admin shellbe beépülő microfrontend
+Catalog microservice, termékek kezelésére.
+Nincs dolgod vele, önállóan létrehozza a tábláját ha nem létezik.
 
