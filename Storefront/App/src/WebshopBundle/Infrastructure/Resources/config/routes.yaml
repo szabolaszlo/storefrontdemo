@@ -22,6 +22,10 @@ app_account:
     path: /account
     controller:  App\WebshopBundle\Presentation\Web\Controller\CustomerController::account
 
+app_customer_space:
+    path: /catalog
+    controller: App\WebshopBundle\Presentation\Web\Controller\CustomerSpaceController::index
+
 api_registration:
     path: /api/registration
     controller:  App\WebshopBundle\Presentation\Api\Rest\RegistrationController::registration

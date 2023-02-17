@@ -4,11 +4,8 @@
 namespace App\WebshopBundle\Application\Account;
 
 
-use App\WebshopBundle\Application\Account\QueryCustomerAccountResponse;
-use App\WebshopBundle\Domain\CustomerRepositoryInterface;
-use App\WebshopBundle\Domain\NewsletterSubscriberRepositoryInterface;
-use App\WebshopBundle\Infrastructure\CustomerService\CustomerService;
-use function dd;
+use App\WebshopBundle\Domain\Model\Customer\CustomerRepositoryInterface;
+use App\WebshopBundle\Domain\Model\Newsletter\NewsletterSubscriberRepositoryInterface;
 
 class QueryCustomerAccountHandler
 {

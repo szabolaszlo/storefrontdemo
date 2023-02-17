@@ -4,8 +4,7 @@
 namespace App\WebshopBundle\Application\Registration;
 
 
-use App\WebshopBundle\Domain\Customer;
-use App\WebshopBundle\Domain\NewsletterSubscriber;
+use App\WebshopBundle\Domain\Model\Customer\Customer;
 
 class RegistrationResponse
 {

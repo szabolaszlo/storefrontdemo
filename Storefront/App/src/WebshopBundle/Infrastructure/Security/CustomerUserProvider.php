@@ -2,14 +2,10 @@
 
 namespace App\WebshopBundle\Infrastructure\Security;
 
-use App\WebshopBundle\Infrastructure\CustomerService\CustomerService;
 use League\OAuth2\Client\Provider\GenericProvider;
 use League\OAuth2\Client\Token\AccessToken;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
@@ -106,7 +102,7 @@ class CustomerUserProvider implements UserProviderInterface
     /**
      * @param string $identifier
      * @return CustomerUser
-     * @throws \App\WebshopBundle\Domain\DomainException
+     * @throws \App\WebshopBundle\Domain\Exception\DomainException
      */
     private function getCustomerUser(string $identifier): CustomerUser
     {

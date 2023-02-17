@@ -3,8 +3,8 @@
 
 namespace App\WebshopBundle\Application\SubscribeToNewsletter;
 
-use App\WebshopBundle\Domain\NewsletterSubscriber;
-use App\WebshopBundle\Domain\NewsletterSubscriberRepositoryInterface;
+use App\WebshopBundle\Domain\Model\Newsletter\NewsletterSubscriber;
+use App\WebshopBundle\Domain\Model\Newsletter\NewsletterSubscriberRepositoryInterface;
 
 class SubscribeToNewsletterHandler
 {

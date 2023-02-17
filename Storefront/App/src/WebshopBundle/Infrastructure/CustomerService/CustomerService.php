@@ -2,20 +2,14 @@
 
 namespace App\WebshopBundle\Infrastructure\CustomerService;
 
-use App\WebshopBundle\Domain\Customer;
-use App\WebshopBundle\Domain\CustomerRepositoryInterface;
-
+use App\WebshopBundle\Domain\Model\Customer\Customer;
+use App\WebshopBundle\Domain\Model\Customer\CustomerRepositoryInterface;
 use League\OAuth2\Client\Token\AccessToken;
-
 use function curl_close;
-use function curl_errno;
-use function curl_error;
 use function curl_exec;
-use function curl_getinfo;
 use function curl_init;
 use function curl_setopt;
 use function json_decode;
-use const CURLINFO_HTTP_CODE;
 use const CURLOPT_HEADER;
 use const CURLOPT_HTTPHEADER;
 use const CURLOPT_POSTFIELDS;
