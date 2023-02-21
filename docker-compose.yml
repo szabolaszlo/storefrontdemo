@@ -35,6 +35,20 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
+  cart_api_ngnix_php:
+    build:
+      context: Cart/Docker
+      dockerfile: Dockerfile
+    container_name: 'cart_api_nginx_php'
+    volumes:
+      - ./Cart/App:/var/www/html
+      - ./Cart/Docker/php.ini:/etc/php81/conf.d/settings.ini
+      - ./Cart/Docker/nginx.conf:/etc/nginx/conf.d/server.conf
+    ports:
+      - 8086:8091
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
   storefront_php:
     build:
       context: Storefront/Docker/services/php

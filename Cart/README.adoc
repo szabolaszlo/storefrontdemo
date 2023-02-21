@@ -1,0 +1,170 @@
+== Urlek:
+
+
+
+/carts - POST creates a new cart
+
+Request:
+```
+{
+    "customerIdentifier":"12" //optional default null
+    "items":[
+        {
+            "sku":"asd",
+            "quantity":1
+        }
+    ]
+}
+```
+Response:
+```
+{
+    "id":"e446d88a-8142-4a03-bec9-5786171f71b2",
+    "customerIdentifier":null,
+    "items":[
+        {
+            "id":"7b6c9fa4-8713-496b-821c-f468d56ad02c",
+            "sku":"asd",
+            "quantity":1,
+            "price":100,
+            "total":100
+        }
+    ],
+    "total":100
+}
+```
+
+/carts/{cart_id} - GET returns the given cart
+
+Response:
+```
+{
+    "id":"54aa6db3-aac5-4f9e-9e56-eccd159fbaf5",
+    "customerIdentifier":null,
+    "items":[
+        {
+            "id":"53c6ae64-fd82-42f3-a5e6-b69069428bda",
+            "sku":"asd",
+            "quantity":1,
+            "price":"0",
+            "total":0
+        }
+    ],
+    "total":0
+}
+```
+
+/carts/{cart_id} - POST adds new item(s) to cart
+
+Request:
+```
+{
+    "items":[
+        {
+            "sku":"asd",
+            "quantity":1
+        }
+    ]
+}
+```
+
+Response:
+```
+{
+    "id":"e446d88a-8142-4a03-bec9-5786171f71b2",
+    "customerIdentifier":null,
+    "items":[
+        {
+            "id":"7b6c9fa4-8713-496b-821c-f468d56ad02c",
+            "sku":"asd",
+            "quantity":2,
+            "price":100,
+            "total":200
+        }
+    ],
+    "total":200
+}
+```
+
+/carts/{cart_id} - DELETE deletes the cart
+
+Response:
+```
+{
+    "msg":"cart deleted",
+}
+```
+
+/carts/{cart_id}/customer - PUT updates the customer id
+
+Request:
+```
+{
+    "customerIdentifier":12,
+}
+```
+
+Response:
+```
+{
+    "id":"e446d88a-8142-4a03-bec9-5786171f71b2",
+    "customerIdentifier":12,
+    "items":[
+        {
+            "id":"7b6c9fa4-8713-496b-821c-f468d56ad02c",
+            "sku":"asd",
+            "quantity":2,
+            "price":100,
+            "total":200
+        }
+    ],
+    "total":200
+}
+```
+
+/carts/{cart_id}/items/{item_id} - DELETE the given item in cart
+
+Response:
+```
+{
+    "id":"e446d88a-8142-4a03-bec9-5786171f71b2",
+    "customerIdentifier":12,
+    "items":[
+        {
+            "id":"7b6c9fa4-8713-496b-821c-f468d56ad02c",
+            "sku":"asd",
+            "quantity":2,
+            "price":100,
+            "total":200
+        }
+    ],
+    "total":200
+}
+```
+
+/carts/{cart_id}/items/{item_id} - PUT updates the given item in cart
+
+Request:
+```
+{
+    "quantity":2,
+}
+```
+
+Response:
+```
+{
+    "id":"e446d88a-8142-4a03-bec9-5786171f71b2",
+    "customerIdentifier":12,
+    "items":[
+        {
+            "id":"7b6c9fa4-8713-496b-821c-f468d56ad02c",
+            "sku":"asd",
+            "quantity":2,
+            "price":100,
+            "total":200
+        }
+    ],
+    "total":200
+}
+```

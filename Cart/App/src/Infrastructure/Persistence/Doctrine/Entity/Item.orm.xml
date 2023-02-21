@@ -1,0 +1,9 @@
+<doctrine-mapping>
+    <entity name="App\Domain\Item" table="Item">
+        <id name="id" type="string" length="140" />
+        <field name="sku"  length="140" />
+        <field name="quantity"  type="integer" />
+        <field name="price"  type="decimal" />
+        <field name="created"  type="datetime" />
+    </entity>
+</doctrine-mapping>

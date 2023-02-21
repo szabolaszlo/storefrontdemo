@@ -1,0 +1,34 @@
+cart_show:
+    path: /carts/{id}
+    controller: App\Infrastructure\Presentation\Web\Controller\CartController::getCart
+    methods:    GET
+
+cart_create:
+    path: /carts
+    controller: App\Infrastructure\Presentation\Web\Controller\CartController::createCart
+    methods:    POST
+
+add_to_cart:
+    path: /carts/{id}
+    controller: App\Infrastructure\Presentation\Web\Controller\CartController::addToCart
+    methods:    POST
+
+delete_cart:
+    path: /carts/{id}
+    controller: App\Infrastructure\Presentation\Web\Controller\CartController::deleteCart
+    methods:    DELETE
+
+delete_cart_item:
+    path: /carts/{cartid}/items/{itemid}
+    controller: App\Infrastructure\Presentation\Web\Controller\CartController::deleteCartItem
+    methods:    DELETE
+
+update_cart:
+    path: /carts/{id}/customer
+    controller: App\Infrastructure\Presentation\Web\Controller\CartController::updateCart
+    methods:    PUT
+
+update_cart_item:
+    path: /carts/{cartid}/items/{itemid}
+    controller: App\Infrastructure\Presentation\Web\Controller\CartController::updateCartItem
+    methods:    PUT

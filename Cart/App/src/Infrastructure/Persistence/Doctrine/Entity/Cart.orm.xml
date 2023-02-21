@@ -1,0 +1,20 @@
+<doctrine-mapping>
+    <entity name="App\Domain\Cart" table="Cart" repository-class="App\Infrastructure\Persistence\Doctrine\Repository\CartRepository">
+        <many-to-many field="items" target-entity="Item">
+            <join-table name="carts_items">
+                <join-columns>
+                    <join-column name="cart_id" referenced-column-name="id" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="item_id" referenced-column-name="id" unique="true" onDelete="CASCADE"/>
+                </inverse-join-columns>
+            </join-table>
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </many-to-many>
+        <id name="id" type="string" length="140" />
+        <field name="customerIdentifier" nullable="true" length="140" />
+        <field name="created"  type="datetime" />
+    </entity>
+</doctrine-mapping>
