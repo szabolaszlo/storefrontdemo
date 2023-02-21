@@ -31,3 +31,8 @@ services:
             - name: messenger.message_handler
               bus: command.bus
               handles: App\WebshopBundle\Application\Account\QueryCustomerAccountCommand
+
+    App\WebshopBundle\Application\CustomerSpace\GetProductCatalogHandler:
+        tags:
+            -   name: messenger.message_handler
+                handles: App\WebshopBundle\Application\CustomerSpace\GetProductCatalogQuery

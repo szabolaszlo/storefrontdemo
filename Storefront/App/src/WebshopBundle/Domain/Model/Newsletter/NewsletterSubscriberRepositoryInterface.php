@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\WebshopBundle\Domain;
+namespace App\WebshopBundle\Domain\Model\Newsletter;
 
 
 interface NewsletterSubscriberRepositoryInterface

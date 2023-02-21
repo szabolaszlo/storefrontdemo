@@ -4,10 +4,10 @@
 namespace App\WebshopBundle\Application\Registration;
 
 
-use App\WebshopBundle\Domain\Customer;
-use App\WebshopBundle\Domain\CustomerRepositoryInterface;
-use App\WebshopBundle\Domain\NewsletterSubscriber;
-use App\WebshopBundle\Domain\NewsletterSubscriberRepositoryInterface;
+use App\WebshopBundle\Domain\Model\Customer\Customer;
+use App\WebshopBundle\Domain\Model\Customer\CustomerRepositoryInterface;
+use App\WebshopBundle\Domain\Model\Newsletter\NewsletterSubscriber;
+use App\WebshopBundle\Domain\Model\Newsletter\NewsletterSubscriberRepositoryInterface;
 
 
 class RegistrationCommandHandler

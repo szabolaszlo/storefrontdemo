@@ -39,5 +39,8 @@ services:
             - '@App\WebshopBundle\Infrastructure\CustomerService\CustomerTokenProvider'
             - 'http://api_gateway_nginx:8080/customer/api/customers'
 
+    App\WebshopBundle\Infrastructure\ProductService\SrCatalogServiceAdapter:
+        arguments:
+            - 'http://api_gateway_nginx:8080/catalog/api/products'
 
 
