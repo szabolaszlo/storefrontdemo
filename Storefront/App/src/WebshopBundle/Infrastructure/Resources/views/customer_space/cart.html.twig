@@ -36,30 +36,23 @@
 {% endblock %}
 
 {% block body %}
+    {% if products %}
     <table>
         <table>
             <tr>
                 <th>sku</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Net Price</th>
-                <th>Gross Price</th>
+                <th>Quantity</th>
+                <th>Price</th>
             </tr>
             {% for product in products %}
                 <tr>
                     <td>{{ product.sku }}</td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.netPrice }}</td>
-                    <td>{{ product.grossPrice }}</td>
-                    <td>
-                        <form method="post" action="{{ path('add_to_cart') }}">
-                            <input type="hidden" name="sku" value="{{ product.sku }}">
-                            <input type="hidden" name="quantity" value="1">
-                            <input class="button" type="submit" value="Kosárba">
-                        </form>
-                    </td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.price }}</td>
                 </tr>
             {% endfor %}
     </table>
+    {% else %}
+        <div>Your cart is empty</div>
+    {% endif %}
 {% endblock %}

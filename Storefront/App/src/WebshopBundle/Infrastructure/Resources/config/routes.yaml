@@ -33,3 +33,13 @@ api_registration:
 app_logout:
     path: /logout
     methods: GET
+
+add_to_cart:
+    path: /addToCart
+    controller: App\WebshopBundle\Presentation\Web\Controller\CartController::addToCart
+    methods: POST
+
+cart:
+    path: /cart
+    controller: App\WebshopBundle\Presentation\Web\Controller\CartController::index
+    methods: GET
