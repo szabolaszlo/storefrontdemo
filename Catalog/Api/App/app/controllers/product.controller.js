@@ -2,6 +2,31 @@ const db = require("../models");
 const products = db.products;
 const Op = db.Sequelize.Op;
 
+exports.getBySku = (req, res) => {
+  if (!req.params.sku) {
+    res.status(400).send({
+      message: "Email can not be empty!"
+    });
+    return;
+  }
+
+  products.findOne({where: {sku: req.params.sku}})
+      .then(data => {
+        if (data) {
+          res.send(data);
+        } else {
+          res.status(401).send({
+            message: `Customer is not found`
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error on getting Customer"
+        });
+      });
+}
+
 exports.create = (req, res) => {
 
   if (

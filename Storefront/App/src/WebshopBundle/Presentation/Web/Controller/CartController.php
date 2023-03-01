@@ -48,6 +48,7 @@ class CartController extends AbstractController
         }
 
         $cartId = !$newCart ? $request->cookies->get('cart_id') : $cartId;
+
         $sku = $request->get('sku');
         $quantity = $request->get('quantity');
 

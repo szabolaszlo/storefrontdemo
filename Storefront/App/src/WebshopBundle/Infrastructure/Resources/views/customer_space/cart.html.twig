@@ -52,6 +52,7 @@
                 </tr>
             {% endfor %}
     </table>
+        Cart Total: {{ cart.getTotal }}
     {% else %}
         <div>Your cart is empty</div>
     {% endif %}
