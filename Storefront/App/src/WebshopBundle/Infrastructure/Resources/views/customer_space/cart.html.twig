@@ -36,7 +36,7 @@
 {% endblock %}
 
 {% block body %}
-    {% if products %}
+    {% if cart %}
     <table>
         <table>
             <tr>
@@ -44,11 +44,11 @@
                 <th>Quantity</th>
                 <th>Price</th>
             </tr>
-            {% for product in products %}
+            {% for item in cart.items %}
                 <tr>
-                    <td>{{ product.sku }}</td>
-                    <td>{{ product.quantity }}</td>
-                    <td>{{ product.price }}</td>
+                    <td>{{ item.sku }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.price }}</td>
                 </tr>
             {% endfor %}
     </table>

@@ -2,7 +2,7 @@
 
 namespace App\WebshopBundle\Presentation\Web\Controller;
 
-use App\WebshopBundle\Application\CustomerSpace\GetProductCatalogQuery;
+use App\WebshopBundle\Application\Catalog\GetProductCatalog\GetProductCatalogQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;

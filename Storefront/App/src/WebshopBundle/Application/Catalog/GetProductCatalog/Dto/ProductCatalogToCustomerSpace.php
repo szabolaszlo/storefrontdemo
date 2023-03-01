@@ -1,6 +1,6 @@
 <?php
 
-namespace App\WebshopBundle\Application\CustomerSpace\Dto;
+namespace App\WebshopBundle\Application\Catalog\GetProductCatalog\Dto;
 
 use Countable;
 use IteratorAggregate;

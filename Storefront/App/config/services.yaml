@@ -43,8 +43,8 @@ services:
         arguments:
             - 'http://api_gateway_nginx:8080/catalog/api/products'
 
-    App\WebshopBundle\Infrastructure\Cart\CartService:
+    App\WebshopBundle\Infrastructure\Cart\HttpCartRepository:
         arguments:
-            - 'http://api_gateway_nginx:8080/cart/'
+            - 'http://api_gateway_nginx:8080/cart/api/carts'
 
 

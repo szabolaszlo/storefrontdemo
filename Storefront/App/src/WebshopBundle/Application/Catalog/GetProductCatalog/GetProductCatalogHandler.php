@@ -1,8 +1,8 @@
 <?php
 
-namespace App\WebshopBundle\Application\CustomerSpace;
+namespace App\WebshopBundle\Application\Catalog\GetProductCatalog;
 
-use App\WebshopBundle\Application\CustomerSpace\Dto\ProductCatalogToCustomerSpace;
+use App\WebshopBundle\Application\Catalog\GetProductCatalog\Dto\ProductCatalogToCustomerSpace;
 use App\WebshopBundle\Domain\Model\Product\ProductRepositoryInterface;
 
 class GetProductCatalogHandler
