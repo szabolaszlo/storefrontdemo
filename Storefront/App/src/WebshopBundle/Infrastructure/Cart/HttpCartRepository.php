@@ -3,11 +3,14 @@
 
 namespace App\WebshopBundle\Infrastructure\Cart;
 
+use App\WebshopBundle\Domain\Exception\DomainException;
 use App\WebshopBundle\Domain\Model\Cart\Cart;
 use App\WebshopBundle\Domain\Model\Cart\CartRepositoryInterface;
 use App\WebshopBundle\Domain\Model\Cart\Dto\AddToCartInput;
 use App\WebshopBundle\Domain\Model\Cart\ItemCollection;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
+use function dd;
 use function json_decode;
 
 class HttpCartRepository implements CartRepositoryInterface
@@ -66,16 +69,19 @@ class HttpCartRepository implements CartRepositoryInterface
         );
     }
 
-    public function getCart(string $cartId): Cart
+    public function getCart(string $cartId): ?Cart
     {
-        $response = $this->client->get($this->url . "/". $cartId, [
-            'headers' => [
-                'Accept' => 'application/json',
-                //'Authorization' => 'Bearer ' . $accessToken->getToken()
-            ],
-            'verify' => 0,
-        ]);
-
+        try {
+            $response = $this->client->get($this->url . "/" . $cartId, [
+                'headers' => [
+                    'Accept' => 'application/json',
+                    //'Authorization' => 'Bearer ' . $accessToken->getToken()
+                ],
+                'verify' => 0,
+            ]);
+        } catch (GuzzleException $e) {
+             return null;
+        }
 
         $response = json_decode($response->getBody()->getContents(), true);
 
@@ -87,5 +93,14 @@ class HttpCartRepository implements CartRepositoryInterface
         );
     }
 
-
+    public function removeItemFromCart(string $cartId, string $itemId): void
+    {
+        try {
+            $this->client->delete("{$this->url}/{$cartId}/items/{$itemId}", [
+                'verify' => 0,
+            ]);
+        } catch (GuzzleException $e) {
+            throw new DomainException($e->getMessage(), $e->getCode());
+        }
+    }
 }

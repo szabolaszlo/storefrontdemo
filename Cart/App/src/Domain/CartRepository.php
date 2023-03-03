@@ -10,5 +10,5 @@ interface CartRepository
     public function add(Cart $cart);
     public function remove(Cart $cart);
 
-    public function findById(CartId $id);
+    public function findById(CartId $id): ?Cart;
 }

@@ -52,3 +52,8 @@ services:
         tags:
             -   name: messenger.message_handler
                 handles: App\WebshopBundle\Application\Cart\GetCart\GetCartQuery
+
+    App\WebshopBundle\Application\Cart\RemoveItemFromCart\RemoveItemFromCartHandler:
+        tags:
+            -   name: messenger.message_handler
+                handles: App\WebshopBundle\Application\Cart\RemoveItemFromCart\RemoveItemFromCartCommand

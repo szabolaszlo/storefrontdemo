@@ -36,7 +36,10 @@
 {% endblock %}
 
 {% block body %}
-    {% if cart %}
+    <div class="header">
+        <a href="{{ path('app_customer_space') }}">Back to catalog</a>
+    </div>
+    {% if cart and cart.items.count != 0 %}
     <table>
         <table>
             <tr>
@@ -49,6 +52,9 @@
                     <td>{{ item.sku }}</td>
                     <td>{{ item.quantity }}</td>
                     <td>{{ item.price }}</td>
+                    <td>
+                        <a href="{{ path('remove_from_cart', {itemId: item.id}) }}">Remove</a>
+                    </td>
                 </tr>
             {% endfor %}
     </table>

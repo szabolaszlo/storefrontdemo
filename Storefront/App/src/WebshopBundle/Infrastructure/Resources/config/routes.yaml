@@ -35,9 +35,14 @@ app_logout:
     methods: GET
 
 add_to_cart:
-    path: /addToCart
+    path: cart/add
     controller: App\WebshopBundle\Presentation\Web\Controller\CartController::addToCart
     methods: POST
+
+remove_from_cart:
+    path: cart/removeItem/{itemId}
+    controller: App\WebshopBundle\Presentation\Web\Controller\CartController::removeItemFromCart
+    methods: GET
 
 cart:
     path: /cart

@@ -36,7 +36,8 @@ class CartRepository extends ServiceEntityRepository implements CartRepoInterfac
         $this->getEntityManager()->flush();
     }
 
-    public function findById(CartId $id){
+    public function findById(CartId $id): ?Cart
+    {
         return $this->find($id);
     }
 }

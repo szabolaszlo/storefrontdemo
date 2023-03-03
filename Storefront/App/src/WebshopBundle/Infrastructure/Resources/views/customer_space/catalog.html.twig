@@ -4,62 +4,75 @@
 
 {% block stylesheets %}
     <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
+        .product-list {
+            display: flex;
+            justify-content: center;
         }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-
-        .button {
-            border: none;
-            color: white;
-            padding: 15px 32px;
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
             text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
+            font-family: arial;
+        }
+
+        .price {
+            color: grey;
+            font-size: 22px;
+        }
+
+        .card .button {
+            border: none;
+            outline: 0;
+            padding: 12px;
+            color: white;
+            background-color: #000;
+            text-align: center;
             cursor: pointer;
-            background-color: #4CAF50;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        .card .button:hover {
+            opacity: 0.7;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 10px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
         }
     </style>
 {% endblock %}
 
 {% block body %}
-    <table>
-        <table>
-            <tr>
-                <th>sku</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Net Price</th>
-                <th>Gross Price</th>
-            </tr>
+
+    <div class="product-list">
+        <div class="row">
             {% for product in products %}
-                <tr>
-                    <td>{{ product.sku }}</td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.netPrice }}</td>
-                    <td>{{ product.grossPrice }}</td>
-                    <td>
-                        <form method="post" action="{{ path('add_to_cart') }}">
-                            <input type="hidden" name="sku" value="{{ product.sku }}">
-                            <input type="hidden" name="quantity" value="1">
-                            <input class="button" type="submit" value="Kosárba">
-                        </form>
-                    </td>
-                </tr>
+                <div class="card column">
+                    <img src="https://www.w3schools.com/w3images/jeans3.jpg"
+                         alt="{{ product.sku }}" style="width:100%">
+                    <h1>{{ product.name }}</h1>
+                    <p class="price">{{ product.grossPrice }}</p>
+                    <p>{{ product.description }}</p>
+                    <p>
+                    <form method="post" action="{{ path('add_to_cart') }}">
+                        <input type="hidden" name="sku" value="{{ product.sku }}">
+                        <input type="hidden" name="quantity" value="1">
+                        <input class="button" type="submit" value="Kosárba">
+                    </form>
+                    </p>
+                </div>
             {% endfor %}
-    </table>
+        </div>
+    </div>
+
 {% endblock %}

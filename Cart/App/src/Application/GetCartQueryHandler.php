@@ -4,6 +4,7 @@
 namespace App\Application;
 
 
+use App\Application\Exception\ApplicationException;
 use App\Domain\Cart;
 use App\Domain\CartId;
 use App\Domain\CartRepository;
@@ -20,9 +21,12 @@ class GetCartQueryHandler
     {
         $cart = $this->cartRepository->findById(CartId::create($query->getCartId()));
 
-        if ($cart){
-            $response = new GetCartResponse($cart->getId(),$cart->getCustomerIdentifier(),$cart->getTotal());
-            foreach ($cart->getItems() as $item){
+        if (!$cart) {
+            throw new ApplicationException('This cart is not existed: ' . $query->getCartId());
+        }
+
+        $response = new GetCartResponse($cart->getId(), $cart->getCustomerIdentifier(), $cart->getTotal());
+            foreach ($cart->getItems() as $item) {
                 $response->addItem(
                     $item->getId(),
                     $item->getSku(),
@@ -31,7 +35,7 @@ class GetCartQueryHandler
                     $item->getTotal()
                 );
             }
-        }
+
         return $response;
     }
 }

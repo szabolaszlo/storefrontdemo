@@ -9,14 +9,18 @@ use App\Application\CreateCartCommand;
 use App\Application\DeleteCartCommand;
 use App\Application\DeleteItemCommand;
 use App\Application\GetCartQuery;
+use App\Application\GetCartResponse;
 use App\Application\UpdateCustomerIdentifierCommand;
 use App\Application\UpdateItemCommand;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Serializer\SerializerInterface;
+use function dd;
 
 class CartController extends AbstractController
 {
@@ -57,10 +61,14 @@ class CartController extends AbstractController
 
     public function getCart(string $id)
     {
-        $query = new GetCartQuery($id);
-        $response = $this->handle($query);
-        $jsonresponse = $this->serializer->serialize($response,'json');
-        return new Response($jsonresponse);
+        try {
+            /** @var GetCartResponse $response */
+            $response = $this->handle(new GetCartQuery($id));
+        } catch (HandlerFailedException $exception) {
+            return new JsonResponse(['code' => $exception->getPrevious()->getCode(), 'message' => 'Cart not found'], 401);
+        }
+
+        return new JsonResponse($response);
     }
 
     public function addToCart(string $id, Request $request)
@@ -68,17 +76,19 @@ class CartController extends AbstractController
         $post = json_decode($request->getContent());
         $command = new AddToCartCommand($id);
 
-        if (isset($post->items)){
+        if (isset($post->items)) {
             foreach ($post->items as $i){
                 $command->addItem($i->sku,$i->quantity);
             }
         }
-        $response = $this->handle(
-            $command
-        );
 
-        $jsonresponse = $this->serializer->serialize($response,'json');
-        return new Response($jsonresponse);
+        try {
+            $response = $this->handle($command);
+        } catch (HandlerFailedException $exception) {
+            return new JsonResponse(['code' => $exception->getPrevious()->getCode(), 'message' => 'Cart not found'], 401);
+        }
+
+        return new JsonResponse($response);
     }
 
     public function updateCart(string $id, Request $request)
@@ -113,11 +123,7 @@ class CartController extends AbstractController
     public function deleteCartItem(string $cartid,string $itemid)
     {
 
-        $command = new DeleteItemCommand($cartid,$itemid);
-
-        $response = $this->handle(
-            $command
-        );
+        $response = $this->handle(new DeleteItemCommand($cartid, $itemid));
 
         $jsonresponse = $this->serializer->serialize($response,'json');
         return new Response($jsonresponse);

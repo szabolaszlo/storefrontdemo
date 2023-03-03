@@ -1,10 +1,8 @@
 <?php
 
-
 namespace App\Application;
 
-
-use App\Domain\Cart;
+use App\Application\Exception\ApplicationException;
 use App\Domain\CartId;
 use App\Domain\CartRepository;
 use App\Domain\ProductRepository;
@@ -25,6 +23,9 @@ class AddToCartCommandHandler
 
         $cart = $this->cartRepository->findById(CartId::create($command->getCartId()));
 
+        if (!$cart) {
+            throw new ApplicationException('This cart is not existed: ' . $command->getCartId());
+        }
 
         foreach ($command->getItems() as $item){
             $product = $this->productRepository->findBySku($item->getSku());

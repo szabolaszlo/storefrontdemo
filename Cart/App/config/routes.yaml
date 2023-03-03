@@ -1,34 +1,34 @@
+delete_cart_item:
+    path: /api/carts/{cartid}/items/{itemid}
+    controller: App\Infrastructure\Presentation\Web\Controller\CartController::deleteCartItem
+    methods:    [DELETE]
+
 cart_show:
     path: /api/carts/{id}
     controller: App\Infrastructure\Presentation\Web\Controller\CartController::getCart
-    methods:    GET
+    methods:    [GET]
 
 cart_create:
     path: /api/carts
     controller: App\Infrastructure\Presentation\Web\Controller\CartController::createCart
-    methods:    POST
+    methods:    [POST]
 
 add_to_cart:
     path: /api/carts/{id}
     controller: App\Infrastructure\Presentation\Web\Controller\CartController::addToCart
-    methods:    POST
+    methods:    [POST]
 
 delete_cart:
     path: /api/carts/{id}
     controller: App\Infrastructure\Presentation\Web\Controller\CartController::deleteCart
-    methods:    DELETE
-
-delete_cart_item:
-    path: /api/carts/{cartid}/items/{itemid}
-    controller: App\Infrastructure\Presentation\Web\Controller\CartController::deleteCartItem
-    methods:    DELETE
+    methods:    [DELETE]
 
 update_cart:
     path: /api/carts/{id}/customer
     controller: App\Infrastructure\Presentation\Web\Controller\CartController::updateCart
-    methods:    PUT
+    methods:    [PUT]
 
 update_cart_item:
     path: /api/carts/{cartid}/items/{itemid}
     controller: App\Infrastructure\Presentation\Web\Controller\CartController::updateCartItem
-    methods:    PUT
+    methods:    [PUT]

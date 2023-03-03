@@ -4,7 +4,10 @@
 namespace App\Application;
 
 
-class ResponseItem
+use JsonSerializable;
+use function get_object_vars;
+
+class ResponseItem implements JsonSerializable
 {
     protected $id;
 
@@ -49,5 +52,10 @@ class ResponseItem
     public function getTotal()
     {
         return $this->total;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
     }
 }
