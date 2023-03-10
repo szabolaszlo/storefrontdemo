@@ -16,13 +16,13 @@ exports.getBySku = (req, res) => {
           res.send(data);
         } else {
           res.status(401).send({
-            message: `Customer is not found`
+            message: `Porduct is not found`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error on getting Customer"
+          message: "Error on getting Porduct"
         });
       });
 }

@@ -6,5 +6,5 @@ namespace App\Domain;
 
 interface ProductRepository
 {
-    public function findBySku($sku);
+    public function findBySku($sku): Product;
 }

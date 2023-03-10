@@ -21,13 +21,11 @@ class CreateCartCommandHandler
     }
     public function __invoke(CreateCartCommand $command)
     {
-
         $cart = new Cart(
             $this->cartRepository->nextIdentity(),
             $command->getCustomerIdentifier()
         );
 
-        // TODO query price
         foreach ($command->getItems() as $item){
             $product = $this->productRepository->findBySku($item->getSku());
             $price = $product->getPrice($command->getCustomerIdentifier());

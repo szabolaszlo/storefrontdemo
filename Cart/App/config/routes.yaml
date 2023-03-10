@@ -8,6 +8,11 @@ cart_show:
     controller: App\Infrastructure\Presentation\Web\Controller\CartController::getCart
     methods:    [GET]
 
+cart_collection:
+    path: /api/carts
+    controller: App\Infrastructure\Presentation\Web\Controller\CartController::getCartCollection
+    methods:    [GET]
+
 cart_create:
     path: /api/carts
     controller: App\Infrastructure\Presentation\Web\Controller\CartController::createCart

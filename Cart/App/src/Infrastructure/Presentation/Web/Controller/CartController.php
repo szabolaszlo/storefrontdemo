@@ -8,10 +8,12 @@ use App\Application\AddToCartCommand;
 use App\Application\CreateCartCommand;
 use App\Application\DeleteCartCommand;
 use App\Application\DeleteItemCommand;
+use App\Application\GetCartFilteredQuery;
 use App\Application\GetCartQuery;
 use App\Application\GetCartResponse;
 use App\Application\UpdateCustomerIdentifierCommand;
 use App\Application\UpdateItemCommand;
+use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,7 +43,7 @@ class CartController extends AbstractController
         $post = json_decode($request->getContent());
         $command = new CreateCartCommand();
 
-        if (isset($post->user)){
+        if (isset($post->customerIdentifier)){
             $command->setCustomerIdentifier($post->customerIdentifier);
         }
 
@@ -66,6 +68,25 @@ class CartController extends AbstractController
             $response = $this->handle(new GetCartQuery($id));
         } catch (HandlerFailedException $exception) {
             return new JsonResponse(['code' => $exception->getPrevious()->getCode(), 'message' => 'Cart not found'], 401);
+        }
+
+        return new JsonResponse($response);
+    }
+
+    public function getCartCollection(Request $request)
+    {
+        $from = $request->query->get('from');
+        $to = $request->query->get('to');
+
+        try {
+            /** @var GetCartResponse $response */
+            $response = $this->handle(new GetCartFilteredQuery(
+                new DateTimeImmutable($from ?? '1990-10-21'),
+                new DateTimeImmutable($to ?? '2024-01-01')
+            ));
+        } catch (HandlerFailedException $exception) {
+            dd($exception->getPrevious());
+            return new JsonResponse(['code' => $exception->getPrevious()->getCode(), 'message' => 'Sámting rong'], 401);
         }
 
         return new JsonResponse($response);
@@ -143,4 +164,5 @@ class CartController extends AbstractController
         $jsonresponse = $this->serializer->serialize($response,'json');
         return new Response($jsonresponse);
     }
+
 }

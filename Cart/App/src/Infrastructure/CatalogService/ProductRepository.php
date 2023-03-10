@@ -9,7 +9,7 @@ use App\Domain\ProductRepository as BaseRepository;
 class ProductRepository implements BaseRepository
 {
 
-    public function findBySku($sku)
+    public function findBySku($sku): Product
     {
 
         $url = 'http://api_gateway_nginx:8080/catalog/api/products/by_sku/'.$sku;

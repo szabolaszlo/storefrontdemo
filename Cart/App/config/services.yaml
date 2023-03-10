@@ -64,3 +64,9 @@ services:
         - name: messenger.message_handler
           bus: command.bus
           handles: App\Application\UpdateItemCommand
+
+    App\Application\GetCartFilteredHandler:
+      tags:
+        - name: messenger.message_handler
+          bus: command.bus
+          handles: App\Application\GetCartFilteredQuery
