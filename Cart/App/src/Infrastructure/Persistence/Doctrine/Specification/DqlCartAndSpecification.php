@@ -3,17 +3,16 @@
 namespace App\Infrastructure\Persistence\Doctrine\Specification;
 
 use App\Domain\Specification\AbstractAndCartSpecification;
-use Doctrine\Common\Collections\Criteria;
+use App\Domain\Specification\CriteriaInterface;
 
-class DqlCartAndSpecification extends AbstractAndCartSpecification implements DqlCartSpecification
+class DqlCartAndSpecification extends AbstractAndCartSpecification
 {
-
-    public function toDqlCriteria(): Criteria
+    public function toCriteria(): CriteriaInterface
     {
-        $criteria = Criteria::create();
+        $criteria = DoctrineCriteria::create();
 
         foreach ($this->specifications as $specification) {
-            $criteria->andWhere($specification->toDqlCriteria()->getWhereExpression());
+            $criteria->andWhere($specification->toCriteria()->getWhereExpression());
         }
 
         return $criteria;
