@@ -1,0 +1,52 @@
+# Order microservice
+
+## Leírás
+
+- Szükségünk van egy olyan microservice-re, amely megadott pénztár azonosító alapján képes egy rendelést generálni.
+
+
+## Szükséges adatok
+
+Egy rendelés következő adatokból áll:
+
+* *azonosító* - uid pl.
+* *vásárló*
+** *vezetéknév*
+** *keresztnév*
+** *email*
+** *telefonszám*
+* *szállítási cím*
+** *ország*
+** *irányítószám*
+** *város*
+** *cím*
+* *szállítási mód*
+** *azonosító*
+** *költség*
+* *számlázási cím*
+** *ország*
+** *irányítószám*
+** *város*
+** *cím*
+* *fizetési mód*
+** *azonosító*
+** *költség*
+* *megrendelt termékek*
+** *azonosító*
+** *név*
+** *bruttó ár*
+** *mennyiség*
+
+## Funkcionális követelmények
+
+* Hozzatok létre egy GUI-s admin felületet, amelyen az összes megrendelést ki lehet listázni
+* Kell egy végpont, amely egy megrendelést tud létrehozni
+
+
+
+
+
+
+
+
+
