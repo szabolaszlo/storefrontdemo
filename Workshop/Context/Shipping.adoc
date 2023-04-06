@@ -1,4 +1,4 @@
-# Checkout microservice
+# Shipping microservice
 
 ## Leírás
 
