@@ -7,7 +7,7 @@ abstract class AbstractAndCartSpecification implements CartSpecification
     /**
      * @var CartSpecification[]
      */
-    protected $specifications;
+    protected array $specifications;
 
     public function __construct(CartSpecification ...$specifications)
     {

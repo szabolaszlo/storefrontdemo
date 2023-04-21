@@ -43,7 +43,7 @@ class CartRepository extends ServiceEntityRepository implements CartRepoInterfac
     public function query(CartSpecification $cartSpecification): array
     {
         return $this->createQueryBuilder('c')
-            ->addCriteria($cartSpecification->toDqlCriteria())
+            ->addCriteria($cartSpecification->toCriteria())
             ->getQuery()
             ->getResult();
     }

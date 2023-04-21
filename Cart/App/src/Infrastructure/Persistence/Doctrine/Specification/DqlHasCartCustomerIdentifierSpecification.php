@@ -2,13 +2,14 @@
 
 namespace App\Infrastructure\Persistence\Doctrine\Specification;
 
-use Doctrine\Common\Collections\Criteria;
+use App\Domain\Specification\CartSpecification;
+use App\Domain\Specification\CriteriaInterface;
 
-class DqlHasCartCustomerIdentifierSpecification implements DqlCartSpecification
+class DqlHasCartCustomerIdentifierSpecification implements CartSpecification
 {
-    public function toDqlCriteria(): Criteria
+    public function toCriteria(): CriteriaInterface
     {
-        return Criteria::create()
-            ->andWhere(Criteria::expr()->neq('customerIdentifier', null));
+        return DoctrineCriteria::create()
+            ->andWhere(DoctrineCriteria::expr()->neq('customerIdentifier', null));
     }
 }
