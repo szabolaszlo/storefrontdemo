@@ -10,7 +10,7 @@ A regisztráció után elérhető felhasználói adatokat listázó oldalon legy
 ## Beállítás
 - docker-compose up -d
 - lépj be a phpmyadminba (http://localhost:8080) root jogosultsággal! (usern: root, password: root)
-- hozz létre egy newsletter és egy customer adatbázist
+- importáld be a db.sql-t
 - docker-compose down
 - docker-compose up -d
 
