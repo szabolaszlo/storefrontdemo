@@ -1,0 +1,61 @@
+# Payment microservice
+
+## Leírás
+
+- Szükségünk van egy olyan microservice-re, amely szállítási mód alapján, vissza tud adni egy fizetési mód listát, ami tartalmazza az adott szállítási módnál haszhálható fizetési módokat
+
+## Fizetési módok kezelése
+
+### Szükséges adatok
+
+Egy fizetési mód következő adatokból áll:
+
+* *azonosító* - uid pl.
+* *név* - nem kell többnyelvűsíteni
+* *leírás* - nem kell többnyelvűsíteni
+* *bruttó illeték*
+* *engedélyezett szállítási módok listája* - lehet üres
+
+### Funkcionális követelmények
+
+* Hozzatok létre egy GUI-s admin felületet, amelyen a fizetési módokat tudjátok kezelni. Létrehozni, módosítani, törölni tudjátok őket.
+** Ha szállítási módok listája üres, *akkor minden szállítási móddal használható az adott fizetési mód!*
+* Kell egy végpont, ami egy szállítási mód vár, és visszaadja fizetési módokat, és azok illetékeit.
+** Csak az engedélyezett fizetési módokat adjátok vissza!
+** Csak azokat a fizetési módokat adjátok vissza, amely megfelel az átadott szállítási módnak!
+
+## Fizetési folyamat
+
+### Szükséges adatok a fizetés indízásához
+
+* *fizetési mód azonosítója*
+* *vevő adatait*
+** *email*
+** *számlázási adatok*
+* *fizetendő összeg*
+
+### Funkcionális követelmények
+
+* A fizetés indítása egy végponton keresztül történik, amely a fenti adatokat várja.
+* Két kimenetel lehet, vagy sikeres fizetés egyből (kézpénzes fizetés), vagy még el kell irányítani a vevőt a fizetési oldalra (pl. bankkártyás fizetés).
+** Ez esetben a válaszban vissza kell adni a fizetési oldal URL-jét, ahol a vevő el tudja végezni a fizetést.
+
+* Mivel a feladat csak kézpénzes fizetésre vonatkozik, ezért a fizetési oldalra irányítás nem szükséges.
+
+
+### Fizetési folyamat különbségei
+
+Csak a COD fizetést kell jelenleg implementálni. a Következő kép bemutatja, milyen különbségek vannak a fizetési folyamatok között.
+
+image::image/payment.png[]
+
+
+
+
+
+
+
+
+
+
+

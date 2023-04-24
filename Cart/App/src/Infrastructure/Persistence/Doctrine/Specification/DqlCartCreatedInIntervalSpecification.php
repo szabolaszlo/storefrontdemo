@@ -2,22 +2,22 @@
 
 namespace App\Infrastructure\Persistence\Doctrine\Specification;
 
+use App\Domain\Specification\CartSpecification;
+use App\Domain\Specification\CriteriaInterface;
 use DateTimeImmutable;
-use Doctrine\Common\Collections\Criteria;
 
-class DqlCartCreatedInIntervalSpecification implements DqlCartSpecification
+class DqlCartCreatedInIntervalSpecification implements CartSpecification
 {
     public function __construct(
         private DateTimeImmutable $from,
         private DateTimeImmutable $to
-    )
-    {
+    ) {
     }
 
-    public function toDqlCriteria(): Criteria
+    public function toCriteria(): CriteriaInterface
     {
-        return Criteria::create()
-            ->andWhere(Criteria::expr()->gte('created', $this->from))
-            ->andWhere(Criteria::expr()->lte('created', $this->to));
+        return DoctrineCriteria::create()
+            ->andWhere(DoctrineCriteria::expr()->gte('created', $this->from))
+            ->andWhere(DoctrineCriteria::expr()->lte('created', $this->to));
     }
 }

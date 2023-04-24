@@ -1,0 +1,40 @@
+# Shipping microservice
+
+## Leírás
+
+- Szükségünk van egy olyan microservice-re, amely megadott kosár adatok alapján, vissza tud adni egy szállítási mód listát, ami tartalmazza az adott kosárra alkalmazható szállítási módokat, és a szállítási módokhoz tartozó árakat.
+
+
+## Szükséges adatok
+
+Egy szállítási módhoz  következő adatokból áll:
+
+* *azonosító* - uid pl.
+* *engedélyezett* szimpla bekapcsolás, kikapcsolás
+* *név* - nem kell többnyelvűsíteni
+* *leírás* - nem kell többnyelvűsíteni
+* *szállítási sávok*
+** bruttó minimum rendelési érték
+** bruttó maximum rendelési érték
+** bruttó szállítási költsége - nem lehet nullánál kisebb
+
+
+## Funkcionális követelmények
+
+* Hozzatok létre egy GUI-s admin felületet, amelyen a szállítási módokat tudjátok kezelni. Létrehozni, módosítani, törölni tudjátok őket.
+* Kell egy végpont, ami a kosár adatait várja, és visszaadja a kosár szállítási módjait, és azok árait.
+** Meg kell tudnotok állapítani, milyen adatra van szükségeket, hogy a megfelelő szállítási módokat vissza tudjátok adni.
+** A követelmény:
+*** A kosár tartalmazza a szállítási címet, és a szállítási cím tartományát.
+    *** Csak az engedélyezett szállítási módokat adjátok vissza.
+    *** Csak azokat a szállítási módokat adjátok vissza, amely megfelel a kosár jelenlegi összértékének és beleesnek a szállítási mód által kijelölt tartományba.
+
+
+
+
+
+
+
+
+
+
