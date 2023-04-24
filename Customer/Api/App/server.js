@@ -1,8 +1,10 @@
 const express = require("express");
 const cors = require("cors");
+const mysql = require('mysql2');
 
 const app = express();
 
+const dbConfig = require("./app/config/db.config.js");
 
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -12,13 +14,28 @@ app.use(express.urlencoded({ extended: true }));
 
 const db = require("./app/models");
 
-db.sequelize.sync()
-  .then(() => {
-    console.log("Synced db.");
-  })
-  .catch((err) => {
-    console.log("Failed to sync db: " + err.message);
-  });
+var con = mysql.createConnection({
+    host     : dbConfig.HOST,
+    user     : dbConfig.USER,
+    password : dbConfig.PASSWORD
+})
+
+con.connect(function(err) {
+    if (err) throw err;
+
+    con.query('CREATE DATABASE IF NOT EXISTS customers;', function (err, result) {
+        if (err) throw err;
+
+        db.sequelize.sync()
+            .then(() => {
+                console.log("Synced db.");
+            })
+            .catch((err) => {
+                console.log("Failed to sync db: " + err.message);
+            });
+    });
+});
+
 
 // // drop the table if it already exists
 // db.sequelize.sync({ force: true }).then(() => {

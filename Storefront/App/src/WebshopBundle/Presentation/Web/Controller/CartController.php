@@ -77,7 +77,7 @@ class CartController extends AbstractController
 
         $response = new RedirectResponse($this->generateUrl('cart'));
 
-        if ($newCart) $response->headers->setCookie(new Cookie("cart_id", $cart->getId()));
+        if ($newCart) $response->headers->setCookie(new Cookie("cart_id", $cartId));
 
         return $response;
     }
