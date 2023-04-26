@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Feb 06, 2023 at 09:17 AM
+-- Generation Time: Apr 25, 2023 at 02:04 PM
 -- Server version: 8.0.19
 -- PHP Version: 7.4.20
 
@@ -18,6 +18,54 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
+-- Database: `admins`
+--
+CREATE DATABASE IF NOT EXISTS `admins` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `admins`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` int NOT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `firstname`, `lastname`, `email`, `password`, `createdAt`, `updatedAt`) VALUES
+(1, 'sanyi', 'sanyi', 'sanyi', 'sanyi', '2023-01-24 14:33:58', '2023-01-24 14:33:58');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- Database: `authdb`
 --
 CREATE DATABASE IF NOT EXISTS `authdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -30,11 +78,11 @@ USE `authdb`;
 --
 
 CREATE TABLE `oauth2_access_token` (
-  `identifier` char(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `client` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `identifier` char(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `client` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `expiry` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
-  `user_identifier` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `scopes` text COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:oauth2_scope)',
+  `user_identifier` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scopes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:oauth2_scope)',
   `revoked` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -46,9 +94,16 @@ INSERT INTO `oauth2_access_token` (`identifier`, `client`, `expiry`, `user_ident
 ('00c5ccb4a30253756721e4409bfb26908d18bfa93e180c9a3c0efb29a1709df6a6b8664dd8d4f6d5', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-30 18:56:36', NULL, 'customer_list customer_own_data', 0),
 ('02e73b3f25417a0847a4ec8764a819dddf6ea760fc104455caccd6bff56144fdab3f26365b18fafc', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-12 11:09:16', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
 ('032de6a1f4dd1619716b8272e3ec1a6125ec1d40c5427e55bb4b6ea68a80e01fe07535b9f560d495', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 15:55:16', 'sanyi', 'customer_list', 0),
+('0412e58ae213efe793ae54c1d43c789e2a7a3fa7552546f96798237f7dd0f21556dde5fb23787b69', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-04-25 17:02:26', 'sanyi', 'customer_list', 0),
+('048126b01a8397f2adc2f5e124b611f717b18cfefcae8b0164cbcec173bc70a5df448eba1412220c', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:41:26', 'sanyi', 'customer_list', 0),
 ('06600b8e28c62fc76a06683a66202a62c55817d228176812965d0f62c69714a474b6bc42729f7c4f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:59:17', 'sanyi', 'customer_list', 0),
 ('07836335f5ecf13927952e39f8e9071e6402d70b4c9015bc2f884ce0d0fd203129be2f77dee2d796', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-05 19:05:26', NULL, 'customer_list customer_own_data', 0),
 ('087bffc7f9678b343c84497ab23ca0642e26f43542bf9e80d4cb822ede009797248fc376b55ed394', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-25 21:55:34', 'sanyi', 'customer_list', 0),
+('0991899217ef04c77711c047cc87bbd5593e384c6c8c8ad35be68ef08ec2605172624a1cf4375626', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 20:29:43', 'sanyi', 'customer_list', 0),
+('0a01929bb11e39974cd0b1de995d3f76b99580e7bea5b9868329519766aff0d2a130fc9067b79a1f', '482e3f2d976d06352e6f37f73e33cc2d', '2023-04-25 17:02:44', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
+('0b0477ab4ec0f6f538f19aade5115f68053709f4fd674dc002cbd473cd46726eb5fb9d58a29c82a9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:59:19', 'sanyi', 'customer_list', 0),
+('0baa20f9d66f16e69d040eb75d11ee0d117804369790574370f723210772416b4ff5641667fd1124', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:41:32', 'sanyi', 'customer_list', 0),
+('0f4749c4b31376199a5c75714cb54ac96350b21e801d82e829a5ef18d894e0198609545a49668022', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 20:29:45', 'sanyi', 'customer_list', 0),
 ('11445868d78c9604da8f43af44a3846eb0c244937868c609d9b27158ec094a02b56a153677834f5d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 16:48:52', 'sanyi', 'customer_list', 0),
 ('148a6150b82aee0096c0dbcca2ec9827734e4f96daa89f8b0f8f72d1d1db1dd3f3f9206dee2cbebf', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-10 14:05:32', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
 ('14ad2384d03044abc79091b1dd0e1caa44202ac286155c0d9989b2b4595587a38c5feb33f02fc278', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 17:13:20', 'sanyi', 'customer_list', 0),
@@ -56,39 +111,66 @@ INSERT INTO `oauth2_access_token` (`identifier`, `client`, `expiry`, `user_ident
 ('18b21cdd4d1906d43534420622d059bc00c12ba31b20845460276be2f6fcc5fc90b6a342ec1f01b7', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-05 18:51:18', NULL, 'customer_list customer_own_data', 0),
 ('1e435b7b37fbdd2ff7740059e9c6677dd4810b9fcf9c05fe291709232801b9d1f9ea2575db727b96', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:55:13', 'sanyi', 'customer_list', 0),
 ('1f4e9b1f4e0d5dcb5a0d9ae36801888e7a2025d212cbc363ecd9d8433618fad4ba3daa37b9febdd5', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-12 10:21:24', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
+('231df5ef617ff3176ef5654ac1c057d78987f74fe0abd57142d2444666380d3158a0af60a10294ee', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:36:30', 'sanyi', 'customer_list', 0),
 ('24059e1e612cb342f2b1d0cd19ab859541960777974c2830c1441461e90156286b0b94b92203f2de', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:54:59', 'sanyi', 'customer_list', 0),
+('25080f0ef0a45b014f8e09496fc5c10c90336e53119299507cdf8d4465dce8e1913b32535a490a27', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:36:47', 'sanyi', 'customer_list', 0),
 ('269950fd8abd5893b928163025511547c0ab9627a6d58c7b3584fb6ed3ef298ec03b92e58899efc9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 16:57:40', 'sanyi', 'customer_list', 0),
+('2859a14ecf71d99f1e2fed07a6e7d9beff09f6e20266ced5c49fa913aab141b86bda420e94a8c773', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:49:01', 'sanyi', 'customer_list', 0),
 ('28c3d9abe26fcff7793520ee0fdfd39bf9ec48cc24c71c8301894b924d852300023fbca8126bfc0b', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-19 10:15:14', NULL, 'customer_list customer_own_data', 0),
 ('2bbe561e8f888ce0b32e6547aaf442027638b6159ada78fc771c3c64d9960fbbb0bbfd1a92512189', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-19 11:31:17', NULL, 'customer_list customer_own_data', 0),
 ('2e7bbc0c08ef3cc7597410139ba2e068d5e00ce65df06148ad34a73f55f26c488ddb4e089003fb11', '482e3f2d976d06352e6f37f73e33cc2d', '2022-12-20 17:31:18', NULL, 'customer_list customer_own_data', 0),
+('2e9b6fe9d4d5de16c3408137d16af1679558a3395934626ecfe5d358b3c98479734f3729f00ef119', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:37:30', 'sanyi', 'customer_list', 0),
+('2f98fca98143d50146c04a0e7016fda6cc8c054c3a85af7db5a69d1ed855d2417616eda9f6cfa9de', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-04-25 17:02:20', 'sanyi', 'customer_list', 0),
+('3012ee4b5e2136da871ab626d11c917d83037e89653ca9a89aa6bfe5ccfdbf39964965f4aa8ef354', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:42:00', 'sanyi', 'customer_list', 0),
+('3048dbbcad0d80e29a851df11d979de9867c804addcff741c2c93d6e6bc340522808b10bb2ac90f4', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:59:32', 'sanyi', 'customer_list', 0),
 ('30d7ef9d0989e6b1b03582de2d14ff5b4f8ed5b654b34b37619e6c133b527a32ce8a327470bfafd9', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-19 11:39:09', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
 ('30ddc46eacc8e1350f9bd6b24be29dee327c9e72f0c312e6f086b177488a7425cbb9ea838baab59a', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-10 14:42:40', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
 ('31d65ffa35f630e49ef36b03744e73faee400d428355a36d181978eabc90223800070e3fe3de3b40', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 16:56:36', 'sanyi', 'customer_list', 0),
+('366ef231ddca5963698044241fe38e7dd288a3ab33b41641796b8796671b1c73e3e7f49319c3d3fc', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:36:33', 'sanyi', 'customer_list', 0),
 ('374f11068a58592160b9383041128004ceb847d05b79e7ab9ed7e2047f70b2cd838ee99508a8a45e', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-19 10:27:11', NULL, 'customer_list customer_own_data', 0),
 ('37d1b2da02eea482bf07741d87f258ddba3c8da5e1b2e2a9094575e12cefcea4457de7502c90ffcd', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:51:31', 'sanyi', 'customer_list', 0),
 ('3d647c8aa5c0c4f4f361b14113fba397e19ba5680db24317f40e52e33aae7389b89aabd578544924', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:59:38', 'sanyi', 'customer_list', 0),
 ('3d998ebab35b081d4b33b6d911d2ad6f25b37992f84f1bbecb09b66fcb987dd84c7a24c9294df752', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-30 21:57:25', NULL, 'customer_list customer_own_data', 0),
+('3e7e0d24bd05701fef0a83284116d8f636476f217b40674c1b4063355fc3a1bd6294a11d0c2833e1', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:59:34', 'sanyi', 'customer_list', 0),
 ('430cd30d8a4ecf96b9ccda7a3f7f340e6a23dc238282570a6ca2a19a7f6612bd7c074536d73fe1c0', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:39:00', 'sanyi', 'customer_list', 0),
 ('455e47d2f0dbe11e3c642d9492e275999364253cd3999bd73b346145f07ccb28f571ad098b6c9f5f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:55:25', 'sanyi', 'customer_list', 0),
+('456c2a88a576ff4e1f18e99bf0945806d3c2f0a96837f553d9d7ec032cd4c35bd96d38833b0a8daf', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:36:52', 'sanyi', 'customer_list', 0),
+('46bf89bc665a46283c5b46be82c1ab2ab2e6d8467b1eb45a03e1e9f28bb07a04ae4b85c33f674264', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 20:29:56', 'sanyi', 'customer_list', 0),
+('4c5204d98555ff185dd63ac68a8f03c60ac2d5cb158aced499743f0933314c9bcc736d8cb72a363d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:38:10', 'sanyi', 'customer_list', 0),
 ('4d8cc5045ab384fefe21dc27bd19ff99a27d22837bac595a4fe4c577406031132ce574b9e0588907', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-12 11:07:33', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
 ('5084609bc4530bd0198e36569ecf8dca40186305f636623f9d37a81e30648cb38dee97359dd9e756', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 17:07:42', 'sanyi', 'customer_list', 0),
 ('509d6024e87a8418a5ab96581fcbe92a6c165845420a750d079a1498e4cfe5d3d08ecdbb507c8a74', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-19 10:27:11', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
 ('5ae0dc360e7105268a71cc453f54a4e362722352415a96bd184c53c90725f4b86c7b884ea11b2592', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:57:08', 'sanyi', 'customer_list', 0),
 ('5b1898c878892eb30c72d8d10912e8323b699a9306ba4f03ba3e44b223e8677f7669b90acb102c24', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 17:49:37', 'sanyi', 'customer_list', 0),
+('5c390f0ff998ae05025299cf753eabaa085bbfcf3ccb3559751bebbea6dcddb78c3de59fa497997c', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 20:29:42', 'sanyi', 'customer_list', 0),
 ('5d4c29257569cee9e15228f34cf4848c4edbd812dd0b7c1a099eef5918839e7b94649ca4052d0c90', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 15:56:02', 'sanyi', 'customer_list', 0),
+('5e4553a1ecb7a43e9eec1bb3a0e9453289b7b0eb085696fe19c0af2faa2d67ebaf5ba4e4f0d38a2f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-17 11:33:22', 'sanyi', 'customer_list', 0),
 ('5f62d808421edee64a94a85ff31bfbbcaf5cf4e9cf1ff596b742a350fae18c97218f79fda53908b1', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 15:51:17', 'sanyi', 'customer_list', 0),
 ('5fe6443560e830f639acc986bea257dbe7d6c58e928a8f3f701cd9c119c63309933fc264af9a8db5', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-03 11:13:27', 'sanyi', 'customer_list', 0),
+('6063429db4aa93e5ba7d35add6f020aae1c03a86925921508e440806d865bee16e407d1482c52827', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-17 11:33:20', 'sanyi', 'customer_list', 0),
+('6178d8d1102b1905af4f184beb9d137565bbc1f4308b93eb819be82eca2c619f6caf754c09a40ef7', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:37:54', 'sanyi', 'customer_list', 0),
 ('619b8139c9dd76dbca2a0ef06bf8fc964250de29c721e0e69e471b745c67dad551cd42c2d25b05cf', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 19:15:57', 'sanyi', 'customer_list', 0),
 ('647c8e136129362192bab4ec53c06e94def4c07587c8f91903871bca564123eada8ca32ab3778eb7', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-12 11:06:01', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
 ('64a8e5705a41b4a872b2cb9c26095079b37ae7876bb547b4eb4b9283d746bf1d249c2d8d5d659819', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-09 20:37:14', NULL, 'customer_list customer_own_data', 0),
+('661ed68a6b55a945a3039ddb6f1ebc662fe1b9025c7d12b4fcef1e1cf839250ec883b0096e576311', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:55:50', 'sanyi', 'customer_list', 0),
+('668cd7f8007d8f3051a6c4b7799c1596d658b430d7e2e0d714bce86dce28960ffc9409d53fca79f9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 20:29:32', 'sanyi', 'customer_list', 0),
+('698c486d0dffe5ddc6ce59c043752deb70ecc71652afaed99c8156ebf93780650ebbe10d7274a199', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:38:14', 'sanyi', 'customer_list', 0),
+('69e33ebcd95b3599ffe8361d45c1ab1efab4a58cfef94c2621c310b86ce0a87422f9cc1bdc484e3b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:59:36', 'sanyi', 'customer_list', 0),
 ('6b7f2e58eee7f3f8858d41ef24b535a4743851a35a9adaee85893ed15d655ecf4fa40b57e8808839', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 16:45:50', 'sanyi', 'customer_list', 0),
 ('6bf56c74a16454c9d76f7f37f7ed129f47d34e942c2faccaebfe1febf016e15d5f48d6d219a723c8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:46:44', 'sanyi', 'customer_list', 0),
+('6cae7812c802aa58b7401e39cbceb26e493611473bd754adb7319a46e1fb67d336840203c104ec44', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:41:46', 'sanyi', 'customer_list', 0),
 ('6d4354311d4aa2921d8bb7bb11c29aadc7f4493e59cd1de0ccb7f098c4d61f76bddf58458a6ed510', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:59:23', 'sanyi', 'customer_list', 0),
 ('6db46a4f8daa9b7cfb4f814533439e6b6fd5c04d21fb4b3386611b49c6126476d7abe2f8f98b4ddc', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 16:55:23', 'sanyi', 'customer_list', 0),
+('6f210fd927a27f27e12175387bc3c36a6ae8b61408b23595471139c1af801e4e60528293e9139db4', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-17 11:32:57', 'sanyi', 'customer_list', 0),
 ('6f5981cc6a8d7bd3a2b8346386323fb0dd41f2825c551b5cbd94bb501203b3b82b421b1d7d5aa342', '482e3f2d976d06352e6f37f73e33cc2d', '2022-12-20 17:35:02', NULL, 'customer_list customer_own_data', 0),
+('70c9f039817b4bd4fac9c8125e046387d6c9726e7fa5a82a5c8a523197c17a4ceaf3072e41383c90', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:36:49', 'sanyi', 'customer_list', 0),
+('70fd4bcf7c62ea21c6588d9b2fdff82e5e49052f140c23cc35e0ad9ce17d370994de3c7fd227b5ee', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-17 11:33:14', 'sanyi', 'customer_list', 0),
 ('7129e3410e2a0bccc5de90135f476ed855fe68a7ce2639b4df754195ea8a5e6d40c6936cd82fb65e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 17:13:34', 'sanyi', 'customer_list', 0),
 ('713338f198c1ae039897507f429eb0d99808b7e98001845529a0a2513719752fa8ca2b285710e385', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-12 10:21:58', NULL, 'customer_list customer_own_data', 0),
+('771c6606d2f29f95a47a2833628ea7a77577b09836698a75ba29c0fe7b192aca7d72bed919c43975', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:59:26', 'sanyi', 'customer_list', 0),
+('77b33e2e6aa7fa33b2f7354a51e102f4f727b7020eaebc0f6648e296122fa5d7e1b24eb30a13d352', '482e3f2d976d06352e6f37f73e33cc2d', '2023-04-25 17:02:54', NULL, 'customer_list customer_own_data', 0),
 ('78110939ed3c66aeb448ae83f75af1d0c86c4e0b2048fb2d00e825850d88ca47448fe4e1ae73a720', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-05 18:59:59', NULL, 'customer_list customer_own_data', 0),
+('7eca3a84384d088e4f3972adbfab5f6bf78e40ffa9d6b4a35768f3ba0711b3443d3b88ae5a9adaaf', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-17 11:33:18', 'sanyi', 'customer_list', 0),
 ('7f38367c32ae120594024e42f25490df9ef4580f885c71795f1c48192bd9fc1bd00e57ea1fe5fc9f', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-19 11:15:41', NULL, 'customer_list customer_own_data', 0),
 ('8202e3e6749d6c65f18eeae960bdf57755a68278d6261356f46df36532d17cc82f0e3f3db8516c7d', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-12 11:05:14', NULL, 'customer_list customer_own_data', 0),
 ('8358c7b1e37a510b7f1fef928d77f149b11a6e2d66fd6fe4d13e98ef1705a00f09ad3d82716e5a10', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:59:14', 'sanyi', 'customer_list', 0),
@@ -96,47 +178,85 @@ INSERT INTO `oauth2_access_token` (`identifier`, `client`, `expiry`, `user_ident
 ('86f07c0132bf8400ea5a053ecd93467a7d1c1933c1092f4c8a3f2e0c5d45fdadd99ebdafe1e9ee14', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:59:05', 'sanyi', 'customer_list', 0),
 ('874de8515f582156c25099f49677b56b9ea2a0d5a21aff070445d3ca937cc5eec0970a71a20e3375', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-30 18:56:36', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
 ('88923fa6675e570db87c29c94878542c47816df9cd795a9c72ee21880096cd85d32f8a7d42f27a4a', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-19 11:35:40', NULL, 'customer_list customer_own_data', 0),
+('8976517d13984138634b40a90068bfd564a80d9971932c9e50c4c702b5cf796e31afedd5809bfcdf', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-04-25 17:01:39', 'sanyi', 'customer_list', 0),
+('8b3a9ceeb916d23d3e92243eb34bfe7ade9ecb3d394948f4d1150d3d42bafc71e3acf33a6a5b167f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:36:55', 'sanyi', 'customer_list', 0),
+('8be0e588e1c423799bfb7c7f08e51763a4039656925fe006e4a5fb6d91e6a93bcebd2cf2bfbca82d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 20:29:48', 'sanyi', 'customer_list', 0),
+('8c00268ef6a65046106c064781890a487808f4e615c363d2f91c32959888209f7b62f9c1e53c403f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:41:35', 'sanyi', 'customer_list', 0),
 ('8cd0f17cc7201f3e6190e3a55aa36c8adece46b09eee011e9fc97b78f3b3bef5c27511471f1ceb10', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-19 11:35:40', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
 ('8d564777a62ff76bf7544a3f3414fb13cdce3d3fd13e5a35030a464bb2fb65a3939adcdd4fcb67c0', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:52:20', 'sanyi', 'customer_list', 0),
 ('8ea78c3a3bbf1bfbfb7235ab6066900ed103464cabe00cd382831a59893f6304bf0b8701a7e063b4', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-23 11:42:34', NULL, 'customer_list customer_own_data', 0),
+('9027a6d85ad35a55867a0895cbc4f5389fdb6e48cb03df3fb7266f98871cd1f413bc8b6d02ab5c5d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 20:29:36', 'sanyi', 'customer_list', 0),
 ('9258b674f118c44d34a4556e3dcaa8c120fb92a56259d46b7688ab443d3211e2b981996a8ccac99e', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-11 14:50:40', NULL, 'customer_list customer_own_data', 0),
+('93118d2d9f8e6e11ca145b40a0aaefbe3d50b3081e43f67cdef7600993d6cb32bdf3ba068ed574b7', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 20:29:27', 'sanyi', 'customer_list', 0),
 ('95b83bdd32a2cebfdc496213f4450b957eebe8d2413898b9f458137e1e4612b00c48ca5892702c0f', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-10 14:27:33', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
 ('970dab0082aeade4dc6894839fbcd083cf8039d0f4c264120e8b93edaa9e864e54ebe310a64e14d2', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-30 18:56:36', NULL, 'customer_list customer_own_data', 0),
+('9719641bec3c839da7d8efe5a18bdceaddc895fb52574a1b8d7fe6055ab0f8fc1b2b4dec59a89aaa', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:36:27', 'sanyi', 'customer_list', 0),
 ('97aec389954459f47974434927f62818d7eb4699772a77bd7264350144091d95deede7942a2539e9', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-12 11:06:04', NULL, 'customer_list customer_own_data', 0),
 ('97ccac52f8d582fdd03208f240a1d21dd17e428155a8b4dd6c6c83232d8387cdceb6fffecfaf4c54', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:58:41', 'sanyi', 'customer_list', 0),
 ('97eb644bfeebcdde4781147df3c96cc194ff46a3b63ccd53f85d556c4779f5fcbe6b9796b37d082e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 16:51:56', 'sanyi', 'customer_list', 0),
+('980bb27d46be0a72a0ada29b7324e35dca6a2e07c442b98eb981d1390d35b9e8aed384e8c84d4590', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:37:57', 'sanyi', 'customer_list', 0),
 ('98c3e519d453e2a2f136aa945508372c28ef3d7379666ac626703261c49590ec14d9d279218f8e15', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-30 21:57:19', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
 ('9905a7d34bff011b2daef6369f3c5e886b5339d8b84f931c81ffc457dc6779f3dd1e3dd7312bd2d0', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-20 10:45:56', NULL, 'customer_list customer_own_data', 0),
 ('9929e27bd1b45032332539140512e8b8e247c7593c6a25e8bc326b390d6ed28f1a9400213be987dd', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-19 11:15:40', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
+('9a3ec462f4505dc74cc733c048ae2280929c644ad4489d54655c17601d649af1654c69df315da660', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:59:06', 'sanyi', 'customer_list', 0),
 ('9b42e097188a372529a643cb083428fa5a8be6c1eef876b54b99276219bb736ca2fb4d0b85cc290b', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-12 11:10:42', NULL, 'customer_list customer_own_data', 0),
+('9b686336de7a6879d16a19d2f6c0e054a02d22ef8a89407f7451e75d72d0b4ef893c1efdaca000c1', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:38:02', 'sanyi', 'customer_list', 0),
 ('9c902dca671918153a71b92144caba308523de7cce16f983cdb427766e7b966a47e62ee7e89e542e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 16:44:36', 'sanyi', 'customer_list', 0),
+('9cf8b2b0e357e2a0ef48b1056816877d7f340b028d587ae46d332284e9756f9e4e951f5dd1886404', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:59:41', 'sanyi', 'customer_list', 0),
 ('9d86b1441397b0dddbe4af3e6f40704fc17cffd25d2effdfb243c55b0d43b7f7b6cb45a3ceb1bbd5', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-23 11:47:38', NULL, 'customer_list customer_own_data', 0),
+('a1061d3d033d9a0493010a4b8a3239c50677d524c8c2ac778479c86f4ddc7b8cd3519d9439e6d201', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:59:16', 'sanyi', 'customer_list', 0),
 ('a224285a0da0e545d8925484cdb4c0420036dce90916e1367c7e6b851459d083aba959f5cf878739', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-19 11:41:00', NULL, 'customer_list customer_own_data', 0),
+('a29e13e8d524c352d593270f818aba87c707138abb9d2beac1e6f7ab4ebca61c53adbaa6455421a5', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:41:58', 'sanyi', 'customer_list', 0),
+('a3e8f44cffe5022e5925600e077861d1919ed840d5c4da819e828122132714c957a1cbdaf074d029', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 20:29:39', 'sanyi', 'customer_list', 0),
+('a44d90a45cdd97183e2ce831461bb6cd2b26801f75e09c5a73add92f2f819c646ae436499ea34413', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:36:44', 'sanyi', 'customer_list', 0),
 ('a53e9feb7d5e6bbc565e015f71198d7f90d87ca7251bfad9d68e02766f706177a43e4868972a3d73', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-19 11:34:05', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
+('a6b2a1c1d7680a38eec2604197eb4be8ea00d2a4bbdf72f8b044aa4c1089892fcb795d59dccee640', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:37:01', 'sanyi', 'customer_list', 0),
+('a951e5a6403dc14d1d12a49c9b53ad688cc23fc5800a404591c3bfd494f69913ed722bb45ebf42a7', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:41:41', 'sanyi', 'customer_list', 0),
+('a9d0b265530378b7db4bd492e08f49acbda9856512aa2c1785d531c05bca54f999505569b35c26a9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:41:49', 'sanyi', 'customer_list', 0),
 ('a9d8cda6e45918168299fc9a4710bb3f9e055098726d5d35048b66843a585be1276d1e60b3066c5a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:57:19', 'sanyi', 'customer_list', 0),
 ('ac519bab818f171acf54513850cac21dd5e1ee93a87873c85c22ea0372574acfd8905d67ee24961b', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-30 18:56:43', NULL, 'customer_list customer_own_data', 0),
+('ad9418b42f1aa406fa0c55131a3851c745491a6c5bb103ea217f8fae4015f95aa35ba93dc7fb0e5e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:38:05', 'sanyi', 'customer_list', 0),
 ('af1b8b1cedd92c6e83e14539a6aa8e784b0ed8d9eb0292339a7b443fc6c2359c665dbcff25785dca', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-12 11:09:17', NULL, 'customer_list customer_own_data', 0),
 ('b235676efc448a1530f62c4ed0417115d71097c9aeb9cc0ca0b7730c6f5b389646737950f9af39ec', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-30 21:57:19', NULL, 'customer_list customer_own_data', 0),
 ('b28fefaacc0d346ae0fd0b5c221229b62506c19deebc4ccd201e2e6fc5e4a2bd766feb0cf8dc2525', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-12 11:10:38', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
 ('b49e447bbc4199a1d46c1817f70f27b088f8afc4fff342c2363d90c65928f9731461aa4efe4713b2', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 16:44:05', 'sanyi', 'customer_list', 0),
+('b64a87d44316296228c4cf3e4d5635a0c1ab7ecbf8b2dd429d8b918c2f23e2a72a448c4c3f6b8552', '482e3f2d976d06352e6f37f73e33cc2d', '2023-02-17 14:56:26', NULL, 'customer_list customer_own_data', 0),
 ('b8132e51c5a42952d94a619608dfff184c9478ca4dca6f00dbbad1e953072de5a903c68b720268c8', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-19 11:49:10', NULL, 'customer_list customer_own_data', 0),
+('ba97d81e8f9e13f6f3dda10d773277beb850439f6ad34d8bbdc6b39f95fc63d3a4d21937e77d4e96', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:59:39', 'sanyi', 'customer_list', 0),
+('bc572ec2f05aa2ab25be04217293ac83f0c88b1a56bb062384f087d8f88edd6b5f5a3f1b1e9123dd', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-17 14:39:36', 'sanyi', 'customer_list', 0),
 ('bc682d278116ec229b753d64521c20f0e80f900cbde0c41d7938b456f09249edd8d0321933bc5c41', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-12 11:07:35', NULL, 'customer_list customer_own_data', 0),
 ('c2870edd465867255549812d1d26c4c2967a1fa1ba9c76acf06b3a41acc5a10e8af1f36f625271d9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 17:09:44', 'sanyi', 'customer_list', 0),
 ('c4cfa01f767ea4cb5dcd1cd80e559beb57e2ac9c3662497d63f8676d3d29420af39aaad6186e4e44', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 17:39:03', 'sanyi', 'customer_list', 0),
 ('c674cbcfe96667848ffc863fcc414a6c8f330e3be4ec74af383352723065e2db5309c9ff4fd956a3', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-05 18:47:52', NULL, 'customer_list customer_own_data', 0),
+('c95610a38dc69c812001e77fd5e5a97255b6efec6bf64f67d18875bb396ef261aa9db9ebb031c99e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:37:40', 'sanyi', 'customer_list', 0),
+('c96e51786fc96f45a84747a5ab2ab9094ac42843a770fce41904b1259c1c5cf361a32f3543a01b0c', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:42:02', 'sanyi', 'customer_list', 0),
+('c97518d5dc262e6f29db950af145663a40e194599639f632b711fedc93d7b31cd986e02a9131cacf', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:36:58', 'sanyi', 'customer_list', 0),
+('cafe45433d5811a4112a93cb0360f2c95616e07b03f9d983a7fc448aafb4dc600f308049aa2a9aaf', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:41:53', 'sanyi', 'customer_list', 0),
 ('ccf77fa08bedaeb6166f3b233d7cbd4025ec3b7cd6270746f985c7a3a9e9c11b129f0bd75f6c7d7b', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-23 11:41:55', NULL, 'customer_list customer_own_data', 0),
 ('cebd77808046621385c26aa29af297af87cf57b89ef2ddef7187cb7ca148c71e239d51910cd39efd', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-30 21:57:19', NULL, 'customer_list customer_own_data', 0),
+('d0803024bb7ce3dbf59e2dd47ddf57bfb69bd2d4766dd542fcf491a6f3b46b9a0f688a113e4db6f1', '482e3f2d976d06352e6f37f73e33cc2d', '2023-02-17 14:56:26', NULL, 'customer_list customer_own_data', 0),
+('d2e1ef6ca3c30d5c57fb4c163c2c5f41b3f988f127885e080f5ee3f6d1dc363af960f8db73b39f4e', '482e3f2d976d06352e6f37f73e33cc2d', '2023-04-25 17:02:45', NULL, 'customer_list customer_own_data', 0),
+('d467500f324eccb542bd2ada5e430bab9b8987c42616e9824871416bdb7811223f3fd75467b76f39', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:41:56', 'sanyi', 'customer_list', 0),
 ('d51104f863fe60b32ab2fd872a78e521b887e7cf0b26b186ec6d80a57dab95f2da3d5c92f97fae8a', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-19 11:39:10', NULL, 'customer_list customer_own_data', 0),
 ('d6cb9d78e2f15c49e5e3e291b8624b27d87a2b9eb8f43834bfec3ef4396935aec43c7518ddc445c6', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:55:08', 'sanyi', 'customer_list', 0),
 ('d899bc4e1dcaa0cdbd9f16b061a53f215aa5ca39fdeb395701c62275532edded425739a64b846f99', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-03 11:23:29', 'sanyi', 'customer_list', 0),
 ('d9a8301478072db54154b7ef0f69065503c8813456f3cc1b3eb7ea2f2b24cd1a7dbbd5b8573e429f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-03 10:45:25', 'sanyi', 'customer_list', 0),
+('dab0fee400ec79c627a2601b88ae7a23e36be8c3f240ae1fdd7087997350f0b6fb000881316650a7', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-17 11:33:16', 'sanyi', 'customer_list', 0),
 ('df00f4e835b8f6df4e4de886174a9f5491b3a03e00909ce847b67a5a951442a946afa3758d9656ad', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-03 10:45:31', 'sanyi', 'customer_list', 0),
+('df0cb86128fbcae21de3bcd31604500bdda01601da3d015f28cca85c3b5698c860ad6926519b5831', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:59:12', 'sanyi', 'customer_list', 0),
 ('e010ae0cfffbc5d7c5832172bc6380fcaa3e1ef8de783ce78e35a52138a847d4a4e5798374f45e29', '482e3f2d976d06352e6f37f73e33cc2d', '2022-12-20 17:44:10', NULL, 'customer_list customer_own_data', 0),
 ('e1a4e16db6533e7a224e022c7bda122c01ad00e25ea65a45320d16662e8fb21c2714fdce886d4ca1', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-20 10:38:02', NULL, 'customer_list customer_own_data', 0),
 ('e38088432867573c98bc0eb1c7b23eba07b4e93fbd548ca5d2bf769fad3b4270f26355c3f7131449', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:51:44', 'sanyi', 'customer_list', 0),
+('e4a511a46799b8e1ab94bae5d5f1d6a8e3bdee5bf5458724e01d57744b9791977d2fd8e6962fbc78', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:40:19', 'sanyi', 'customer_list', 0),
 ('e5551180269fe46f62f1996059b85dffdc9439e08029c9c419fd2cb0087767a26b8b0ceb608c9430', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-20 10:40:32', NULL, 'customer_list customer_own_data', 0),
+('e7ebccb47a6ab7039210822ab2993d7d500efad86657d54e2fffd8f1f812ed14bd198e16047a5b65', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:41:29', 'sanyi', 'customer_list', 0),
+('e930d0d2ae00ec2749b60f016eb2184f087190fce138ca14789a450717fc71aba0ab1d11d0e23ec6', '482e3f2d976d06352e6f37f73e33cc2d', '2023-04-25 17:02:45', NULL, 'customer_list customer_own_data', 0),
 ('eca0832ab7c98dd563e1d9ef8a37fd7fadc3caf29b2644a412b1483d4d0fd4d2653410fa8146a50c', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-12 11:05:01', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
+('efa0c288fdc7a621da0963234317d6c1356c14ba6bae5d22f5622ad68d7364eea307d2dcfba30f7f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-17 14:35:13', 'sanyi', 'customer_list', 0),
+('f433ad370896ab707421ff501ac6e50fa2a9816235def0405eb6588da71b7015f679e36b066c56b4', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:36:41', 'sanyi', 'customer_list', 0),
 ('f5262f91fa32b3f4e876282c052442c26f05e64b6de990e7e1f2a3d0b402d08b32fc7174d7f56a77', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-19 11:31:17', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
+('f64923208c040455f1bb11fcfa0b43c9b8ea5eefd3817b8ed947cef2e3672448f46948b808ad0262', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 20:31:19', 'sanyi', 'customer_list', 0),
+('f6ab828b8affd8e76a843bc22cd62e06409ae76e01de4e611b297329e34e4d35028063639f40358a', '482e3f2d976d06352e6f37f73e33cc2d', '2023-02-17 14:56:26', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
 ('f8bc684d61dfb7d7afa6d14cbc58fe7521de4cbab6d8bdc57d3dac12c07654cf0e1e48cab14ec6e1', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:58:52', 'sanyi', 'customer_list', 0),
 ('fb477cfe8527ed0a07e5d3bad1156e3422d9ef1943bcf815c8210dad1e361540e61870b464fae0e8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-03 19:52:43', 'sanyi', 'customer_list', 0),
 ('ffbf9c591e98caafeb2a7614839964427fe8b10041bd7e617d532e7356f274a08026c49b6117dfba', '482e3f2d976d06352e6f37f73e33cc2d', '2023-01-19 10:15:14', 'teszt@elek.hu', 'customer_list customer_own_data', 0),
@@ -149,11 +269,11 @@ INSERT INTO `oauth2_access_token` (`identifier`, `client`, `expiry`, `user_ident
 --
 
 CREATE TABLE `oauth2_authorization_code` (
-  `identifier` char(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `client` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `identifier` char(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `client` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `expiry` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
-  `user_identifier` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `scopes` text COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:oauth2_scope)',
+  `user_identifier` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scopes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:oauth2_scope)',
   `revoked` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -178,6 +298,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('01fdb94b73653b22ce99964809fe8065a9d7a52665eed86fec4651df20a8402ae3efa7d808d4d4f3', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:42:32', 'sanyi', 'customer_list', 0),
 ('021a513884eae0dbff4b975389c2e5cbe213289a6463fa866e13d7c482a441d2ee91c85ef36c1822', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:51:58', 'sanyi', 'customer_list', 0),
 ('022dddab183d61435311aff7a2af98dba8d4167400411988bcc4be8da457460ae443a7e77bbcddee', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:45', 'sanyi', 'customer_list', 0),
+('023ce1c93a1802828d527d33144d9908753f0f2e9fe497f30fa4e4619e742b82ae9d8972bddf8881', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-17 10:43:16', 'sanyi', 'customer_list', 1),
 ('02742cb2fd7a87a8c572c940c4e58fb062d46aa7606fa5fb428cb4900b3c2ac55c34ebcc9e004cfa', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:22', 'sanyi', 'customer_list', 0),
 ('027a2b8145689d5dd15b51ff58cbadfd34cc28fd382bd60006febe06420e79bcc6b2ae6c0423ba66', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:22', 'sanyi', 'customer_list', 0),
 ('029be32d67da83453c393d477b7c5ed15245add093be0c8f4527e349e8c1bf2540c868e2a41dcc80', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:59', 'sanyi', 'customer_list', 0),
@@ -206,6 +327,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('04bdb0a9d142bb517ca8385cca51bf5703e916f56e241ea0e1f760923a46568a9961939386b7cfce', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:54', 'sanyi', 'customer_list', 0),
 ('04bfe9b11aa7dde72f022eac871cd69e025656861f86de8cbadb8469122af0a670d3721639278926', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:51:59', 'sanyi', 'customer_list', 0),
 ('04c527a6922d144ea83756f300030916cee70c37b4a559dd9282cdd06b831db0bc77aa552a4cb182', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:23:24', 'sanyi', 'customer_list', 0),
+('04e115afee687c97423ce3b801e02b71279ab3ce8e88f18afee27c8d65e7283041adcbb8eef880ce', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:50:18', 'sanyi', 'customer_list', 1),
 ('0503670ab5a1775f9e3a9c4ab3c82aa69cf11360dda1a70897bdf57dc457e73668fefe677a1032ec', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:44', 'sanyi', 'customer_list', 0),
 ('0537fc69f563bb17e6016b707bb044daaa080d033ecfbee7f2d3e3a4307f8cebfca2af1c8cd0a525', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:50', 'sanyi', 'customer_list', 0),
 ('0583bb70446b96e0b65fe41002a6246ae8e710b362093b745102fe46740e4f1989a10081ddf75c60', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:57', 'sanyi', 'customer_list', 0),
@@ -214,6 +336,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('05b50737fd0d7d9cd5906e2d7beafae0be89a80b28228ada29ef6d9edb074151e13e9189a61f89bd', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:11', 'sanyi', 'customer_list', 0),
 ('05bee9079f371f60b47c9c25e5489c2419a864ea379c3a232b7109272e3106757b149d0f4133c3b9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:03', 'sanyi', 'customer_list', 0),
 ('05e1046452f60c030669735423229a55532479faeb820753721c9c9c4b0f7951a1869f6652bbc499', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:53', 'sanyi', 'customer_list', 0),
+('061cf1206a24797c2096f8197e70a29dbabdd7bd21b0142316f80e7b9dee475bfca8a92972e6e49d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:47:54', 'sanyi', 'customer_list', 1),
 ('062af176c0406ba241895e6004b2750759e25c68cbafe163c5ffc121e654765a4753bdc4800bd3ad', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:29', 'sanyi', 'customer_list', 0),
 ('064a2cd6cc584b69594d778e604bdcc78a07e8113c2e506b11593fe3a9a34011c15521838b77c7ea', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:23', 'sanyi', 'customer_list', 0),
 ('064f6d1302af6bc1f1e99af7aa0d964a3dd43499bbaa6fd35320e578591557ac6cfcc56cc1fbf722', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:46', 'sanyi', 'customer_list', 0),
@@ -281,7 +404,10 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('0e16e6dc29f4f94cdec3a429ea0e9fba2aab4add2fae9d89132ebf36282ea3c53757a3b0dcb36ca4', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:15', 'sanyi', 'customer_list', 0),
 ('0e4215a927e6a4396e514a6398134a6b9294bca3361ee8aa83901ea5c530fd78d6f0d2245006add1', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:10', 'sanyi', 'customer_list', 0),
 ('0e569f33f42f77c1def91c5ea6e693b30da2672e3fe45b90bd1d5ba324119fe2045a4c437df8942a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:15', 'sanyi', 'customer_list', 0),
+('0e64210643d96dc0e430424114d66ccefe00ea79fad51473f4145cb9520f310a492aaaedea4f706d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:47:30', 'sanyi', 'customer_list', 1),
+('0e64d5d89e1dbcbb864d376e6b62f5f48dd6781642307ba25a60664eebcd80292dbb05721371f519', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:41:19', 'sanyi', 'customer_list', 1),
 ('0e72d21e7b755ccc684aead28fa6abea6e705433d8c177e997672b038680daad9c339eac6d7bb584', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:45', 'sanyi', 'customer_list', 0),
+('0e85fa84792d337d1648065bf12dc8a1bc7e711bae6baaf628c3576d78cbdee8734ab0ba5f9ed9a7', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:39:41', 'sanyi', 'customer_list', 1),
 ('0e8be3ed0d58fe3734c88f7a4e343fa5152a00803ff92c55a4f45e2e9797c42b970900ca05e804db', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:22', 'sanyi', 'customer_list', 0),
 ('0e8f0adccbd9529e157b2e9ad449d48014b8e0463a17c1d0918575e986676a4d387251e06a532f3c', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:39', 'sanyi', 'customer_list', 0),
 ('0ec04df5f78bf1fbc4753cce2e5a7ef4fa542da73b8d4250388721d311ef2553f278bb5b7ebdb693', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:02', 'sanyi', 'customer_list', 0),
@@ -295,13 +421,17 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('0f9afa2b73440e17b374c4def66db14c8703bbcdc3cfe22e8bf4b9ee4b79cf8047639f30af0ac106', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:34', 'sanyi', 'customer_list', 0),
 ('0faf3a0032e1bfdf87f4f70f4eb840de9e509201b2bd5622aa85e3a22efddb4781f185c2a5644f93', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:57', 'sanyi', 'customer_list', 0),
 ('0fb22200b135c24bb309a3f5a5086bea67b4afcb0a2ee1420595f07a40319f37df981ccab56dd176', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:06', 'sanyi', 'customer_list', 0),
+('0fd13a42c0d16e7ef1e1901ecdff077f8ab78bd2eb1ec61ef2a9552c0207c1a0d8fe1a730d753d11', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:09:16', 'sanyi', 'customer_list', 1),
+('0fd8f1e9e02a192476aa097aa842b474d66ef6d8e83038bbe863137c8b39f85742632b55a1586b7e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:51:45', 'sanyi', 'customer_list', 1),
 ('0fedc31833eaeb63e1223997d34f849b343fa5bf71e6d354ed4760bba31bfa5e2818fa41ac6504f0', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:34', 'sanyi', 'customer_list', 0),
 ('0ffc025d96f858478d0ab7b50ef79389cf6edcdac378467689f5f9e253887aed44e90ad7de686f60', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:42', 'sanyi', 'customer_list', 0),
 ('10054a850f1280f0d54522df267687506e093d4b438d985e251f64b69bfdd4418e92b2e17dffe11d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:43', 'sanyi', 'customer_list', 0),
 ('101376cb71800c878046d3f20233c63fe0ae0ed2f76d128522e2d2bf822f01ff9f3e096ed9af958a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:42:20', 'sanyi', 'customer_list', 0),
+('1016a7eb34152a11dd0af7d7a000cbe01aaf863e4ceb406d9e484f8139fc2d2408a8e20bc56024ce', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:48:14', 'sanyi', 'customer_list', 1),
 ('101b9f8b02a04e0444781a40c0bb09fd29d849858f92a6be51b4cb111ee0cce6f44a0c8a3caee521', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 12:38:55', 'sanyi', 'customer_list', 0),
 ('1028397589dbf5f9dc4d90997fe15a425a8e61858bbd5415d884e275c589f7d5e276598db744a26a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:48', 'sanyi', 'customer_list', 0),
 ('104a5d1e9de7202b70ec91afda8e3901a1a8d00866cf9eb716605525b9c4b535e18cca8f6ab91319', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:32', 'sanyi', 'customer_list', 0),
+('107645d5c809726a7b35b6ae2ead0ed8a9603f321e5a4fbbe671b9ea6b7ac46d55418cc9ab03dd57', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:39:38', 'sanyi', 'customer_list', 1),
 ('107be2ab0e601c35bebeea56715776c7c819a93550a97dfa480cf26b75e3c74c394921223cda307b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:53', 'sanyi', 'customer_list', 0),
 ('1098604e282a7d74617c6e75e90cff6493ab7f5665b01392cea74e45eabecf7c11ce088585c01ea7', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:46', 'sanyi', 'customer_list', 0),
 ('10a5368d70eb9fea50a8bfd2f0dbdef5a050bb20ad637e20ee9d160e0b612adf02a272c8794e02b4', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:19', 'sanyi', 'customer_list', 0),
@@ -325,6 +455,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('12e30044930e16a2b2108267410b3f1db2e1d7d34c7cda9c0d3242758af0d599813ebc0b73f5c07b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:36', 'sanyi', 'customer_list', 0),
 ('12ec78d25ca9eaa2e357e796eafd2838f4ee295398fdf9f126278da0720bc615a4b8d88e307716f5', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:03', 'sanyi', 'customer_list', 0),
 ('12f1b2406d2e39c55326d3a6038abf80aa44d0f330871c3078d41d3db65f79cee6ba86db278795f5', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:44', 'sanyi', 'customer_list', 0),
+('1300c6152232996d28b532acad9996b332f883ecb2116bf099ef50bead7e5d3b1979d67c06a1e997', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:39:32', 'sanyi', 'customer_list', 1),
 ('1330934b82976b0c5c450dc6bb93177ee7b60f0615c559d26723067ccb1ae98ca1c13a047449031d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:42:29', 'sanyi', 'customer_list', 0),
 ('13c8856f96a562666f6cb9cd86aa585186baa08ca25e8ce6b2294d79dd7f57ab7dfd51c51cadd379', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:30', 'sanyi', 'customer_list', 0),
 ('13cf152cf925a792bc40f30818fcce75830c804339a8ccb781d7468815bbfa8e2871fc3d59defd03', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:00', 'sanyi', 'customer_list', 0),
@@ -351,6 +482,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('15ac1fdfc54882515aa8b9d0bf93f1fa0303d580555314d675aa7e37e7537bb257e62dbd7c78c5c5', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:49', 'sanyi', 'customer_list', 0),
 ('15c185a71a6e8254b1b0352721cf6b7566afb00e853c3ab14f78f1d991920441b6600a7ac95b9bc8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 15:54:04', 'sanyi', 'customer_list', 1),
 ('15c317219bb3cbe44230a60164c8799752912b624eec27398d2e89fe582b81a8853aaa07a8549eeb', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:20', 'sanyi', 'customer_list', 0),
+('15e62f10bb8d9931d6b3a2118f943baf7106e14689a2b5a86559074170f348b53c76593251d4c71f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:09:12', 'sanyi', 'customer_list', 1),
 ('15e9d8fae61b078e09cee0f4cdb3860af22268301332adfac0dae81feab6d0a4f789c21f9a5eb7e1', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 12:44:27', 'sanyi', 'customer_list', 0),
 ('15ef4246d966f035c641786b34800fe297a4d9f2b4a1a1d389b603f546ee745457b583dfd27b8dd8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:59', 'sanyi', 'customer_list', 0),
 ('15f010f2bbd3956a8fdd9f048b72460c4d3b7ac420d199bb12e98c12e922a3376eb65fa638e27225', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:35', 'sanyi', 'customer_list', 0),
@@ -400,6 +532,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('1a030898517fefb37715996b066a235f8d1efeef8e13b75e8d06595e175e9023b2ccf8c57630392b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:38', 'sanyi', 'customer_list', 0),
 ('1a31e61d51142e878e776a66b8abdc57de1bda56495be879f182f4bec0bcb66c4dd5e87ccde2538f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:58', 'sanyi', 'customer_list', 0),
 ('1a3e958c1e34766dcfa106501563e684b11eeee33b71e2e2b92880025c5e9ad0b5d7e86f4f4bda7e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:33', 'sanyi', 'customer_list', 0),
+('1a5b1ed294cb9da5178b1d28c5fb04e5643e504708d348d38e763f3ea6d8ae21bea3aaf840d6d4bc', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:39:27', 'sanyi', 'customer_list', 1),
 ('1ae25ffe1baa0acdd38b430942d4ea733e8fae365be017268f7d98eb372e3b9ba2bf43118702bccc', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:36', 'sanyi', 'customer_list', 0),
 ('1ae5a2079cc0ed194420a5b9668d913ce92f0617c0aa4c012df4f686c9bbfe60c43e3927e9b1d442', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:42:52', 'sanyi', 'customer_list', 0),
 ('1aed37e864241d1b67058e134709b4365e5c02ab24700e4cd439a2c94746ed170effefda5992233f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:06', 'sanyi', 'customer_list', 0),
@@ -435,8 +568,10 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('1e2dde8e3a8fefcc962c9881cd34769271120173434f9ca713756fdb8c3542be1925ebc8630a68bf', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:48', 'sanyi', 'customer_list', 0),
 ('1e4c9a4f8e481fa91eb4193c360cf13aa75045febc5a0b76e31306ead90beb7d0d76eb851a4751eb', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:47', 'sanyi', 'customer_list', 0),
 ('1e8c3986d3481cb83928e8bcd9aeb38603f25575db129f0752833964d7907c0dc271b78ec3988dfd', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:02', 'sanyi', 'customer_list', 0),
+('1e9e17ee46680883e088e5c2bb55907c5fd41c3b632f4a300bdea270223335cba25491bca2e66065', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:48:05', 'sanyi', 'customer_list', 1),
 ('1ebefba39ec451997e1b8111daa221f52e0c69f5a3a47127e2b5273bcf3235fffd81f23965b71d2c', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:42', 'sanyi', 'customer_list', 0),
-('1ede2608cecc446f2a65229f1fb8dfd3effe749b2ec1842b32b447d9ae20e5297ec79be1ac52b236', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:14', 'sanyi', 'customer_list', 0),
+('1ede2608cecc446f2a65229f1fb8dfd3effe749b2ec1842b32b447d9ae20e5297ec79be1ac52b236', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:14', 'sanyi', 'customer_list', 0);
+INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user_identifier`, `scopes`, `revoked`) VALUES
 ('1ee5e0688d5c94fda0eb3027bf55fafe1ae1183552de542bf889b8068351aceb5bdb4df8a4a0f5e5', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:01', 'sanyi', 'customer_list', 0),
 ('1ee74f1f5a957a51c54228464be86cd80eac8f9dae20b96ff1b48727c3043eb08ce6858074c6816a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:49', 'sanyi', 'customer_list', 0),
 ('1f327105556573c37e01326dcc083f701d548edad420992b4fb44534dd5d203ee32b96bb5b83eedb', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:05', 'sanyi', 'customer_list', 0),
@@ -450,8 +585,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('20362bbc16f8810b26695bb0886888b93a8f7bc789509392571e91ca61adde2bcd7ae99c5782e5d2', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:12', 'sanyi', 'customer_list', 0),
 ('206381380d1f29d4cdffd6c44e50f5feb789f63f77387997423ae18778f9aa9c31764cf41e4df8eb', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:39', 'sanyi', 'customer_list', 0),
 ('206ef3ae8e88c1172bfc968e2e71ee793a863e12f04630ae7ee919506b15bb9a690ec3f0ab6aa542', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:18', 'sanyi', 'customer_list', 0),
-('20828296810824f5859a3dca6a4aef755340f75a6f997081cf2fc4d09349d793760f29968863fa4d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:09', 'sanyi', 'customer_list', 0);
-INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user_identifier`, `scopes`, `revoked`) VALUES
+('20828296810824f5859a3dca6a4aef755340f75a6f997081cf2fc4d09349d793760f29968863fa4d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:09', 'sanyi', 'customer_list', 0),
 ('20a65fe886ef3658f9111ac562aed804b34158889d5f4704fd195696d7f9553ca25548d2460cd641', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:51', 'sanyi', 'customer_list', 0),
 ('20cb5b196f44d0b4ec75c1a57bd504b45dd2bcc91e79678df039bf4b4cf3a79b84bad83e1251b9e3', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:42', 'sanyi', 'customer_list', 0),
 ('20daf842c88b9d9f5a2ea61c9616ab762a540a2606a9734ff2239fff8efd0c01f0a07102d47f7402', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:09', 'sanyi', 'customer_list', 0),
@@ -484,11 +618,13 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('241ca0d3d6fd0b8094e1963b4b03d122e30c5f8d40d86545e8eff1315044ece28a764e56bd697e93', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:11', 'sanyi', 'customer_list', 0),
 ('2436cfe3c43ccfc0dcdf03e1e024954a52a89a5b8ffbfae928c2fdbd0788383aecbe2863a0260beb', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:22', 'sanyi', 'customer_list', 0),
 ('244bbd827f747e606d9210ef95655e855b9dfe309e3cf800a026eb79505901060a020d90e9ad3544', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:40', 'sanyi', 'customer_list', 0),
+('2462b38f279f7ee1db1ff99e9fe15a596e8eee9ba330c6e5309f0df5724504bdbd1314f33570ba20', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:51:56', 'sanyi', 'customer_list', 1),
 ('2481f5f86976bf583abae1e03477b571f256765ebacd5d2d9edf157c35bca369356e1772f4bf7de6', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:27', 'sanyi', 'customer_list', 0),
 ('24a852377b306125489cb0b5d0bfe83ab7ca5c86b4ad905e7c4060750f237e6db2740dde108ac97f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:53', 'sanyi', 'customer_list', 0),
 ('24a852b60d793c0cca0766bc84f2d41cd8974d96edd0a3dc799d6c49ebaeb959d775398d1d034ea8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:11', 'sanyi', 'customer_list', 0),
 ('24b107bd4ee46c619b8be33b1725a527bbca5decd7e7f0af0e6efeb7fd6d956196052b875a1168df', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:28', 'sanyi', 'customer_list', 0),
 ('24b69840ee3cd31fea62f407e9fd926d55127cc5c1f851fef39be531637800823f538da7314b97fc', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-03 19:02:43', 'sanyi', 'customer_list', 1),
+('24c0f9721dc0249bbdddf2f012aa0c60fd8de043525b51e5e749be9702c1ce1d1b4af85b1a3585d1', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:09:34', 'sanyi', 'customer_list', 1),
 ('24cadca9650bc2bbb794153ff1468f58baa0c63e271ce71ed6afd2e74696e7d51d3aae4251d94919', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:26', 'sanyi', 'customer_list', 0),
 ('24e9ab90d791d2dc1150a7713924e6161daf6ba366eddee43b39957b062d4ba11c9d2228d8256e10', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:53', 'sanyi', 'customer_list', 0),
 ('251b9c482d4c48bfd4a2d7457cd00f4891fc79c753343ffce77c60105745c05201e850cab3c5af38', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:37', 'sanyi', 'customer_list', 0),
@@ -525,6 +661,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('28b9d33f2342928d5b3477f48388cace1aeed3ca05cf6b789f77ce7813c2b2766490dafb8940f76e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:55', 'sanyi', 'customer_list', 0),
 ('28d6d5559e5cf42aa752dbee641fe6aa5396ad572e0d25537c145248f53b7fd5f1b8c171f05d62c6', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:51', 'sanyi', 'customer_list', 0),
 ('28deea898300e3b44dbb6827b9fc29f621c2f54e815e96656b42d77db819fa19054b92f8ed359f69', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:56', 'sanyi', 'customer_list', 0),
+('290382048f7ca36034ff324b08827d788c1f91b3ad7b0c2ea2ef094b3550258a699b1d8321e08dbd', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-17 13:45:13', 'sanyi', 'customer_list', 1),
 ('2933d791e62acc0ba5483a6effaf18dc41c3ea78226b0373d2795358268d7f6dd56552da6b459be8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:07', 'sanyi', 'customer_list', 0),
 ('29353dfb7eb8f60d962b7612c75380aea491b16494bb97eb90965777bdc0c29118e3636ab33c8972', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:15', 'sanyi', 'customer_list', 0),
 ('2958fa9c87c1fd4daaae6c90182b6ce5fdc4e3a529af4626e70fdadc61654c3dec4b20c8ee7514ab', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:56', 'sanyi', 'customer_list', 0),
@@ -535,11 +672,13 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('2a07ca77c9f00e621750d03f0e19f5a69f649176e9f36e71533e4b9772f437b482868b151ea56c0e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:29', 'sanyi', 'customer_list', 0),
 ('2a0868ba5b6e5eb9d79655c1946041e2e2bb4c7075a812994e8ef7f0c42774f36bea280c511129f0', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:51', 'sanyi', 'customer_list', 0),
 ('2a24331038e2176c546791c75d27dd2abe4cb6d93602ed3350cb828bdcd6f0c8dfbaba1ae57dae99', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:09', 'sanyi', 'customer_list', 0),
+('2a7930886fba830a2d9dbc72183c01d89422a4be02c385bfa72ce34e11258ad9465b6038af2cf227', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:51:34', 'sanyi', 'customer_list', 1),
 ('2a8f5409358b5a52d973aa63c17025ab4e01661762b49bdf3a8c308d09c60f3653528ab6daccee06', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:48', 'sanyi', 'customer_list', 0),
 ('2a9f9751db98ed9f12913a137b4b9c8f5ac50167ad23bb920b659e2ec4fc68a9bda8b8d5163f6b6b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:51:48', 'sanyi', 'customer_list', 0),
 ('2aab45f962b37a74cc4b3a27582eb3f363e7a93d9a66e0786547cc2db086d327e32021d008807fe9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:31', 'sanyi', 'customer_list', 0),
 ('2aacba2d8c88eab1a540a8ff606f81297faeab75896f8efa309442d76edebba443aa39d145f6079e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:16', 'sanyi', 'customer_list', 0),
 ('2abc42f7a9174baf202cbe3e6af79baf91f33f418b47fbfe6fddb8069e8f10b58238c3445ac88a23', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:21', 'sanyi', 'customer_list', 0),
+('2ac3be8e5e3bff3273e57b4aaaa1ebd20299affcbc3250d69f3faf562da6380ae5b276b0ea53a05f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 10:05:50', 'sanyi', 'customer_list', 1),
 ('2adb514cbcd09b51ab76a68b2641e1b206d91dc64c09bf89aa3b181c0c75275fc2740c89fa0250a2', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:56', 'sanyi', 'customer_list', 0),
 ('2ae4e5b3dd931aa232f6dab35275612525126cb6b3b19b6e80e600510f2d4b6a411d821a513e20bf', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:23:31', 'sanyi', 'customer_list', 0),
 ('2aff5dc1c94c5dda90c399849ee4bb3b81f2885d3e2f830245420737a3c8243b2afe1f7922920e56', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:17', 'sanyi', 'customer_list', 0),
@@ -592,6 +731,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('2ebe0bc853a32615d03a946365b797d882345316351c20387614d902f3bd332c0a04f82b532ed8ee', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:24', 'sanyi', 'customer_list', 0),
 ('2ebf9bde7044a571ac42d8d41146e63917b741a55204d798f06e3d78e0e022765bc9dc4e5be1f0a8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:20', 'sanyi', 'customer_list', 0),
 ('2ec6e27fa37787bdee14d5d5ad1891bc59cd6b781d2184f517d12eba704c8fd057effded2837ad58', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:29', 'sanyi', 'customer_list', 0),
+('2ed5da6624e58df8995211a3e19477f7f6b078e5de05efade9fbf796efb5f7b8baec8af1a00d18fa', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:09:41', 'sanyi', 'customer_list', 1),
 ('2ee7b92eb6eef65ee96744be9ac0db2d37fff3d1eb6dd225334c923bc509011274714ae0cf2a1ef2', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:58', 'sanyi', 'customer_list', 0),
 ('2f0a4c839b7ac2cbeff1eb719fa8b7255893e497430041ed279708b2d417fa5995e77057af67b2e2', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:55', 'sanyi', 'customer_list', 0),
 ('2f11bc3178a2f50669fafddbeffb971a582df21d2e0a8538e6b5e98b8a327652c89f631e2d096075', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:59', 'sanyi', 'customer_list', 0),
@@ -601,6 +741,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('2f65cd36de128729811235568dcb9b935795bed1b68b1ec5dbaf39ae74c83ee9b90720fe40db4a11', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:08', 'sanyi', 'customer_list', 0),
 ('2f7ed1d9d4a6cb6ac806a37d847bb2f926ed528ac10e215b6ad6e05206484b258e7a861dcab20a2d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:39', 'sanyi', 'customer_list', 0),
 ('2f951c547af3c27c5445d50e6f4cdf26e94d0e155dfeca5692a68d09c46edc7dba34f6143f2dd89a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:48:00', 'sanyi', 'customer_list', 0),
+('2f9ee2500412120d6be93be1bbcc1abe3726db4c540c2dd85b818cac10b09e509b8fb58044b4a4a2', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:51:31', 'sanyi', 'customer_list', 1),
 ('2fc52dce4ce7cdfef8bcf3df67445f3e159e54a0a1ba2f0050ef2e2f1b0d085dfda6c3c72296d9c9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:53', 'sanyi', 'customer_list', 0),
 ('2fc86a905984de69939341903c190dedb31c1034cd2cd06941f078fe46e9b201d269332ab51a83d0', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:15', 'sanyi', 'customer_list', 0),
 ('2fd6c09623ad9933ebecec6284a872ea6e457f4f618f4882889f36bd47e8460544a1af40a3cf0cfc', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:24', 'sanyi', 'customer_list', 0),
@@ -656,12 +797,14 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('35339641ecf63998cf8a05c53697b6e0956a48653fd05639c2e214aef7611f09e75230ba4fb821f1', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:26', 'sanyi', 'customer_list', 0),
 ('3541d1decd1c692d05e927e32958022e52f3be206a5e04256d561cd1ff6bf9eb7cc30490e10a6202', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:27', 'sanyi', 'customer_list', 0),
 ('35535c19b9dcadfdbe9a5ca37a58f3fdfc3efee3e51049d6c1e2147f3998e8ace75c07264dcb3071', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:08', 'sanyi', 'customer_list', 0),
+('35bcd62e31ec30beb99957102db007f21fa6be21da6a95ccdac2da10869aa5630bea949dfedc0d9a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:39:47', 'sanyi', 'customer_list', 1),
 ('35cbd32492b565fa4ababa7bf77138f5f8c96b6a465ea5908c0bd641cbdb565a7e9420a3f643805d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:23', 'sanyi', 'customer_list', 0),
 ('35d9c7632b0426f0ee1314db9759878605a2da6a6d09f47b21e35dc2d416e2f2202b787a2c287b1d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:35', 'sanyi', 'customer_list', 0),
 ('3615d53c478507866476071086ade3e9a2b5b793d1ff7cf879d46efd5956135c24168b0cc213f853', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:24', 'sanyi', 'customer_list', 0),
 ('362552ac9d9e07bc27c4fa178fa965474b0653ea2eb5df4b1498352af62084d2e0894fbb6ed62d77', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:33', 'sanyi', 'customer_list', 0),
 ('3651d6819f0f4c26001859ff598cf820c05ecbd21ee906ef9bd92418547fd2d94bfbd50b01b22f6b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:22', 'sanyi', 'customer_list', 0),
 ('36569ca5664a568e50ac9a5611b1c427b25522692e431fa31fc76f6ba779a818d6b75252f691c3de', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:52', 'sanyi', 'customer_list', 0),
+('36647cdcd97b925d406587fd686b0286b20d36b74ccc1f9a864b2eabd57c7ef00d0b4d022c42f597', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:39:55', 'sanyi', 'customer_list', 1),
 ('367627ac369ddc5162dfcb62d29df53217788e825572e90216550e1a765bf15863f7438757b0180d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:24', 'sanyi', 'customer_list', 0),
 ('36837e753c0f313dcec3a531c5bc3be0164ac6c3bd52ad81b7ba7f8b498f8d6b3f222d876155b55f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:36:19', 'sanyi', 'customer_list', 0),
 ('36a19db77d4d1ef179bca79a953451ae783a0050e2419a157612e9ca61d1f882050589dfc3174fcb', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:51', 'sanyi', 'customer_list', 0),
@@ -686,6 +829,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('385cc264086357e177afba53e759d98b069965a03344602a66c578d35a01522ebeb6c331617d0b6d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:57', 'sanyi', 'customer_list', 0),
 ('3877e4d8a85a9a5be97a70e332877638c48c682684eda9883efb0e3acd5441d2f5ec62ceed945f78', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:54', 'sanyi', 'customer_list', 0),
 ('388d0ff4856e7f5e55d6ebc8b548ed307b096c1e7b4317ad124bf4b2bff9b4e3e20d81254fb8f32f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:41', 'sanyi', 'customer_list', 0),
+('38a10e6d93810442f2cf5a30dd19d2d88865a5ba6ec8dcddb66831b5548f25531bf3f09bd5bb65a1', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:39:43', 'sanyi', 'customer_list', 1),
 ('38cd2f2a613ae62cc44836982b68024afe3ba632ac6f7f9fbd1902bc3eb2b42a380dca6a95a79b89', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:48', 'sanyi', 'customer_list', 0),
 ('38dbecaa78afffdd560d3cd131fdf5287aba2e5567102da3bf50eec7da98525ef8568992c17ac3c9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:19', 'sanyi', 'customer_list', 0),
 ('38f74ed9bb3c50fe9954d5092753f3e9344e67c24c9856a3ee7d6daf8b82ceec1fbf0afe3d04f8cb', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:31', 'sanyi', 'customer_list', 0),
@@ -695,6 +839,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('39484348aef15c4ab6549bc3727ad5abb7fd112506bc854936400e967f2da8c1856cb88d568a560d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:41', 'sanyi', 'customer_list', 0),
 ('394dd7a603dde8a361a2da64dab97999afcce6b0d89bceba2cd41b76b00ad69599d4dfe4e787baea', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:31', 'sanyi', 'customer_list', 0),
 ('3952fbd72dadf7538c72146f8572477c47a8d5b8467202749e2427d5ef284f1d7d939ed099ec9129', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 15:06:02', 'sanyi', 'customer_list', 1),
+('39918773bef9b2ae54801637ab33f128045ac78ac793afdb97778ce6ba7c2c611b00eb4a8711e7ee', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-17 10:43:21', 'sanyi', 'customer_list', 1),
 ('399fc6ca997b10c7688ab8b9c4e46d7205c0f8de69f34eb84878830a0adc4d9a5dcb01bd98cecd3a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:40', 'sanyi', 'customer_list', 0),
 ('39a6a9c121cfd77158e465a8e73c7e2a3aa072fa3a0cf1a47d739b2554b34efef396e672146fda65', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:03', 'sanyi', 'customer_list', 0),
 ('39b38f4e694595bdbad3f5467f4945f609867398212a0d9a4730b6b5a56ee243ab41028e1c7b181b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:58', 'sanyi', 'customer_list', 0),
@@ -715,7 +860,8 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('3bc1a46492d4f86d170cd3eb0e2775125edaaa1628dba270f176c9a75da1e489556509d42298606e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:35', 'sanyi', 'customer_list', 0),
 ('3bc692d221b6709353ee2d92fd41e7c4e18c6ef25047c2c61acfa8fe8898e601b85b3aee77f08cdf', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:54', 'sanyi', 'customer_list', 0),
 ('3bd2f869b9f82e16ecfd04b7e3fc18e9b70d3a36a674171d3ab331697077c561aad6c0133dfb0c03', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:19', 'sanyi', 'customer_list', 0),
-('3c05d661bfc84426fd4378bcdef13568863b53c186f62ea0a81d05ed3c35182360c54811b65a2c5a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:47', 'sanyi', 'customer_list', 0),
+('3c05d661bfc84426fd4378bcdef13568863b53c186f62ea0a81d05ed3c35182360c54811b65a2c5a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:47', 'sanyi', 'customer_list', 0);
+INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user_identifier`, `scopes`, `revoked`) VALUES
 ('3c0fce5fa767d957aabcaea1ea3531fb1b2cc412d6a7eb0332b69d246075ec720ebd1b93b146f82a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:27', 'sanyi', 'customer_list', 0),
 ('3c968fe662764d504626a6649be619470dee6161bef5292fa93d83c1847bfeaa70883c9481e62414', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:18', 'sanyi', 'customer_list', 0),
 ('3c9ccf32966074e3e05d53050cee4c724ae404fe017af2707df18c86478da241bd3199533d22f1be', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:30', 'sanyi', 'customer_list', 0),
@@ -740,8 +886,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('3e603a85190a439d7166832626f284ce456d5a3ba8424e2b1c684ffe2749ce53a490eac212efe717', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:29', 'sanyi', 'customer_list', 0),
 ('3e60a43dc9066d69b1f097165b1bd13f3a15b018c729ac20ac89f7b58f619e7245b2a7084da58d2f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:08', 'sanyi', 'customer_list', 0),
 ('3e62368c5d427241dbf04feefc4beccd019e8a21d96f62aab8f81f0e1e627736bf217fb4b5fe6984', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:04', 'sanyi', 'customer_list', 0),
-('3e6735305a9fa4f449c35823592bf7164a9867bb40b74ea1075c13a803aa49ccfafa228f92464db9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:34', 'sanyi', 'customer_list', 0);
-INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user_identifier`, `scopes`, `revoked`) VALUES
+('3e6735305a9fa4f449c35823592bf7164a9867bb40b74ea1075c13a803aa49ccfafa228f92464db9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:34', 'sanyi', 'customer_list', 0),
 ('3e7c806417e630503617b9276392c60038b07c1f12fafef54dc068ceb30a717d18b019bd2a437e22', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:17', 'sanyi', 'customer_list', 0),
 ('3e88ff5220e91840d2d48ef0be2ec344b9c1ed0bf2d76b6b93121e47fbaa49b108f9deb64717ab99', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:58:50', 'sanyi', 'customer_list', 0),
 ('3eb51bc9daee25c0f08e637393438a36b6d12cc0a3c460b64c76dfe937d6073c275d84681934b066', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:06', 'sanyi', 'customer_list', 0),
@@ -877,6 +1022,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('4cdb21fc36e266d1e53380a7f2ecb0d9e34a2f3bb5e549fd3a84342e402d3b77713680b8c9394112', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:49', 'sanyi', 'customer_list', 0),
 ('4d054b83836caa9cdb422485f2c51f0084265e8f87e59fb31d4fbc02a71d873831ce05cf12a4aa07', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:43', 'sanyi', 'customer_list', 0),
 ('4d2412a1f5a9a6c5ba934f1d615de4b0c248ad4d135dd25db13c5282865c9582351a99bbeb2d985c', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:44', 'sanyi', 'customer_list', 0),
+('4d861a6c5ed4d65aeaf09a5dfcf13578d97b7759ef6a8ca839332af844cfab7c04ccbaaf729d5c4a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:47:39', 'sanyi', 'customer_list', 1),
 ('4d87613b14fb19d3766cbe80cee40a1f6bd846ad537d7c98bc27cb0de7369ce648924322f6f1c999', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:19', 'sanyi', 'customer_list', 0),
 ('4db4582e23de717544c0c7be99a6541691c4367cd51e90a6124cc8ac686be31bed99012690516e1b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:45', 'sanyi', 'customer_list', 0),
 ('4dcf3513012fd1f3de9c54ff240287b72b9004db89838950dc3c4ca8d7ad38f87b87f11baf4e1b4b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:11', 'sanyi', 'customer_list', 0),
@@ -959,6 +1105,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('54fabef18b7da8dc17ec52d8f5a953097bf1e7f3d7131d1d125f5df382205b9e050e5bbe0d9fe07c', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:25', 'sanyi', 'customer_list', 0),
 ('550143205f0442035aca34179786bfd2958fcdb2012465d787d0929ad5b07c324f23b5d99fcf1d23', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:42:59', 'sanyi', 'customer_list', 0),
 ('55069cb440b9b546364d0568c0de8ca029cff4a4ccc5274762e4e2212011c6bc12779957b3943643', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:07', 'sanyi', 'customer_list', 0),
+('55131cdb2ad5c6f30cf5f65a4dcf23bdbc9d7b23ca0d18f94cdd5e6e5442cea231fb57fe7999b3a1', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:09:06', 'sanyi', 'customer_list', 1),
 ('55148fe7fc07ba100855153f97e48c0744ee39cf2cb0522e8a8febeecd9a1448eb3d25d8afec1889', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:11', 'sanyi', 'customer_list', 0),
 ('55310ee1c154ab5e19a58d1b0c231c360b2c9ab93ec62fd3b5fce19cf698beb91a063763217c7ca9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:04', 'sanyi', 'customer_list', 0),
 ('55319562202d5d05bfe870644da439f9989aed6f9d3f9c05270cebe275c00916bfa9be48f6699fe7', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:10', 'sanyi', 'customer_list', 0),
@@ -967,6 +1114,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('554c4baafa4d0a52a05c4f20334e32695016f25595c3bb016d9ee0df5588fbb560c454cb7e49dfa8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:57', 'sanyi', 'customer_list', 0),
 ('556b9c2960b04239609e2e1e03721637155698055ff899d382f6122d5facbf0b75adc8628f1f406c', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:36', 'sanyi', 'customer_list', 0),
 ('55a05dbafc1f469dd53a805062947b675559b1a7677c1bb35a94fc2940f248241fa6e9418eef2677', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:25', 'sanyi', 'customer_list', 0),
+('55a0fcf6e405f379577d649124ac78c6702d1b03deea34600a4b78b4ff74adc57dd4bbca59781042', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:46:29', 'sanyi', 'customer_list', 1),
 ('55b15323437a9dbd6600acbc7d017d0c074722e6b26f52dc13eafa27eaf3879eae6fdc0a03487d81', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:29', 'sanyi', 'customer_list', 0),
 ('55bb011d379a941043522c511cc0224c8f9b436dcb445575a4a9ec4821abb6b94f42ca9f0d2acaa2', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 15:55:49', 'sanyi', 'customer_list', 1),
 ('55d6a17a6af8443b2c263c1c5e21aec489cd50561f71a3d2b63c9020ea5d9f399aa7a5376488c3a8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:08', 'sanyi', 'customer_list', 0),
@@ -979,6 +1127,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('56552cb4c9e05b8c73df7a2a3a0b39e920192c486bf01abb1dee239fde763acc4dad8804fcd983b8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:00', 'sanyi', 'customer_list', 0),
 ('5675155be1f9f31c7639dbebdf7482f0fd526b9f51ba47a53acb295e4c2fd4c86526c779611db3e0', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:23', 'sanyi', 'customer_list', 0),
 ('56aa205f3b511915a29d88614ee4674c91f6940ffb1513423c8c93ac1a402cca9bb88f4022b7906a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:06', 'sanyi', 'customer_list', 0),
+('56af4598a53694c8807d8a9efc93859dfc29fc0a07eb43056035fe42be07152b3088232d22296c44', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:51:52', 'sanyi', 'customer_list', 1),
 ('56b3061604ce872cd0c54add9f30464e673e8c24486eaf02bf196e3abd542a8be8d5a25b03a63a80', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:49', 'sanyi', 'customer_list', 0),
 ('56cbc0aa3d561d481e1065075f12fc8a901fd8a49958a908ef51b2ef9402f1afd42d72bd77db70ba', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:19', 'sanyi', 'customer_list', 0),
 ('56d117e9383630187c43ebce78d65931b4de87cf10beec20aff65a059f7510c1cccb3151da4da2f9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:47', 'sanyi', 'customer_list', 0),
@@ -993,6 +1142,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('584d4cb39760189d20213cc7f40e382dee361264118e973f9f8011d8542fe76399008e217184c099', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:46', 'sanyi', 'customer_list', 0),
 ('587683da7c3022d85e7dc4cbaed1b79b45557ace4214642691746663c329a5b6561f45d047f32a45', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:01', 'sanyi', 'customer_list', 0),
 ('58c7917100e233e170247ffa11182b659511525e79592eee8a1c9678802e65ff73acb17a7be050a1', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:42:23', 'sanyi', 'customer_list', 0),
+('58d4db3f084b663b62a534442087db14d7c332fa9ac9407b9836c3117344ffbb9d092afe817353c7', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-04-25 16:12:25', 'sanyi', 'customer_list', 1),
 ('58e10ea6986cf6eb9857201a3d95e6d48a66d14a1e6bed37b5e07db2cab01c3491f9d730b04adc23', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:25', 'sanyi', 'customer_list', 0),
 ('595b1ddbb8cc4d7b086473086e9a7610274d0130350ef1271e4298bca81f9c75729dd583e3efa893', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:37', 'sanyi', 'customer_list', 0),
 ('59a29284f716f2fc3138d6bf50e1534bdb9b77694b48436b3be41d22c59e33cf0a44c3a4b2903d64', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:56', 'sanyi', 'customer_list', 0),
@@ -1000,7 +1150,8 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('59e23072b04b3a37df2fe63cd852400017cd6311eb8afe8c55fe0935814aeaf9519613fe264539c2', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:40', 'sanyi', 'customer_list', 0),
 ('59ff3f232f04e14e3ba2b94b95fe23f92b26dbabc54ffdb78f0963776fe5064f4b5d818b855b9e7a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:34', 'sanyi', 'customer_list', 0),
 ('5a318508c6f676045bb951e28e7291bee09b63428f3087b0673520e7f1a0a85ab29067f6a489f99d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:02', 'sanyi', 'customer_list', 0),
-('5a409197c4b7fc389712ae0204afade490c1209ac02abafe50df4677ef8e121aac275441026aa376', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:39', 'sanyi', 'customer_list', 0),
+('5a409197c4b7fc389712ae0204afade490c1209ac02abafe50df4677ef8e121aac275441026aa376', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:39', 'sanyi', 'customer_list', 0);
+INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user_identifier`, `scopes`, `revoked`) VALUES
 ('5a56b171fdb9930df55652215aaee66fab114aa8d4cc147f93aba93ba0c7aab1ff3d18644b407605', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:31', 'sanyi', 'customer_list', 0),
 ('5a94ef5505d52e902c60e60f22f8cf10cf95ab8eb53e584d4f410fa984d9d7379c909c324d911399', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:47', 'sanyi', 'customer_list', 0),
 ('5aa3c562c0e59f1977acc1829af8bd5bd80cbf022d8a60d66f17cf61cd258f742300c4c7b821d984', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:21', 'sanyi', 'customer_list', 0),
@@ -1029,9 +1180,9 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('5d4530c412bb1e06d1abba2830dbf21dc5f85ab83e2b72ff0ed9f57d2b5df9bd11dff36ec9f91adf', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:54', 'sanyi', 'customer_list', 0),
 ('5d4e4b2eedcde30d70afb7dac031636606880b0b1b0eca68ffe9d97b4fb72863aa5f7cd26017dda3', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:47', 'sanyi', 'customer_list', 0),
 ('5d70269a4a3e21088e41543e60bc2e973c32a992260b84cce30f6b80269d27e4976c1a282ed94807', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:21', 'sanyi', 'customer_list', 0),
+('5dae4e0b7eb55c3c30e732c963a83b44d08568f659be50257d2a4769406a4103ab6fd711f3ece6fb', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:39:36', 'sanyi', 'customer_list', 1),
 ('5dbeea97c4f97b1a0d0d80db8cda3c0051154f79b59122ed74b88f742e3cf22cbf4b35778045b7b1', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:23:28', 'sanyi', 'customer_list', 0),
-('5dc84e3c996b850e4c99141b4a54305451c91ae00526135c37d56722ba088f41e691fe061c7dc989', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:42:14', 'sanyi', 'customer_list', 0);
-INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user_identifier`, `scopes`, `revoked`) VALUES
+('5dc84e3c996b850e4c99141b4a54305451c91ae00526135c37d56722ba088f41e691fe061c7dc989', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:42:14', 'sanyi', 'customer_list', 0),
 ('5dcca53269bfed893811c1aa9ee29b874495a9501477819878e4ba1d9728f1f9ce9d90c5f0aa97b7', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:47', 'sanyi', 'customer_list', 0),
 ('5dcfc40a7b52f172e756bf94d72ba4fce5329c21a5fc470d424ea73986f43d3535013370b4f5dc6b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:08', 'sanyi', 'customer_list', 0),
 ('5df1cb893a80647bfad906069c669d81c6e62847e81386f29b07eda8d487b7d56a721082f09dd91c', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:49', 'sanyi', 'customer_list', 0),
@@ -1064,6 +1215,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('60553f36479ec2b314f33e077b5f024127ee46e7484a58c07691712ffe5ea280a413fa3faed8425f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:56', 'sanyi', 'customer_list', 0),
 ('6065c3963e6c5b63bc51386976856823fc20f56989a2a941ea1ff5b9fb77c78535d18a8508880b90', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:42', 'sanyi', 'customer_list', 0),
 ('6068477f67efe178ac8df18681df3bc6a69e3399b34948f224f909e8d16dd2fdfb3dd887639f0e6a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:42:16', 'sanyi', 'customer_list', 0),
+('607f9cda3b3428ed3eb9914bacea524b8c35cd3c7bdc77485458844e91e96a64b05d1b8cc0512d01', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:46:57', 'sanyi', 'customer_list', 1),
 ('6094929f1fbead90e001c294cbe9daacf312b767b3292761d9fc51e0ed3ad266e2fc5f27c03abafd', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:03', 'sanyi', 'customer_list', 0),
 ('609afaf92af5e6bef4d14248f43f35190acee1328c9fc5ad469256126e0795a286b20a1dcabc973b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:23:27', 'sanyi', 'customer_list', 0),
 ('60a152e64d6a36dbe375143e5df61745e1313d26160158224f139882e99af5f7c0412992dfab8922', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 15:54:36', 'sanyi', 'customer_list', 1),
@@ -1166,6 +1318,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('6b14531071fba966dff4c737de26aa08577f3cfabada3a183af39033860a434bb2cdfe144e432a27', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:42:35', 'sanyi', 'customer_list', 0),
 ('6b23375aa08beee0f78e19312e5a7c648bfc13c6a919af5a16697946ea7c8d1963a79a1d0d22afae', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:23', 'sanyi', 'customer_list', 0),
 ('6b51b2502e6aae35822b24bb4fbc4dad8aa77a9ea62240ab317875d13cfe1312c9aeee191e901621', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:27', 'sanyi', 'customer_list', 0),
+('6b52cd6b60019734eb51e440d1e1b046b7ea1873275bcdfa69f1f99e10ddec1c591b1750e063da43', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:39:44', 'sanyi', 'customer_list', 1),
 ('6b5fbdd371445e1e1d74c080ca82be3e515943523149170bc27c9f051f20d6031868c6a49d23074e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:26', 'sanyi', 'customer_list', 0),
 ('6b826093117385e201a3152dead9fb34bcb02f8edf1c8e6ec562578920b34f87d4479b163b9c65bb', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:40', 'sanyi', 'customer_list', 0),
 ('6bafa33621cb659e5d4b3f986c9d0917a9a8d4613d429deb19f53aff8ba1d0d27b81e413ba7defc9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:18', 'sanyi', 'customer_list', 0),
@@ -1200,6 +1353,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('6ed2f908d0ce0ad59b3f787655f99b90f7348ecd39ba9f151300c99286774a950a341ed58d051cc9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:58', 'sanyi', 'customer_list', 0),
 ('6f0eb1420ca870c67961b2b9ddd58bad4c0950ef231969f37cb1bc6078cd2ce2802eb17cc74eed1e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:36:15', 'sanyi', 'customer_list', 0),
 ('6f26acb0752ed6d05d3df0b5ca43f454d83e5ae2a759b1e1dbf37997b3012a9ed19cbc8004905708', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:08', 'sanyi', 'customer_list', 0),
+('6f564c9e986c669da469635b939df7cc44c735ffa4a4905f0fcb8eeaba53165a57aaf32628ff4f01', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:09:32', 'sanyi', 'customer_list', 1),
 ('6f5b42a95ff30bf78a580676709c4d3e429bd7e4eaffd620869dd457e87a24efb7207390c59e6aa5', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:35', 'sanyi', 'customer_list', 0),
 ('6f68c7cc2174fb335b18781c92b578914b9b36837c4f938ed7687b05a36347a7d8b7dc68bd928b75', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:09:14', 'sanyi', 'customer_list', 1),
 ('6f6a78b798350f720a434a1a82a6f3715b774267ac545f32e26999ec94ef98857e52a66a9107f627', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:44', 'sanyi', 'customer_list', 0),
@@ -1225,6 +1379,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('70fe316fb3a519bb05a3b7a838c550e0766ddb4a17c30ee4e6831b561c1af0d74c2a3a8a4ac0697f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:04', 'sanyi', 'customer_list', 0),
 ('713b460b8198b0c23cdec1791747adce4e86eba94e4d2e4c21cfbfdefd0982fc3f6cf169215bff6d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:49', 'sanyi', 'customer_list', 0),
 ('713ce0769ec40fcae1f8f4feca474f9fb1166179c13ea10cdb4c4e7669b46e52ad85cc2f5c6cbd5b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:36:03', 'sanyi', 'customer_list', 0),
+('713d0b63232ee1ab032d78ca860058725da3a634b37c66cfeba6024966f46a8ffe7dec1d0a1212ca', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:51:41', 'sanyi', 'customer_list', 1),
 ('71436e3dc6115fe32fa5a7c88c787ed3ce3ad7f8d9198fe831ae2ef62566a9f1df233ca3686cbd9f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:10', 'sanyi', 'customer_list', 0),
 ('7155abb265f96e35c11d62b1efb86bb6bc92561d11408e1479e02f3a29e3101189ddf2ab9b330f75', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:42', 'sanyi', 'customer_list', 0),
 ('715f60d8be9e7257d63ac79534bdbd45fb0c49699c9f5285c18d908388430c3e2b57e6d3e3bfdd64', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:52', 'sanyi', 'customer_list', 0),
@@ -1243,6 +1398,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('72bd2b774671a8c7d334d5d8a95a3adeccb5ced56876b6c0cc77d6742b190c21d3a220b6bbb96462', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:09', 'sanyi', 'customer_list', 0),
 ('72ea669cd2a89a4637e7131d06fc4e69203356a5ae27873faa9d08760f5a83d87b0b4bf3d717ff18', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:04', 'sanyi', 'customer_list', 0),
 ('7300bc8f699adf130ec786d26f3769eda9e10c7f0da559e9f4ffa3bbdb2b0025168541e212b78716', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:18', 'sanyi', 'customer_list', 0),
+('731459458f893d47e519d182eefefd9141a752f5a6f55c0126c1f0cbb89c6815e44f2650893b2860', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:46:52', 'sanyi', 'customer_list', 1),
 ('7375425a149e347ad871be78550197a0b6f7df2a71908f29b686b9de3d9e0a980043d154dd13d7c4', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 12:37:45', 'sanyi', 'customer_list', 0),
 ('7390b13434256f56fbe88c414db7ec7da7538f35f9b6a3e0ce7bc27869e3fab5fb784a7cf12320f9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:32', 'sanyi', 'customer_list', 0),
 ('73c51ea80eb7cebc9bd0c4f6e31fb7c5a97b3df31189516a5c62ec8af803f5e53fc6d739339076aa', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:51', 'sanyi', 'customer_list', 0),
@@ -1278,12 +1434,14 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('7747309fa869d32a43bbe20236803d9115ded57e751b6ac9242c4e14709e4138756a89e2a823ea60', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:39', 'sanyi', 'customer_list', 0),
 ('77b7f2da268f5c432c4630fdc06b2665676e3a25b80a0a4e5f9feb3b008674700dabc6ffd8b02464', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:34', 'sanyi', 'customer_list', 0),
 ('77bc24c4ac5c3c696d159b21d66912364e51e91f7a1c0b16dfd5026ee251effe167e5ca4cc345014', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:16', 'sanyi', 'customer_list', 0),
+('77ca423dc018bcc1349d09eb3ec05a18d5d22266d73431bdc5bb74c10fbb3a2376730f494fcfc519', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-17 10:43:14', 'sanyi', 'customer_list', 1),
 ('77d5bbe55d4c817a22d12c7e0eb5410187f816a869073aacf8e8db3acae074f701ac5eecbf1f616d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:22', 'sanyi', 'customer_list', 0),
 ('77fe26e0c47a1bca5dc16d3dbb5d896d7d080be6a4189ada82cd9fdd38e8a6fb76c5ef2f864daf6e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:47', 'sanyi', 'customer_list', 0),
 ('77feb3eab2ea06bbb66fa1e86fe20e342aa0612903b9c289fbaa25e7595d3102a4b4296afdf4625c', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:36', 'sanyi', 'customer_list', 0),
 ('780253d6e9eea7e6d53f13b4a92bf3a6185109ba2faddf65cebb6116c3d9f7a79603540dbe3cd9eb', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:14', 'sanyi', 'customer_list', 0),
 ('78377c776bb1a79080aae547ff5fb7f62fd1441ec297d576f1bed7ee6926d9f012745aac9ece12ac', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:18', 'sanyi', 'customer_list', 0),
-('7840206fe1fbfb9c22e33df29ab802ca06880b87dd5648d942e9a067d3fddec24f1a3cbb9a205a57', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:23', 'sanyi', 'customer_list', 0),
+('7840206fe1fbfb9c22e33df29ab802ca06880b87dd5648d942e9a067d3fddec24f1a3cbb9a205a57', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:23', 'sanyi', 'customer_list', 0);
+INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user_identifier`, `scopes`, `revoked`) VALUES
 ('785cf6f60f04537202862c8e851efb3c0bf08825343f89daa07f33edb9e189f7563c684dd25acc4d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:46', 'sanyi', 'customer_list', 0),
 ('78644d9c2a87c157feb9dd0e9a8d72b0cff10cc87b77fbf1d32bb7a4efbe4176a2e482aa218c7579', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:10', 'sanyi', 'customer_list', 0),
 ('788210ee64911c9c428fe4c1150a1a3242c67552a798b9bc4cbfd4cd007f96db0a79b3499a5f106b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:45', 'sanyi', 'customer_list', 0),
@@ -1301,7 +1459,9 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('7a1f24429415f8d692f881de15e94972f5480e952e2c436bfec331154e4485fc2b26800d5d673015', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:00', 'sanyi', 'customer_list', 0),
 ('7a24022d9ddb3d9ffaa56eac34f9492b1d805f9988ce082b502f922371454a7ec701111e23db9cac', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:35', 'sanyi', 'customer_list', 0),
 ('7a27051c577a3a368e7260f02c297ce9d4779137bd5bf6a4bb78a3521160b17e27bc5e8cfae9cad7', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:46', 'sanyi', 'customer_list', 0),
+('7a334a2552d5a1adfa81ffa46be5ada73bf8dd063f88adb9df00b58d790a25d209df01617e14c830', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:51:58', 'sanyi', 'customer_list', 1),
 ('7a42e758389ca6aee788b33bb480301709f6412c1b90364b2b8faa1d7947c34fb84c97e92367b82b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:40', 'sanyi', 'customer_list', 0),
+('7a48847a1337ffcd45680cd1afe689bdddc201f69eb5da6a0d1fd3abf66fcaefe8220514389bde78', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:48:09', 'sanyi', 'customer_list', 1),
 ('7accb90bb2ea4b30e4a728a50a713bdece868bf66c99f9e8d25e470e003ba53e4fbe70c2e05a9cc6', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:03', 'sanyi', 'customer_list', 0),
 ('7ad15368dc891034afb9035f370e78a52f4ffd47c16793b857c6426d11b4a9f630573f2796043d5b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:59', 'sanyi', 'customer_list', 0),
 ('7ada2b3a3b85703b44587397bee1a97647f70f3b90a6b7ee93db135ec48beca4cea10a38ecd59b49', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:50', 'sanyi', 'customer_list', 0),
@@ -1314,14 +1474,14 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('7b5fb1f01fbd62f31fdaa5a317ecbf8037b85be0997d8ce684b5806a533b6aa0ffdb7c5b9e72074b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:50', 'sanyi', 'customer_list', 0),
 ('7b63085a18b77771142e33c9c86d15112b33861e79af8ebe233d92da51c6009773951146f85e2fc3', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:28', 'sanyi', 'customer_list', 0),
 ('7b7ab0a1dc12f2fa2e0d734621b09571b05a4b97dd2189c90d617732c4e80ed077ae09538fe3caf9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:35', 'sanyi', 'customer_list', 0),
+('7b9606268c15cf738bfc5cf9b73ffb968b3a71d4ca58ba5b0559f4b91eca27dbe1ee7709eff2ab33', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:47:57', 'sanyi', 'customer_list', 1),
 ('7b9c6fb35e4ffec3aa834904bb70c0603a7c94e218eb370614df799864738ade2c8848020219b605', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 16:23:19', 'sanyi', 'customer_list', 1),
 ('7b9fe37effec59a09c7a7ad88851325d789b0b9151a533c2961a0cadf4482c9601027040f4401d5a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:47', 'sanyi', 'customer_list', 0),
 ('7ba19321439168af1048aad4e7b66c0c0c85544b906ba3479a7a536c0ee0a9e23e7932368a7954da', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:51:49', 'sanyi', 'customer_list', 0),
 ('7ba9495dfde4fac5c3a62d4c6e27c0000c5e1641b5d218ee9c0cdb037f4240c1fb0c2c861bbbbd73', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:08', 'sanyi', 'customer_list', 0),
 ('7bb2d2fa98332bb4f0d61bc65b53e89b0f1d47e9269aa772c65368c5422ca260ec12bfd5d80073b7', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:22', 'sanyi', 'customer_list', 0),
 ('7be9227bdc9d4272c6d4dc0dcb0032ff520a7a3671a39d9ff263d5bd0d19671fd3c84cb11c18d579', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:20', 'sanyi', 'customer_list', 0),
-('7bec2361fa82111f36daeb6db481ddafa6d4e237b4948167ef580362a8827720b0700bd370425eed', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:46', 'sanyi', 'customer_list', 0);
-INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user_identifier`, `scopes`, `revoked`) VALUES
+('7bec2361fa82111f36daeb6db481ddafa6d4e237b4948167ef580362a8827720b0700bd370425eed', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:46', 'sanyi', 'customer_list', 0),
 ('7c1ff83a92ca0fce104688a1059d60ec7c02fff431a22ca876a8a81c9ceda1a3f5c130789109fbd4', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:40', 'sanyi', 'customer_list', 0),
 ('7c32c65f0c560278d444828790d5864599975e719421d795b8cdf9165315db3e041c8d0ca42e19db', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:20', 'sanyi', 'customer_list', 0),
 ('7c4a24ea0f31ebbe23bbf3306d51b5c997ce91259edaaaaff5dbf65f74bced2c15ca3bf89286cb14', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:53', 'sanyi', 'customer_list', 0),
@@ -1337,6 +1497,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('7d0b8a073e827244de1471c469bef0c4d7c5b86eb4f7b90a2fac0dbbcf7fc16c6e8f35bb1d6aa9da', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:24', 'sanyi', 'customer_list', 0),
 ('7d34381026d34821bdb9c7942f3c036d6ce879a7550581a52e6dde16c12a630f964f41fe7bd747a0', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:27', 'sanyi', 'customer_list', 0),
 ('7d358a5f417fa4df10fb7febfbde5b001683d005c6faaa5d10a8211904d1733494bba2a10b78116f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:11', 'sanyi', 'customer_list', 0),
+('7d4e2de958cfa362bb2006f81099eab2f2c3abfadf652973ae665fa24054820b4bd4e7c64a28863f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:46:47', 'sanyi', 'customer_list', 1),
 ('7d7ebefb82a6be1d8851e4c5ddc8ed34946c81c225670d30ad647810ebcb3412da5acb30992779f6', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:33', 'sanyi', 'customer_list', 0),
 ('7dbc9382abc9a35ac94aae764b8c881c43accac0b160e339e93e2e8d07f0be91b42c1e89c87f193f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:26', 'sanyi', 'customer_list', 0),
 ('7dc7b210d006e95bcab37efac0ecabbff10c838c7e8cfcbdeb11e87edf991cf723bfbe266e989181', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:29', 'sanyi', 'customer_list', 0),
@@ -1418,6 +1579,8 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('865a1a0e13bc4c5edd63929a6c3d880591d0cecdd3111a55700108ecae59f326cd2c984925ef37f6', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:15', 'sanyi', 'customer_list', 0),
 ('866f9ad2cd59be672f6eba5d53076722191b16462b99e8c261ee34d211763b2e5639772c95d4516c', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-01 16:23:34', 'sanyi', 'customer_list', 1),
 ('869dd51f0ba567ec5b5fbd92a25f658afbc99291976cafa2d5dd6fa175540c778552da8e5abcbf78', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:53', 'sanyi', 'customer_list', 0),
+('86d0e9216339dce2f0511b851dc29a5c990b6f8fa3e5cfaeedde115f46fb9c17dd2346352d6ab5c5', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-17 10:43:18', 'sanyi', 'customer_list', 1),
+('86d10a2918d9c4e36e98949e6763bbd9062ca02603af8eced95601c1f0be660484fcadeb180af01b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:47:01', 'sanyi', 'customer_list', 1),
 ('86d3f14c173e08955dcd26626ba9ef839429e07ecc6939a22780a2ed194679440a0273a149065a4a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:14', 'sanyi', 'customer_list', 0),
 ('87097bd1ab3e5d7d01cc227bf7306538dc919cb489ddfec0644a8e10dc242e18b28d8857672c9b4d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:07', 'sanyi', 'customer_list', 0),
 ('870c02fd3409860d1cc7e7edb4680139498f4482e3b074e9d915fad7aab58bbf0bda613bdfcb30d2', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:50', 'sanyi', 'customer_list', 0),
@@ -1431,6 +1594,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('87af35f7ed192aa449b25b357202690e1b63cd0d7821bc3d2a50380976a9e4cfd954f6b5e7e6cdcf', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:02', 'sanyi', 'customer_list', 0),
 ('87b4f95527eae3d895e6c613819f46c8c10264a76c755ed9ef2e9d416964079a56fc1e9cd3107434', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:32', 'sanyi', 'customer_list', 0),
 ('88283cb982e339e43056341d890aa46cff61e9c32ef8ab40217f7571b73e15294f46a5d8f8d25448', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:54', 'sanyi', 'customer_list', 0),
+('88667800a130dabe49dd50a4d57627a79a018d211a4aff0599dc8cb0722f2bd1b676e305ef61f8e1', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:59:01', 'sanyi', 'customer_list', 1),
 ('8868d311ca004b87102bbd193d1b83b0945c4d71e26c98839f148314678562ea91c98adf4df2f0dc', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:41', 'sanyi', 'customer_list', 0),
 ('888a71f96ed1ed742154360f7ef2422d3c85d4168e36abd1e4c625e610f936a0aedb1e9732fd499b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:30', 'sanyi', 'customer_list', 0),
 ('888be49aa1f736b80de1ba3ed3af3d9dead77f02bbbdf555903fc69dfcb632ad8b2b2a768bfddc07', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:14', 'sanyi', 'customer_list', 0),
@@ -1557,6 +1721,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('94e02d719d66c94180ccb7af39641358eeb84a7eb4e067ad2aecc7018810ddbd84f06d1bb3e31ccc', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:58', 'sanyi', 'customer_list', 0),
 ('9503d9dbf866d1514e6edc2593f35192162f47a3265e085542ecebd20c0f744b689ba011ca144605', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:36', 'sanyi', 'customer_list', 0),
 ('950800f4742045174789a993de005a47ba299e82acaa26bfbc710dcf774e9cd18041befdd43cb1c8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:26', 'sanyi', 'customer_list', 0),
+('952b8b127521c74bdcd2a6c0b7fee10055276ca1b6177ce032341185867ea4eb81e3a90dc93f3ad1', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:48:01', 'sanyi', 'customer_list', 1),
 ('956198d5ca2ff45c131f69cd06e23ae29e31646f01e90e2f4c5381717418d921727abe8267945578', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:21', 'sanyi', 'customer_list', 0),
 ('958b0ccda9aadcc60b2a7c8793519d940e2f6a4bf020d21a78e266ac6cf446fe4a046d7421479f62', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:20', 'sanyi', 'customer_list', 0),
 ('9590eea8f787acdc4a5175fefa13c4a4e87511438a3a14726c14b5270f1d083963db47e44b561334', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:06', 'sanyi', 'customer_list', 0),
@@ -1564,7 +1729,9 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('95d4ec0115d8c54ceff8f7d9cc3759a2dd3e2ce09c22bedb15ba0550f74c1bc9f3a70cf82191d49e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:53', 'sanyi', 'customer_list', 0),
 ('95f251494e5a7c1c90b8a553599d6007ce46c11cc225b7d54f34c936d6229b96f13f58fb5bf09ade', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:10', 'sanyi', 'customer_list', 0),
 ('95ffa8210c7e6294068b710fa05a9f9537e7236e589c296e1a931df21fb0b574dd1998544384783d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:14', 'sanyi', 'customer_list', 0),
-('9656274498deda4603d8cbb22fd87ab187901c41b9847ae54d97676ef0a0ec42f7a5f887d5bd711f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:42:22', 'sanyi', 'customer_list', 0),
+('960c48644b37833b70ba879d50297e2101a8e8ff990b751f190dd1a853b28069a9ea46091d0fc263', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:51:59', 'sanyi', 'customer_list', 1),
+('9656274498deda4603d8cbb22fd87ab187901c41b9847ae54d97676ef0a0ec42f7a5f887d5bd711f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:42:22', 'sanyi', 'customer_list', 0);
+INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user_identifier`, `scopes`, `revoked`) VALUES
 ('9667a8e6588277b6ac74289249f1e87f50198c66e43a02d5ceccf377f47faf8a8463c8ad1e332e24', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:27', 'sanyi', 'customer_list', 0),
 ('967dbd34d0883d93f2d19187d322feb2cecf33fddb6ebd2b7f9f5c941a36a92e3d0af3d6b7526fd7', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:44', 'sanyi', 'customer_list', 0),
 ('969307de9b3b43270ff5360271c502bf26cbb93e7c818702300dab0f49322958204e1fa0d0a1d6b3', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:35', 'sanyi', 'customer_list', 0),
@@ -1610,8 +1777,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('9aca770fa917c814b9b39f926dd7a1bebe536ae6004562269fd8afefe1a11c2bc2e4ba6509e91ad3', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:54', 'sanyi', 'customer_list', 0),
 ('9af8c558c0ef9be6fb64df784db66ce07985bd318635aa0542d7812d30a5ad6fcdc7ce9f8fe1679a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:34', 'sanyi', 'customer_list', 0),
 ('9afcbd91b71f551e3084a5e9f8ad4e1c4ec471843256d82805ddf0693112f8d66fadd51151418f9d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:44', 'sanyi', 'customer_list', 0),
-('9b5de8849d50164b033e997dc7d74556159ee3a8c16a43b060e0311e887f30db87846a9c44c4ad29', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:47', 'sanyi', 'customer_list', 0);
-INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user_identifier`, `scopes`, `revoked`) VALUES
+('9b5de8849d50164b033e997dc7d74556159ee3a8c16a43b060e0311e887f30db87846a9c44c4ad29', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:47', 'sanyi', 'customer_list', 0),
 ('9b9052554ccc6577d0efb2da1ca1c6a58711d083bdbce8c1d12db23b2d4dbfc9aa8cb97ce0074232', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:48', 'sanyi', 'customer_list', 0),
 ('9bafb0163f1bdd6fe09eff1f70814a1d0c668905028c857708078bd75b351b0b5396f901f2e8072a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:26', 'sanyi', 'customer_list', 0),
 ('9bd80c3b7fa12192886f6170337d3bfda558180f635663a4bf198f0f394c8048b36dd71f48805611', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:51', 'sanyi', 'customer_list', 0),
@@ -1672,6 +1838,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('a14ec3335c6a4e108266a4124550478ca141d1b610d45de97b6f2ba7d7765a9fcfe97a8313c8906e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:12', 'sanyi', 'customer_list', 0),
 ('a166a7f73e6ca82675ade2729942aee23e8dfa7be15b48fa0980b7653d624f008487da7231e88986', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:39', 'sanyi', 'customer_list', 0),
 ('a179a03434ea44aa8ff17fc8a80728c884816c145f8984f95d9884c4d4ca927c02e183f9021f321f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:14', 'sanyi', 'customer_list', 0),
+('a17a98d421a22088e5e3a21c55f08e8de866b002d64afab8b91ab26e618344a81a9659a44acdee1e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:09:19', 'sanyi', 'customer_list', 1),
 ('a17e1a5827fa08fcf0cd1276f18a98bd63bac8529edf7c8d0d8bab3eb68d4a9d148bd6415cd0d909', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:42:13', 'sanyi', 'customer_list', 0),
 ('a180931b50887a5b67fe78424a75d352b02ee38451f7f59f3e55f75edc7b271e179ed4c3a0ea091c', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:45', 'sanyi', 'customer_list', 0),
 ('a1acd3232b8b1fadb8737a647c4876b622017399e15f29e574948a7406a75d5ad0b7ee9d5eadc3c0', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:14', 'sanyi', 'customer_list', 0),
@@ -1737,6 +1904,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('a8b39afdcbf2eb21a7c0fad972eda3b3e82343717d139a516b2e1812fb02c196afc4dd8418374f39', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:58', 'sanyi', 'customer_list', 0),
 ('a8c0822ff0e7259f9ed4af1b6f672f7faf7bf3cd7d60430bf6cec1ec6d82d1d6f3c69b7bd1e0f4d8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:01', 'sanyi', 'customer_list', 0),
 ('a8c266b9da4473b248438d3ce8f175156db8732087d21a47d12fe8bde95202fc0bb6bd68088dc9e9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:34', 'sanyi', 'customer_list', 0),
+('a905071bbccfb58a0c7c582eac82d3942d07a853ac8af9fac1df5587ff40b693546e1068a7b4d9d9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-17 10:42:57', 'sanyi', 'customer_list', 1),
 ('a90a90e457278f20be9ccbfb0282ee1b6b1d4eb933ad48ccc4e6625b8716349398ed8bf71d5c23b8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:43', 'sanyi', 'customer_list', 0),
 ('a90de248806036c8274b519eca9a9320556d4156d9d13de221573cb848c9ae1decc75c16696cb134', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:36', 'sanyi', 'customer_list', 0),
 ('a962ab0d9b7a8bb3dd19ecede7c3dc6403f4b3a2bd7eb1ffa13ad5e04f3e854db87337beca75c9b0', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:51:50', 'sanyi', 'customer_list', 0),
@@ -1852,7 +2020,8 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('b46fe37c0e7c0382c87b813a0519bae76c38f6f9c18da3d89f9e882da9aafcaac4fd29ab2d58ba5b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:09', 'sanyi', 'customer_list', 0),
 ('b47ebc84cebba4db092c3014d9450ad32a06ada55326ff00054b5bcfc0511c8da5d396bad9c9e32a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:23:29', 'sanyi', 'customer_list', 0),
 ('b4f251216d61378b03914416b34d8a49d133a03727de4cf6505f979bba2031008df8f14cd517cb9d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:39', 'sanyi', 'customer_list', 0),
-('b50d520dddd2f4a78d560dbd4bab12520162d895485f3193e6abda8778e466f7eb4b8c895e232c26', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:52', 'sanyi', 'customer_list', 0),
+('b50d520dddd2f4a78d560dbd4bab12520162d895485f3193e6abda8778e466f7eb4b8c895e232c26', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:52', 'sanyi', 'customer_list', 0);
+INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user_identifier`, `scopes`, `revoked`) VALUES
 ('b50e081f69068bb7c22f2c0a34e6c9bcb3672cdcbbfa1c84236e0b9b8b64de0b9f371b4735ff15e5', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:18', 'sanyi', 'customer_list', 0),
 ('b527882c362747fd1d2b11dd95ebd6d651c77e73f7d85563662f4b3ba3ed967d89ceb024f0124540', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:19', 'sanyi', 'customer_list', 0),
 ('b539ca132ff73896b0f2a8f2f99541b7ce99c1998bbd2fc30746d2342d824b46f1c90cc9ef99f2ba', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:51:59', 'sanyi', 'customer_list', 0),
@@ -1862,6 +2031,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('b5e3a13bc3137a2636243ec1499d4f5b49323dc25b80c400f83e5bb136da370175770a95f01745b8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:42', 'sanyi', 'customer_list', 0),
 ('b5f7ad7b8c9b005b229a9166ccf7d971a53315f45e0769ad7e99f693076f4baebb6f2494736d9b30', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:31', 'sanyi', 'customer_list', 0),
 ('b604064767244a930d620094a241e3b7b1e21b7284b909855c999f4f8f9f7b0bb38431336f882815', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:23:20', 'sanyi', 'customer_list', 0),
+('b63fcafe7f42ddff915fed54d334a53c5a772f0c464f5d065036018721b1b5fd70e5bdae8b3c2da5', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:09:26', 'sanyi', 'customer_list', 1),
 ('b682fd5c990036e7b8c772d6f288567f849bce580c29bb2e7a5f23f83f6b423f5ee09f7f26f46be3', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:10', 'sanyi', 'customer_list', 0),
 ('b693ef12f99eb55b9a5f9f67effd6584dfa4c0f98f489ddfd9d0df3bc3157a3f4c2e681e9a70b1e8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:52', 'sanyi', 'customer_list', 0),
 ('b6a6fd9067e752c91df502ff323f07ff8a19122d5eef048e9702f9777cd335d26ec8503ecf3de27e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:38', 'sanyi', 'customer_list', 0),
@@ -1871,6 +2041,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('b735ce4aabece7602542a61639574719fb2fa1a67caae9dd8c3a6808a172679ca9f7104132b2bc77', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:15', 'sanyi', 'customer_list', 0),
 ('b760a8c8836d7089147f49383888a402616723817eb11a750bfdf72972d05889b0f27b231000982f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:16', 'sanyi', 'customer_list', 0),
 ('b76bcfe759e2a9b9608e4591f787af17a5adfbfccfd0dbc56f2b9c3cc5bec3a33c6cc1c738cc1646', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:14', 'sanyi', 'customer_list', 0),
+('b7aafb555905ff2e8785832d5aa3e141377ae6308ef1d2b197f1885d67ccfaec563a7ddecccbc00e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:46:43', 'sanyi', 'customer_list', 1),
 ('b7c317180d561ccfead4117d1d6d584e6387306dba2f64c65212f6c8549851512b1968272bc6df09', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:32', 'sanyi', 'customer_list', 0),
 ('b7db6777306318d3d23c7f1756c86a6cbc2073baa0158d3ed29fe022475945e0152eaf20e2b4df99', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:46', 'sanyi', 'customer_list', 0),
 ('b813df5c8cd966838043c79d4322d0f1c62073cc8c5ba6ef72c03c529ff4f08e6ce8c8d48c17d017', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:06', 'sanyi', 'customer_list', 0),
@@ -1900,8 +2071,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('ba6de22f9bc03a08915f571c660a0c7af628f78895c3365fdb013c00b3f7759753a0f79ffbdbd757', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:18', 'sanyi', 'customer_list', 0),
 ('ba6f5d30fa1ef32fc42cc1ef8f6f310e70f744c2bb571566bf0c1894d95236cd0518cf4ab4c95f5b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:03', 'sanyi', 'customer_list', 0),
 ('ba7e04e7d7da6a1788327d3b7f983d08f6e4417fd49f0c45167b4e5aece3c52a7d324a37028a65ca', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:51:49', 'sanyi', 'customer_list', 0),
-('ba8b4f1656b0c27bf0a4f4d88e0b58367dd2ea800d13f6c71bb66f2ef14ebfed9c5ebca532b8dadb', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:23:26', 'sanyi', 'customer_list', 0);
-INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user_identifier`, `scopes`, `revoked`) VALUES
+('ba8b4f1656b0c27bf0a4f4d88e0b58367dd2ea800d13f6c71bb66f2ef14ebfed9c5ebca532b8dadb', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:23:26', 'sanyi', 'customer_list', 0),
 ('ba9d5b3e77eb5da02bb7e2754124a42ad1f0b484c861b31336a5d06209bc0ede5ce14010d2e677cd', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:37', 'sanyi', 'customer_list', 0),
 ('bab814b7c2e53259a10ad2e05e947e1035ad64118c1ac704ef171e145697e7651c8cd77e018e866b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:32', 'sanyi', 'customer_list', 0),
 ('babf18ee2ae355c095fb16d69ca669c6f6068d184e405150db4390231216c3c1439d704c9291e1db', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:15', 'sanyi', 'customer_list', 0),
@@ -1936,6 +2106,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('bd3fc8189297a2c1551cb22fba8e63dab2c6415d96e7ac0c33973f94f51f00a3f2bd84164b2cfc8f', '482e3f2d976d06352e6f37f73e33cc2d', '2022-12-20 11:08:29', 'kubu1518@gmail.com', 'customer_own_data', 1),
 ('bd54a1ff7af2ba9ae5c458bf4a240be576364fd6889f9b7e5a6e48729ecff527933bca0c39f81ce3', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:51', 'sanyi', 'customer_list', 0),
 ('bd56b94efd22c156fc2e022e928ebe2e928957cdcd888bfd5c1a79bae10c17c7c97f995b890eede7', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:17', 'sanyi', 'customer_list', 0),
+('bdd8dd70f57adf819e4bcf2dbd8fbcc4e07a043cdc9cc9d79b8ade69fbb83b79a3f7c205f17f1081', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:51:29', 'sanyi', 'customer_list', 1),
 ('bdf2d3e35f605f7c13c5cfabe39fe680c7648395df1af58325c8c18aa052bc16171f8973effd65ee', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:18', 'sanyi', 'customer_list', 0),
 ('be06cb25f4190a891e5c043a3fe4439b4c021539ea5465f0e8fd3c64e91e88df9eaab177e1e6457c', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:02', 'sanyi', 'customer_list', 0),
 ('be2626d0532ab234db56013c8e3c660e0cbe9336dceab0fc5a24c9518467a5da918c290dc3e70506', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:16', 'sanyi', 'customer_list', 0),
@@ -1993,6 +2164,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('c350f7397034e79bf0b3f86926b3a0745908925a5e32a65b32c89beb2322f5cc3e1eea741cc0ec8b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:00', 'sanyi', 'customer_list', 0),
 ('c3513336d69dae447f8b76859d1728ccefb380332b3f62ee198c1c89cc271104a02253052cc2db22', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:58:50', 'sanyi', 'customer_list', 0),
 ('c35b409dccf99934e3f3f264f55bdefbb6ebed71756a7aa57cf6433086b130db47267a94ffaab6cd', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:33', 'sanyi', 'customer_list', 0),
+('c382c4aa96ff6cb1b4e95d5786fa59eb3721a9559a5f5edc6cf30c2731f73897df3f962dbb4b5700', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:09:36', 'sanyi', 'customer_list', 1),
 ('c3bc3947432d4a14f5075f18d5ef015fdf41ad92c49c7a7274e41b8193643d558cd6717959442a6c', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:50', 'sanyi', 'customer_list', 0),
 ('c3bd732b85cda29e11c9301b2689561561ff244cb344fa67f689619315106236473269edbd614361', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:53', 'sanyi', 'customer_list', 0),
 ('c3bdea81bda0c2c87ab613fe89a9c0248eb9710da1c053dbfa9e11a3e54b9a257773968f2dadfd8b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:39', 'sanyi', 'customer_list', 0),
@@ -2006,6 +2178,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('c4e9ccd22ae258ab136e6c2eecddd81b7c5a30dab6172e23d2d8e123e1b486b4b6bed1d1ca215156', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:31', 'sanyi', 'customer_list', 0),
 ('c50708c44afb430d1e5c77bb55bf5f254ff803741229f442aa85b4063399d1ed8046e3a0b2c01391', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:51', 'sanyi', 'customer_list', 0),
 ('c50d9c1c2b87fb570520bce9a3df184713dbd4c5d30cf38f2ea943615cff55e538def9fed87a3b92', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:46:55', 'sanyi', 'customer_list', 0),
+('c51de05ec030aadd26777e1f242b6950f673c85b0042aa17397fc6b7030bdccb66edd34e92a9c7b9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:46:55', 'sanyi', 'customer_list', 1),
 ('c52d2beb00ec3fede52872aaea6f3265293ee76f105dd61b2a231ea488e054bbb27c1cb942eccf3b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:19', 'sanyi', 'customer_list', 0),
 ('c55e4a9d6f53cd8526da4cd5811ae25d8d3c441086df844ea848526e24b4918c18efa13049f88d17', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:50', 'sanyi', 'customer_list', 0),
 ('c57728a33bc4ed473c5d0273f9b45c9e65c6b28b22ae4a0f7f54175afac41ccaf18a88c6c4773cf4', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:50', 'sanyi', 'customer_list', 0),
@@ -2022,6 +2195,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('c66787c4ab8f322ddf016f003eefaa4bd8e7438ee19897567fd80847613ec74a23141abf8c4b3fde', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:19', 'sanyi', 'customer_list', 0),
 ('c68875177ec465c55c3fb8585b8091f3c6834647fb93ceff29db014dbbb7d886ec6af72c3f831ebe', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:09', 'sanyi', 'customer_list', 0),
 ('c688f347e3bdf1249609959d75a3d3a6a8118d9eebf7a424e88dc008919b52bbb72aa50ed57b6aba', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:30', 'sanyi', 'customer_list', 0),
+('c6970461f32aebbff1e1291d0639f63332ee75618d8188046ce6fe895a7aabf3cfdfb416bbdc01df', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:52:02', 'sanyi', 'customer_list', 1),
 ('c6a9d87fa131a9498c3060c0054d170cd7a86b61dda9bae4e640745c5bfdb38d4349f1252a395768', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:00', 'sanyi', 'customer_list', 0),
 ('c6aa3d0961dfc62a8713bffa521a6359af7c166cd1944c06327b69e4eeb734c90d4c79ac7282024e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:29', 'sanyi', 'customer_list', 0),
 ('c6c3080f008ae1cb166862f9764f220d3ae743c6b4de46eecf6a4148da86bdb610ec46403073fcc3', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:42', 'sanyi', 'customer_list', 0),
@@ -2038,6 +2212,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('c7a767feb5bf3252d2261d87ece265158f2ec358b4ecd0f3585fba1bc879c43e08d9cf231fa5d731', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:38', 'sanyi', 'customer_list', 0),
 ('c7b665b5e76fc4133580d5156acf820c9371d68a88f469f9962e5862582e0ed7e0c5fd42795bb974', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:56', 'sanyi', 'customer_list', 0),
 ('c7bbd802383ca1369eb8cf0f579fad7620bf20147cebd9806ad2f273dabfafa911cfa8fc83c927e2', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:42:39', 'sanyi', 'customer_list', 0),
+('c7c9ca9ce0cc83928cd91492cb7e1c45ff0c565ce3a277be0cfaa3103656d33196006384182d5e91', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-06 19:09:39', 'sanyi', 'customer_list', 1),
 ('c7ca60413f6428356b504a9662017243aa94199e96b4dc418b74701980a90863a6c24a4e1a9cd57e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:07', 'sanyi', 'customer_list', 0),
 ('c81ac0d62ef0ba9c1ef91780382173b1aa747ff27a28889347dff2158081785d82f292ebdf72692e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:40', 'sanyi', 'customer_list', 0),
 ('c8a6eb2495a80742ff953b5afc4305e2da7b6553ced8bcea55b652d52dc281aae3bf577aefed917a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:42:47', 'sanyi', 'customer_list', 0),
@@ -2135,7 +2310,8 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('d1604232fd55dea0931b54d418e7d3efa89d8947258a9e24601bd868f737428713c848cd38f903d3', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:08:40', 'sanyi', 'customer_list', 1),
 ('d16ab82aad0c91e40595ef83e6e63429cf5edfe99b8cb57eb6d19aeba1a7ef6ee53f5fdcaee7251b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:11', 'sanyi', 'customer_list', 0),
 ('d174035150c97ffcae703909efd70568bec6b113071e6201f8083b2317c13f7e857a16fd6a5f3dc5', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:06', 'sanyi', 'customer_list', 0),
-('d17e6ec44a2d82758300e4b7d2f07bc99964104ad1cbb807bff0bfa7c1b550842634e06fa32cbb32', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:51:56', 'sanyi', 'customer_list', 0),
+('d17e6ec44a2d82758300e4b7d2f07bc99964104ad1cbb807bff0bfa7c1b550842634e06fa32cbb32', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:51:56', 'sanyi', 'customer_list', 0);
+INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user_identifier`, `scopes`, `revoked`) VALUES
 ('d18a041adddeabd907c997578fcc80159cce5c70aea1a813b8c0f630f4aa512c2b6fc53e4eca7212', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:58', 'sanyi', 'customer_list', 0),
 ('d1dc764e09875d5ae18058e831c7ab8462a2001c611493d28457d90a7279fd2e4accb81aa251079f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:33', 'sanyi', 'customer_list', 0),
 ('d20e54dbbcd75f3781bc112b0eff6377956067290378f953ffec81d2df88e4893f51f14488beb7ae', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:56', 'sanyi', 'customer_list', 0),
@@ -2158,6 +2334,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('d385e4cb8c717b357c237f27b5f94f02c668f0c74044e6a3d6637904474d6386669a877fb4b4454f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:34', 'sanyi', 'customer_list', 0),
 ('d38cc01b6926d35b72b671d97e4c295afa0f675819d3d2ca39986a67ccb48fb86a3cba979b75a68d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:51', 'sanyi', 'customer_list', 0),
 ('d39a1dc4de60ed59480eccc63081c1979827afea97a65f6871b03e2952f104552a3e17200e043ead', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:24', 'sanyi', 'customer_list', 0),
+('d3acca057522ac433f53b89f6b15c8b269842d684d1e9708e689b9e7d1232121307884e92d3f2374', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:46:49', 'sanyi', 'customer_list', 1),
 ('d3cc51c0c4acb1077abf33fdf671b84cf0cc548f48491a640636f319e573c30e95f3418dffd222ff', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:04', 'sanyi', 'customer_list', 0),
 ('d3ed8386cf0ca85bcee61ae44217c55a381b6230a01187e15445af77a8b111c98866d47907ee995a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:44', 'sanyi', 'customer_list', 0),
 ('d406bf7722a2fc71a25881549a185be33386ddec9bfe0d5986e0fb812f78ed2f53e0165999257b15', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:38', 'sanyi', 'customer_list', 0),
@@ -2190,8 +2367,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('d83109efc23ee8e79ee85d4e41492d3778e48aae350add0d0a5f9b257689cfe7726dc1680051b935', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:47', 'sanyi', 'customer_list', 0),
 ('d846cafbbc388749f1e6603f0ba2d07d458b7ad8d66ac2d85afc5b0fc722ba89a29fb193d986b7d3', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:44', 'sanyi', 'customer_list', 0),
 ('d85094077fb548cb6259e9287bc3d66f277fe7fcbdf6cbbc9055c4a075b2eecf1a695005d62690f5', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:48', 'sanyi', 'customer_list', 0),
-('d8515392d368df8940b961ea4e382108ffada7307de8ff74c961e11f2b1f982598d0904c3900d534', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:04', 'sanyi', 'customer_list', 0);
-INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user_identifier`, `scopes`, `revoked`) VALUES
+('d8515392d368df8940b961ea4e382108ffada7307de8ff74c961e11f2b1f982598d0904c3900d534', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:04', 'sanyi', 'customer_list', 0),
 ('d85631e33b1968a24527809e31cc922b33810595dae1ae2f38226153e44822cf960c1d41094ce429', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:26', 'sanyi', 'customer_list', 0),
 ('d87e4d3689067c0ebe96bc9e37d2148037f7f303b54094fdb0402c9b97c4b82e2d6443103b1261a5', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:55', 'sanyi', 'customer_list', 0),
 ('d90ef01d5528347fae74c8f598de57d25b547878fd8af2efaee237751ea304d6090c7f18448d29bd', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:24', 'sanyi', 'customer_list', 0),
@@ -2208,6 +2384,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('da35d827280cd12894714c8bf26152a0c46367a663bb798f034e9a2ddc64e42c71a5a1a5d9e6e0d8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:47', 'sanyi', 'customer_list', 0),
 ('da39dc9c073a27b2f741921bc6b6c618954614fb60cb83be851e517f8be867b9cc03f9dbd66e3fd7', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:00', 'sanyi', 'customer_list', 0),
 ('da6325fc78ea15ae6caa06a5e512baf0c2eff3caf880f1cb076b2ba86780ad1a39d2a39a470c52b3', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:24', 'sanyi', 'customer_list', 0),
+('da655e04458594e96f242d68dfced3817e92d46ddffc348d74c777603bfbe1e668573b2a2da2a818', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:51:49', 'sanyi', 'customer_list', 1),
 ('da9b81823f0dd177814f8e5616b69a1ce56e990c18195fc87d4e56d4eeb0cf8664feeb8efd12e8eb', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:33', 'sanyi', 'customer_list', 0),
 ('dabc206b1b3efae139470833ddd0882d946b9752d8094e16dc76ae919c5557b1d5cfd12fff223242', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:32', 'sanyi', 'customer_list', 0),
 ('dae8fd4e3e26c36e10aa06288727acd67a413d4d29ec58b566efb67b6fe0596af13b50ab8255a8a9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:11', 'sanyi', 'customer_list', 0),
@@ -2247,6 +2424,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('df556d04f8a2c6dec63283c98a06323c6a19c626dad5a66ad8badb2c532c91d7e93672cdae56eba5', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:06', 'sanyi', 'customer_list', 0),
 ('df571698b7f8e7455c55fa9f5d4404e786396b2da87ecb02fa2db20daecf5354ef0664ed852543a2', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:54', 'sanyi', 'customer_list', 0),
 ('df9018506d450a0961b04d0e867c3207385f3bd3be70bf6c23ca01f30be49441a2febd7cceccb9a0', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:35', 'sanyi', 'customer_list', 0),
+('dfb2a98398c05c1078e3873f6e5e2c06d0ae21e2d7244895cec803af38171c89748585bb8036845e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-04-25 16:11:39', 'sanyi', 'customer_list', 1),
 ('dfcc6d7d2521c28a6554f1f8107f13ee655667491438a505d8604cba821589e7ec7705ae1bf8f622', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:23', 'sanyi', 'customer_list', 0),
 ('dfd1959e8e3d34d3232fe72d0b0c1bebe83e240cdb614bee4e698120dccc890823b71028cc8001f1', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:41', 'sanyi', 'customer_list', 0),
 ('dfe5a4e53d66337ccf933c09242fa4842cb87de86cb11a0e7620957d191a500ff5dd05845a4699bd', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:25', 'sanyi', 'customer_list', 0),
@@ -2277,6 +2455,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('e3500e64182e1cd2e867eee767e97c7d48e9a9936bf651d1491578932baeabe097410bf06d9d371f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:06', 'sanyi', 'customer_list', 0),
 ('e3534eac4b5e3ecd57bb44e53bbf23a7a70a4394ad2448e0bf8ffe74877e988eb9c1d2849f5e8e53', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:25', 'sanyi', 'customer_list', 0),
 ('e35576dfe48ebead024cbd5e1d8c50985689ed893b12ffbae94386cb27671affba4c76ea2f44f795', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:12', 'sanyi', 'customer_list', 0),
+('e3586c7d4bd7dfe61c0caec9b89f5d06440c3aa8a4c2499ba535dd82a68468d56c67c8f359abef26', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:46:27', 'sanyi', 'customer_list', 1),
 ('e35e0682ff7b445a400e935fdb93d718126b646b970d74961f646d063bd22b6bdb0e7cd968cebbba', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:48:01', 'sanyi', 'customer_list', 0),
 ('e3607e9d9e8a71f48028f9d924d58b4b6805082f798888865b1f982aa36b0f4e8124541cd286db91', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-02 11:09:04', 'sanyi', 'customer_list', 1),
 ('e36ab6084410d22b919d8b59162a37b576cc47c58250266c728f265fa909a52f0957dd3bc1f54dab', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:38', 'sanyi', 'customer_list', 0),
@@ -2303,6 +2482,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('e6e6ec30843d2e85a6e500945006ade2cd548610eb998fd71618f0a1f5f5f14f6a6d8e6f79d7899b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:17', 'sanyi', 'customer_list', 0),
 ('e6eef319a277f80eb11656b0790056ec0cd84c59ab45658e3c7cacbce66b7a19f89bd9591e165101', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:39', 'sanyi', 'customer_list', 0),
 ('e6f32d3dce918c66a0e7711067d00957b6c5af3e1a1559a5ce6fd8678b498ca022232f263b75b65a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:03', 'sanyi', 'customer_list', 0),
+('e70f5efd725a15c7013db00bbcad5f7c30263a351e901d99a740bfc6c57ce41703a1f452d12418ec', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-17 10:43:20', 'sanyi', 'customer_list', 1),
 ('e7142698ffb1d822ab4c00b60bf7f0a4ad2cf757ab4bf1e6bd982cc9b49e2e3a703778777263c31b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:05', 'sanyi', 'customer_list', 0),
 ('e7538b48fe01d8872b4178a100fdf72d2c4d94abf0dc85890fcd82caf18a48606bcc2d5b1b01bb46', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:11', 'sanyi', 'customer_list', 0),
 ('e79cf63fec9a4e4716c8ade1837dab6a86852830e68f9826ddfc6dcccf30ad9da1380f2bcce82191', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:55', 'sanyi', 'customer_list', 0),
@@ -2326,6 +2506,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('e885bba40190f5534d37e81c802c19da7dbf0abb6d74077906f5b6599313150eafd00fb4f9c595bd', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:09', 'sanyi', 'customer_list', 0),
 ('e8a6af60567fefea46536f8b415eaac25d2d0a8079626023611d1727fb8ecd686bce44eb05986c27', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:32', 'sanyi', 'customer_list', 0),
 ('e8b3a0d4de86a8156c4208942a43c8ed34518f12cb6e716667675b045ad023587b25134dafbbbc26', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:25', 'sanyi', 'customer_list', 0),
+('e8c6bf530d1bd1a549313999c53a487705292b381b25b5d10f9c39b2c195d4b876328252bfcc7b23', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:51:26', 'sanyi', 'customer_list', 1),
 ('e8c84bc8eb88f4360144b56388c6a5b77af80f71ed94892b177f66097f3c096dd686956e7334f5dc', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:19', 'sanyi', 'customer_list', 0),
 ('e8e4990590e5ed1f906874f7fe1e949e5a5442ea02f49fbb9131f4c7d58f94834ca0aca8ee5419c4', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:51:46', 'sanyi', 'customer_list', 0),
 ('e8e7898cb3351545f59b30b05b1062b2644e3738255855dd10a6ec3167296bf23da1045199075f5e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:13', 'sanyi', 'customer_list', 0),
@@ -2375,6 +2556,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('ee00bfd605df930513d04850a5db686fa90a95dacc42fc7a60cafd1e05cafd34da9566195bff2d43', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:27', 'sanyi', 'customer_list', 0),
 ('ee115d2f58a06820cad1f9a87f0a9ce2354803b0d083756d265ca58948433e43ff41a99fd3ac0cff', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:21', 'sanyi', 'customer_list', 0),
 ('ee15f11186c771707a048586de47971628c2a9529b9855421936d3f2cb5ca6a35a7c1bb6f00f5991', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:06', 'sanyi', 'customer_list', 0),
+('ee4816ea9487a036a1d88e1e749f4dd47bb81cdc7ab45f6f05ac239749733343eac8172c87295d0d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:46:41', 'sanyi', 'customer_list', 1),
 ('ee6cdc446f7b9fe46040015ffc398d43281ad82835f9ff5fef0fe124acbcc7307d38546e3b3806e8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:55', 'sanyi', 'customer_list', 0),
 ('ee8b3e5e8121164fbc493d0a02f9400791b864b5462ba761f8369ec7ace70c062f3f4eb017dd112f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:42:22', 'sanyi', 'customer_list', 0),
 ('eec01f28b7a85c9baf93b0e0641d96b19a11e6e4ec4a016e116fc6dc18f0f8f10826ac9b457c99f4', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:46', 'sanyi', 'customer_list', 0),
@@ -2418,7 +2600,8 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('f2e01f6c48d8381017677d7bc5899afd142a4a2373e38ef3aaab0b52de652b1679bd09272e8a1d28', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:09', 'sanyi', 'customer_list', 0),
 ('f32fbad594002be69b84e4fa6eb7338aa9d53cc4159cc519ac1c060db321cbd80058b58210842b69', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:42:15', 'sanyi', 'customer_list', 0),
 ('f332cd307986f5ed20bc246e89d2c786b4d3c2f3b460943d1ea021e30f6a2bfc81e3bfabf2a382e7', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:23', 'sanyi', 'customer_list', 0),
-('f34554e6811fe724e687e95987c6e16254d98a94f6917ded9dd1e597337636132b837afdd67196f9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:32', 'sanyi', 'customer_list', 0),
+('f34554e6811fe724e687e95987c6e16254d98a94f6917ded9dd1e597337636132b837afdd67196f9', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:32', 'sanyi', 'customer_list', 0);
+INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user_identifier`, `scopes`, `revoked`) VALUES
 ('f34ea31d266512cca739f5a6f77a9d03926cb05a843839503cfd913630c47ffffbb0c75ce66da373', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:36', 'sanyi', 'customer_list', 0),
 ('f36a2601bce2cfcb3f7ed566ee6056128d2b060dd194cf1e22ef0a57aa3af5c5031f00737ac65232', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:49', 'sanyi', 'customer_list', 0),
 ('f38e3a48aa04dafc9449ce96768b6e791e43f123ddc702f688d2f9ffb612f85385db5f778155186e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:46', 'sanyi', 'customer_list', 0),
@@ -2449,6 +2632,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('f5c0c1b8a632a494933e22cb96d179cb2c42127cef4a9657e4f8ff35f4859c7ff7d6f547c21894fe', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:03', 'sanyi', 'customer_list', 0),
 ('f61189367569861804fceabe339836ec9d29700bdb66ed7e4efc03f0ba04584c821f02def4353917', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:50', 'sanyi', 'customer_list', 0),
 ('f6729d69462e882520acd5c0d0518f099336c13116043002210d92e754e639199d844c83d9b40b9a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:51:44', 'sanyi', 'customer_list', 0),
+('f676683bc48038c9f4e02699535bf20e575c781913f5ef87150c1da729dea5c9a7a6b37d5ea5480c', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-04-25 16:12:20', 'sanyi', 'customer_list', 1),
 ('f6c1033b8fbb4b40d7965ff9921b0b4c3ad0a0f8d1d921113416c6aa2e8ccc00a82856e70cd02b41', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:52:29', 'sanyi', 'customer_list', 0),
 ('f6c23e2ead84d73fad0c3f085ed5864c2658dd47641d492c204c0c4c3093a245a8b1b366f90b592a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:20', 'sanyi', 'customer_list', 0),
 ('f6dc84c674c148ea255dd9e97e60a93f630ce051a83ebd06e86af9184d1d3b9e0b7b46ef090528c8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:27', 'sanyi', 'customer_list', 0),
@@ -2468,6 +2652,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('f87733fc5e3fb93a64e1710f6f4ae3ca43e8ab15af14736c202287f67af7ad357f50287a8d2e42fb', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:45:25', 'sanyi', 'customer_list', 0),
 ('f890439c433db65f0266bbc634c8992c84a69a5d9b6a507cb026a82b51709881c50687bd958d1c4b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:08', 'sanyi', 'customer_list', 0),
 ('f898cbd71f79bc92c65685cd69a60763f51f5147d481381424e0f7d29d6856749d8bd92ea67deea8', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:33', 'sanyi', 'customer_list', 0),
+('f89a4001037880a5281df9e7358fa37b5980a9515aba43cad8ea3beb8bbbfd91c5f8dcd85b8de53b', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-08 09:46:33', 'sanyi', 'customer_list', 1),
 ('f89be9a5abdbb48af6c5b6513e1075321c4e2e489d3bd00306115fdce4769c9594c596a4660d519f', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:11', 'sanyi', 'customer_list', 0),
 ('f8bc08fb0b430e816b9962bed49424411bf440dbed6d41479760467d48def80a69b44c6d7ca61869', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:55:33', 'sanyi', 'customer_list', 0),
 ('f8cb2fd9ecd7f3be74ac03c21ee225429fae38aa0fe997f32d7fc4f32a85bef412c005448a8af76d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:21', 'sanyi', 'customer_list', 0),
@@ -2480,8 +2665,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('f984ba6f67e85faa4848509743da473b7cdc9782c740fc6e68ac91a8dc0a6ce6ed6de1c384fcfc65', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:36', 'sanyi', 'customer_list', 0),
 ('f98cd573803cf44b99efeecb56ece9bd58fe86e5085f6b40aa102de0527279076619f2c57a593d51', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:33', 'sanyi', 'customer_list', 0),
 ('f9f1e5f99feee69127a5fb30ac5ae16c77c75d7069cd09fd6f83a6457fa5dd50cbfca4650d941dc1', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:33', 'sanyi', 'customer_list', 0),
-('fa031304022cb7e2762cd8f52b88d81eda86ce843e4c300c03877eb5033b2e569d0b8611b498b657', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:30', 'sanyi', 'customer_list', 0);
-INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user_identifier`, `scopes`, `revoked`) VALUES
+('fa031304022cb7e2762cd8f52b88d81eda86ce843e4c300c03877eb5033b2e569d0b8611b498b657', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:30', 'sanyi', 'customer_list', 0),
 ('fa0a9acd09266eed52acbd357fbfa8351a3fb1412265f58747b43aa3106a59aaff4db96d7bed135e', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:36', 'sanyi', 'customer_list', 0),
 ('fa1bb801fdeb3ee9d71462ce7cf15f3671546db5666383b0aa9cd5af3e15f83606ab7b781f286871', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:28', 'sanyi', 'customer_list', 0),
 ('fa1e200b015c3d5d623e95ae4db7da75af6daeeb89798ebf8635ae4432badbc8fbc0de76b81b989d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:32', 'sanyi', 'customer_list', 0),
@@ -2506,6 +2690,7 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 ('fc90c5d76b242016d0fa7e5df689c346afb7e28c4c05767f8e2e83754f63ec91222c0a92f707361a', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:57:40', 'sanyi', 'customer_list', 0),
 ('fc91bc84d13938cee24cd292b6540e0b2d73371a41a9f23b9b829979ee1c7029c5cb342ec326d46d', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:48:00', 'sanyi', 'customer_list', 0),
 ('fc923c78a6978e25d04c017f7813fc0b9ea0965759d7a6130844c074de4c62876eac433aa88df329', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:56:44', 'sanyi', 'customer_list', 0),
+('fcea1c6d2104646a440da324ca799f72b709b21ffe5cfaffe45104e1a0ffd3dac4fab44134a819ba', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-02-17 13:49:36', 'sanyi', 'customer_list', 1),
 ('fcef68af3d98920a138adf79485a0809b13e7d85e1fb7e4c85056553ac1f187588061f06ffd93e95', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:47:45', 'sanyi', 'customer_list', 0),
 ('fd0a4603c8e1acc3307ec08a1c8a7c31dd62fd16c62dcb0c9b9d47513b9a5d55e974f7a1d31be3ee', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:44:04', 'sanyi', 'customer_list', 0),
 ('fd0cc98563d9d0b414f944e0a9b140b0f04a5e05f8f04341e40b5e88d79d3fe43545797f2bef36bb', 'feb1d8d3365777f837a20e2cfb1e40b9', '2023-01-31 16:43:09', 'sanyi', 'customer_list', 0),
@@ -2544,12 +2729,12 @@ INSERT INTO `oauth2_authorization_code` (`identifier`, `client`, `expiry`, `user
 --
 
 CREATE TABLE `oauth2_client` (
-  `identifier` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `secret` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `redirect_uris` text COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:oauth2_redirect_uri)',
-  `grants` text COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:oauth2_grant)',
-  `scopes` text COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:oauth2_scope)',
+  `identifier` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `secret` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `redirect_uris` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:oauth2_redirect_uri)',
+  `grants` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:oauth2_grant)',
+  `scopes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT '(DC2Type:oauth2_scope)',
   `active` tinyint(1) NOT NULL,
   `allow_plain_text_pkce` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2569,8 +2754,8 @@ INSERT INTO `oauth2_client` (`identifier`, `name`, `secret`, `redirect_uris`, `g
 --
 
 CREATE TABLE `oauth2_refresh_token` (
-  `identifier` char(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `access_token` char(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `identifier` char(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `access_token` char(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `expiry` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
   `revoked` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -2588,32 +2773,67 @@ INSERT INTO `oauth2_refresh_token` (`identifier`, `access_token`, `expiry`, `rev
 ('0a76ff217deb17352671b2c5f4b1dc907910273d022c4752ef7930774f4293b920afaa511e570374', '98c3e519d453e2a2f136aa945508372c28ef3d7379666ac626703261c49590ec14d9d279218f8e15', '2023-03-02 20:57:19', 0),
 ('0c1b64267e612fb0950a750f7f9019a490bf0379eb5ee3aa72c01859071af6b04582e4f2715bfd44', NULL, '2023-02-24 16:01:38', 0),
 ('0e89acd8ec40c666774ba43b3e2b1fa97362ca64260b9760800b7080579100d80739125600c8cea0', '430cd30d8a4ecf96b9ccda7a3f7f340e6a23dc238282570a6ca2a19a7f6612bd7c074536d73fe1c0', '2023-03-02 10:39:00', 0),
+('0ec2678319ae82665f195d9c115f756531291b13ee031c282f78674cf3fdc91529c9a68f99ccca6e', 'efa0c288fdc7a621da0963234317d6c1356c14ba6bae5d22f5622ad68d7364eea307d2dcfba30f7f', '2023-03-17 13:35:13', 0),
 ('0f96849bab76fe8bb71e727a6cd5ca471f767fc91f3d975fe34c756fdcb01669ebcedc0494b34bed', '11445868d78c9604da8f43af44a3846eb0c244937868c609d9b27158ec094a02b56a153677834f5d', '2023-03-01 15:48:52', 0),
+('14b5748c8c2f76fc197f592b34ba70b1bf36fabb63730feb3e7e6a2ffe73d2c611b075e96b6e0d0e', 'a9d0b265530378b7db4bd492e08f49acbda9856512aa2c1785d531c05bca54f999505569b35c26a9', '2023-03-08 09:41:49', 0),
+('151b9724257474f8fdc566a7f97b662258c59a15923708f5ac08c6289cfbf88286bf5e438d60b095', 'a44d90a45cdd97183e2ce831461bb6cd2b26801f75e09c5a73add92f2f819c646ae436499ea34413', '2023-03-08 09:36:44', 0),
 ('1678fea195d36dc116a5d1900bbbfdde09dc895a54562c7492bf118c20d468ab23fbcedcf70c3a41', '1e435b7b37fbdd2ff7740059e9c6677dd4810b9fcf9c05fe291709232801b9d1f9ea2575db727b96', '2023-03-02 10:55:13', 0),
+('171e18f717f80e9e82cdf5d472d90374ce4f0a8ed537983496c9e96e90bb23f081e2f4cfd23419de', 'c95610a38dc69c812001e77fd5e5a97255b6efec6bf64f67d18875bb396ef261aa9db9ebb031c99e', '2023-03-08 09:37:40', 0),
 ('1733a3f162349cdbf714bcf78a6956299bfeb7868a12e41074864d1234b8d524b2c1c612d332d32c', NULL, '2023-02-25 15:12:15', 0),
 ('1a4522ffe45bfc48a08cf79b55af9feb632bfd3463b07819bf652dd360fbb64970ffa85b1e607f61', '5b1898c878892eb30c72d8d10912e8323b699a9306ba4f03ba3e44b223e8677f7669b90acb102c24', '2023-03-01 16:49:37', 0),
+('1b977a4b71a74b5e3655c874feade1660d8ee0a59a9fce753437254d95dae53d1762d14ef4a39253', 'a6b2a1c1d7680a38eec2604197eb4be8ea00d2a4bbdf72f8b044aa4c1089892fcb795d59dccee640', '2023-03-08 09:37:01', 0),
+('21d83b80fc02035f0ceffb30a27249abb5091a1ac0d598275358a3e2fd1155142465a19307d1a0ae', '5c390f0ff998ae05025299cf753eabaa085bbfcf3ccb3559751bebbea6dcddb78c3de59fa497997c', '2023-03-06 19:29:42', 0),
 ('22f005bc665a260446b21c4b26eb7ef4a2af3b2e50375b365465c077d2d94999ec579429cf0dbd50', 'eca0832ab7c98dd563e1d9ef8a37fd7fadc3caf29b2644a412b1483d4d0fd4d2653410fa8146a50c', '2023-02-12 10:05:01', 0),
+('234ba396769057225c4cced61cf9351d8ca1405b4ea67d3285dd2560f96f635b523f07bd757a2022', 'cafe45433d5811a4112a93cb0360f2c95616e07b03f9d983a7fc448aafb4dc600f308049aa2a9aaf', '2023-03-08 09:41:53', 0),
 ('287ef18db7d957b9f081a31e8c6ff361bfb268b5dd86f1b43dd7e3b8a00e8b2d228088413a952660', 'd9a8301478072db54154b7ef0f69065503c8813456f3cc1b3eb7ea2f2b24cd1a7dbbd5b8573e429f', '2023-03-03 09:45:25', 0),
 ('2c7b6a70a5230a4669660eb2318c1e3fb45fbc5e840cc4e1b57b715648f285f872b54adee37fda2c', '6d4354311d4aa2921d8bb7bb11c29aadc7f4493e59cd1de0ccb7f098c4d61f76bddf58458a6ed510', '2023-03-02 10:59:23', 0),
 ('2d723fa619cd63ef5db166ba860831678a752ada4384ce642a603ff19a8f7d7c4883a281445390bb', NULL, '2023-02-24 16:07:26', 0),
+('30e4d1e1ad75a70426040588b577841006a48fc096512aaa409bbc80ff405aeefc1c0b689f63addd', '7eca3a84384d088e4f3972adbfab5f6bf78e40ffa9d6b4a35768f3ba0711b3443d3b88ae5a9adaaf', '2023-03-17 10:33:18', 0),
 ('367eff1c576130a67056e9a538c34af7ae4a9cdde0573efd91a0ed0928f4a41d9d4aeb7a0a032b35', 'c4cfa01f767ea4cb5dcd1cd80e559beb57e2ac9c3662497d63f8676d3d29420af39aaad6186e4e44', '2023-03-01 16:39:03', 0),
+('380b87b2d48426054e9aa52f2a5e0df291365508c3ce60755c5a8cfd4bdb9637488a60e3972c9593', '5e4553a1ecb7a43e9eec1bb3a0e9453289b7b0eb085696fe19c0af2faa2d67ebaf5ba4e4f0d38a2f', '2023-03-17 10:33:22', 0),
+('3bfed1de103fbbfa8f497a274f47a61b76abb572800933da7478ec8f824ef8b9307171ca318d7cc3', '93118d2d9f8e6e11ca145b40a0aaefbe3d50b3081e43f67cdef7600993d6cb32bdf3ba068ed574b7', '2023-03-06 19:29:27', 0),
 ('4097cd0be460d25b6f547bf0b61f671b8f4fec275338a7b3ef9599242b44b5efa12aa42e38242431', '97eb644bfeebcdde4781147df3c96cc194ff46a3b63ccd53f85d556c4779f5fcbe6b9796b37d082e', '2023-03-01 15:51:56', 0),
+('43c85c31cb3b4442f2ea18a3c45f512a01849e65336d5ffbb60f9c9d08f9e6d71ced2e413385ac77', 'f6ab828b8affd8e76a843bc22cd62e06409ae76e01de4e611b297329e34e4d35028063639f40358a', '2023-03-17 13:56:26', 0),
+('448878ed3ccb52ea18cc55565c612544f98e380b1ddabb74eed472c673159b579435625fb02b0530', 'ad9418b42f1aa406fa0c55131a3851c745491a6c5bb103ea217f8fae4015f95aa35ba93dc7fb0e5e', '2023-03-08 09:38:05', 0),
+('4780380c8c8db8ea43927ed65ae13de7128224e0d70f2ad5c019d152ed4b90bcd155310a2e0357d0', 'e7ebccb47a6ab7039210822ab2993d7d500efad86657d54e2fffd8f1f812ed14bd198e16047a5b65', '2023-03-08 09:41:29', 0),
 ('47df4b77f4a37e4c59118ef2a868e87aad58eb95d834c6a71fff312a36f5c821fc626a8972e62ded', '032de6a1f4dd1619716b8272e3ec1a6125ec1d40c5427e55bb4b6ea68a80e01fe07535b9f560d495', '2023-03-01 14:55:16', 0),
 ('4b5b4d697c3d0427055ab29e280f72a1c9c3a8c6ec35ef1785e9be732b52c7744f9179a8852a8a30', NULL, '2023-02-25 16:02:06', 0),
 ('4c69c3e93f1a9860c48192e9c5fb6dc5fc8611e926002b24655d205dfaef6c6dc361575d495ecc6b', '9c902dca671918153a71b92144caba308523de7cce16f983cdb427766e7b966a47e62ee7e89e542e', '2023-03-01 15:44:36', 0),
+('4c76f769b949b22082de6876be8acb614ba0a9650bcff410ae13fc7f4c6f232d218ce847c5940fa7', 'e4a511a46799b8e1ab94bae5d5f1d6a8e3bdee5bf5458724e01d57744b9791977d2fd8e6962fbc78', '2023-03-08 09:40:19', 0),
 ('4d0a9c629027a7a575846b6994ca6a88bdbe6e0656559e9ce7c48f29ddff2af1d82a0378cd68fd02', '95b83bdd32a2cebfdc496213f4450b957eebe8d2413898b9f458137e1e4612b00c48ca5892702c0f', '2023-02-10 13:27:33', 0),
+('501ef398d536ff96c03173fc98bda584c0c1f392fcb78d38925523bc211332f818f52e2f841d2117', '456c2a88a576ff4e1f18e99bf0945806d3c2f0a96837f553d9d7ec032cd4c35bd96d38833b0a8daf', '2023-03-08 09:36:52', 0),
 ('5020ffb8eb4849701e3d661bd61ccc238c9091b17457a45b377ed43dced218ecb8dde570d4ba4e56', '5fe6443560e830f639acc986bea257dbe7d6c58e928a8f3f701cd9c119c63309933fc264af9a8db5', '2023-03-03 10:13:27', 0),
 ('51383a64995db343aa2550a436afb82819e671c47cbacdc55dee0948c1ff9de8b0edc4b108aa7c36', '5d4c29257569cee9e15228f34cf4848c4edbd812dd0b7c1a099eef5918839e7b94649ca4052d0c90', '2023-03-01 14:56:02', 0),
+('5283bb65fba27b13fa6635f40298b44038409f7a30a210277a6bfb5bff1497182d81cfbedc58601e', 'c97518d5dc262e6f29db950af145663a40e194599639f632b711fedc93d7b31cd986e02a9131cacf', '2023-03-08 09:36:58', 0),
+('56ce73fd27c081db060054e615b564e7da76809422d388a5b1a2c6329694d73d350387105581eeb1', '9cf8b2b0e357e2a0ef48b1056816877d7f340b028d587ae46d332284e9756f9e4e951f5dd1886404', '2023-03-06 18:59:41', 0),
 ('58d7fb879440d171008a43d38abf301153dae6ad232b86ecff6e6b6c61b2869d2623cfc4d89fc5cb', NULL, '2023-02-24 16:09:02', 0),
+('5c298d9cf4b350770c42410e30ef9955cf4165201e9d01ff63faa4011516aed465970221e2de49a8', 'dab0fee400ec79c627a2601b88ae7a23e36be8c3f240ae1fdd7087997350f0b6fb000881316650a7', '2023-03-17 10:33:16', 0),
+('5d3419ea03a5486857895bc049bac46ec9bbc9f0f7d7ae920743250a5ad1f1191aafec4d13ea3450', '0baa20f9d66f16e69d040eb75d11ee0d117804369790574370f723210772416b4ff5641667fd1124', '2023-03-08 09:41:32', 0),
 ('5f905fa23a5c931af06fd96e86a48ece78056e89c8603bfb8b934a69da83acb1611d4fd327572f0b', '37d1b2da02eea482bf07741d87f258ddba3c8da5e1b2e2a9094575e12cefcea4457de7502c90ffcd', '2023-03-02 10:51:31', 0),
+('6074fb28b34c808c73805a80a9ebb44b3dae42cafab1a3bea9e5b828dae5f5df043e90555ee02649', '0991899217ef04c77711c047cc87bbd5593e384c6c8c8ad35be68ef08ec2605172624a1cf4375626', '2023-03-06 19:29:43', 0),
+('6280733779cd4990a85fa85a4f2e5e2647a6969b88a7faa28e4fccb303cccd711228d73dceb86155', '2859a14ecf71d99f1e2fed07a6e7d9beff09f6e20266ced5c49fa913aab141b86bda420e94a8c773', '2023-03-08 09:49:01', 0),
+('6403b86ffa4bb7a966c54401705d5d1ac7c335bc70d5cad45c09168d17b7f2de51fc54b4cb3b63bd', '25080f0ef0a45b014f8e09496fc5c10c90336e53119299507cdf8d4465dce8e1913b32535a490a27', '2023-03-08 09:36:47', 0),
 ('6542bb3ce8dcecbe484f85c0d4b71cf9386de6a38c814aea23ac0a27126f3a474e2faec65a11c293', '5f62d808421edee64a94a85ff31bfbbcaf5cf4e9cf1ff596b742a350fae18c97218f79fda53908b1', '2023-03-01 14:51:17', 0),
 ('660980ec9436609ddf1953acd662465b5b0e1cb075e530a0f446e5d8f1347f292400c0c6dcf8751e', NULL, '2023-02-25 15:50:07', 0),
+('6684cf166e3127685b33ddb6865a357c80e394d1e1eaa1274be5a500b06b250f9a02c13f02097a95', '2f98fca98143d50146c04a0e7016fda6cc8c054c3a85af7db5a69d1ed855d2417616eda9f6cfa9de', '2023-05-25 16:02:20', 0),
+('66999270108007d4b2bd9a3a7d36f7f8cab20c5ceb0219d34c1b81ff77987c2a04e13af9123d459b', '8976517d13984138634b40a90068bfd564a80d9971932c9e50c4c702b5cf796e31afedd5809bfcdf', '2023-05-25 16:01:39', 0),
+('6772369d2e1d8bfb5a4acb8e17f4318e139a8c5d8877f2558494d00eded972dbeff542b43abc283f', '6f210fd927a27f27e12175387bc3c36a6ae8b61408b23595471139c1af801e4e60528293e9139db4', '2023-03-17 10:32:57', 0),
 ('6a0e7c64d315a4763138f8546ea179dadda24972db0d194fb5a5dbfe0bc84b9afd3250269ca317d9', 'a9d8cda6e45918168299fc9a4710bb3f9e055098726d5d35048b66843a585be1276d1e60b3066c5a', '2023-03-02 10:57:19', 0),
 ('6c241d8debed0d9b143aac64f61f1b04d8dbe67f9b753d994cb37fe17f6d0adee2fb114b4109dca1', 'e38088432867573c98bc0eb1c7b23eba07b4e93fbd548ca5d2bf769fad3b4270f26355c3f7131449', '2023-03-02 10:51:44', 0),
 ('6dad3599e45fa6a240c475c254219a9fe89ba4bd64527108de05a4ff9b9ba22cbd5f649b578cb6ca', '86f07c0132bf8400ea5a053ecd93467a7d1c1933c1092f4c8a3f2e0c5d45fdadd99ebdafe1e9ee14', '2023-03-02 10:59:05', 0),
+('6dd02c8fafe275395dc228b6863e493d3006f84ef63a57b54ebfaff763d54cc515c53d5855b9f668', 'a3e8f44cffe5022e5925600e077861d1919ed840d5c4da819e828122132714c957a1cbdaf074d029', '2023-03-06 19:29:39', 0),
+('6ed073ff397bbf1cc8f086285730e05958290e639c70ac7e6a3fbed27a6aff1b6dc01a40d27722bb', 'df0cb86128fbcae21de3bcd31604500bdda01601da3d015f28cca85c3b5698c860ad6926519b5831', '2023-03-06 18:59:12', 0),
+('7022578ed6ddea6e0597882172234c185e4570293de32fa59583c7941e54e957ae3a4751ed898f35', '0412e58ae213efe793ae54c1d43c789e2a7a3fa7552546f96798237f7dd0f21556dde5fb23787b69', '2023-05-25 16:02:26', 0),
+('7095c3062994ff257a309840bdf49356d5dfdf3b8aef4d9db56ee3900d651f89f3664acb9937293e', '9719641bec3c839da7d8efe5a18bdceaddc895fb52574a1b8d7fe6055ab0f8fc1b2b4dec59a89aaa', '2023-03-08 09:36:27', 0),
+('7455ff8f30c9ccc1266b3f748b4b6c926cd9efa03546c26e7084dc945f51720a8dc9397cb5c5702b', '8c00268ef6a65046106c064781890a487808f4e615c363d2f91c32959888209f7b62f9c1e53c403f', '2023-03-08 09:41:35', 0),
+('76c2018d58a8537da0296420f89aa674a65367048cb4282fd7f31a1b370012a6a02f40dcc47b4773', '46bf89bc665a46283c5b46be82c1ab2ab2e6d8467b1eb45a03e1e9f28bb07a04ae4b85c33f674264', '2023-03-06 19:29:56', 0),
 ('78738c5a9d4610d6efac0559e827b5d58f45e799a3c5a44ab876255b9e5a4a233d8a442f9d38e9b7', '02e73b3f25417a0847a4ec8764a819dddf6ea760fc104455caccd6bff56144fdab3f26365b18fafc', '2023-02-12 10:09:16', 0),
+('7913fd593e0fa0812f3f0d483a52edd1b1286f6ac1cbf53176cda63102e6f7d1132bec1fb3d4b406', '8b3a9ceeb916d23d3e92243eb34bfe7ade9ecb3d394948f4d1150d3d42bafc71e3acf33a6a5b167f', '2023-03-08 09:36:55', 0),
+('802173e84963e5f274ad62761ce2d91b979078de351c557f3e0fa3c2db6049e8173c555beaef40b1', '0f4749c4b31376199a5c75714cb54ac96350b21e801d82e829a5ef18d894e0198609545a49668022', '2023-03-06 19:29:45', 0),
 ('81fad4334832d7872698355e6126530158bf3534a238e19ad4a82d10a278047fd2575d7185e413f8', 'b49e447bbc4199a1d46c1817f70f27b088f8afc4fff342c2363d90c65928f9731461aa4efe4713b2', '2023-03-01 15:44:05', 0),
 ('82641849c3b1b9d67aa9ffe4a529a8fa4585254e806f224d599febe1d39899ebf0476855a3f96f17', 'f5262f91fa32b3f4e876282c052442c26f05e64b6de990e7e1f2a3d0b402d08b32fc7174d7f56a77', '2023-02-19 10:31:17', 0),
+('83df8307c2525d10de80faaafa25b1fbe3b568df2062ec6f1355ae0402a5c94024e9b486d12d1b85', '9a3ec462f4505dc74cc733c048ae2280929c644ad4489d54655c17601d649af1654c69df315da660', '2023-03-06 18:59:06', 0),
+('8430fad64063d956e4a37bfb0ab8871ed2bb0a1a2979d8ec7835d0b0d5e83cd028fbe62254704114', '9b686336de7a6879d16a19d2f6c0e054a02d22ef8a89407f7451e75d72d0b4ef893c1efdaca000c1', '2023-03-08 09:38:02', 0),
 ('85731c24925b57bf20707892f29b37aa99618284e734d68479975c2b5cd6d9109d9c9a4c7f479908', '8cd0f17cc7201f3e6190e3a55aa36c8adece46b09eee011e9fc97b78f3b3bef5c27511471f1ceb10', '2023-02-19 10:35:40', 0),
 ('85f1627f6a0e79d3aae238694bd5f6aa3986bad884c36b712166b7fb29b7e8bbcf3c13ec76377d85', '087bffc7f9678b343c84497ab23ca0642e26f43542bf9e80d4cb822ede009797248fc376b55ed394', '2023-02-25 20:55:34', 0),
 ('8678d06b66b55657d1310069d62c395a323df1573596dd2f5a97677e4358b58ea6c2329301a516cf', NULL, '2023-02-24 16:06:16', 0),
@@ -2623,43 +2843,75 @@ INSERT INTO `oauth2_refresh_token` (`identifier`, `access_token`, `expiry`, `rev
 ('8e430d8348570b219ae293e751106fa4872b179d4a9119caab7f649a792f4108ed3c9449df3cb3dc', '14ad2384d03044abc79091b1dd0e1caa44202ac286155c0d9989b2b4595587a38c5feb33f02fc278', '2023-03-01 16:13:20', 0),
 ('90b8b3fe6d8037be0f1f7655d3b7c5bb244ba5c64a4509198b836d6b4a1bb8e8ba2f6db200066be1', 'c2870edd465867255549812d1d26c4c2967a1fa1ba9c76acf06b3a41acc5a10e8af1f36f625271d9', '2023-03-01 16:09:44', 0),
 ('91e18c13527c8beaa10ebbe00a9e34e55d8359fdf806e7318ba926fde39f507e713627fc00147cec', '24059e1e612cb342f2b1d0cd19ab859541960777974c2830c1441461e90156286b0b94b92203f2de', '2023-03-02 10:54:59', 0),
+('9399a83d08d74d5490ac80da5569d7ed9da250c66a699e14563ee5402059deca592d3be56d123c2b', '668cd7f8007d8f3051a6c4b7799c1596d658b430d7e2e0d714bce86dce28960ffc9409d53fca79f9', '2023-03-06 19:29:32', 0),
+('94235fcfa7c20b327b7131450379e70336b7d285f323ca61a869afe4935b05b2f4880476e9a11f09', '3048dbbcad0d80e29a851df11d979de9867c804addcff741c2c93d6e6bc340522808b10bb2ac90f4', '2023-03-06 18:59:32', 0),
 ('97c0beb97a2dd49664b0c727ccf52ca5cd136a382572f32572e0cc0dd06d899f2b3a28e7468f0f52', 'a53e9feb7d5e6bbc565e015f71198d7f90d87ca7251bfad9d68e02766f706177a43e4868972a3d73', '2023-02-19 10:34:05', 0),
 ('99d37d629eeda4b17cce60a6a25baf9fbfe57a6f381040896a2f5d482cddccbdd058aec13cc20542', NULL, '2023-02-25 16:29:15', 0),
+('9a8629a08b533975ec69faa579e938f092daf853a30a4e30e6b240537c0b9d6d41a015706aaafd70', 'f433ad370896ab707421ff501ac6e50fa2a9816235def0405eb6588da71b7015f679e36b066c56b4', '2023-03-08 09:36:41', 0),
+('9ee93ca74fcc267a63aad98af91c198956908f0ca02184af6ea90c5865a0b79d7708be0b5e9160c1', '70fd4bcf7c62ea21c6588d9b2fdff82e5e49052f140c23cc35e0ad9ce17d370994de3c7fd227b5ee', '2023-03-17 10:33:14', 0),
 ('a23cb23f1611a24888c0b70535d63a7486c875173e08dee0df07751e7f87b566051df24a4c42f291', '7129e3410e2a0bccc5de90135f476ed855fe68a7ce2639b4df754195ea8a5e6d40c6936cd82fb65e', '2023-03-01 16:13:34', 0),
+('a3fc696811d200d884fc80f996de41a841ba87a098b37f9dee37e0b725bd292220bf89cd9ca47492', '0a01929bb11e39974cd0b1de995d3f76b99580e7bea5b9868329519766aff0d2a130fc9067b79a1f', '2023-05-25 16:02:44', 0),
 ('a4804ab17a4b79c37dcd65fe5c7dc039f89e0ddd5eefa1f32240f7b7309d7539197f62b496800328', '6b7f2e58eee7f3f8858d41ef24b535a4743851a35a9adaee85893ed15d655ecf4fa40b57e8808839', '2023-03-01 15:45:50', 0),
+('a4d335089bf402f62aee1d89776cef63ddd5d0f83c47d1c7d7e4fcafcfa25e51e3478a98cbe13eeb', '0b0477ab4ec0f6f538f19aade5115f68053709f4fd674dc002cbd473cd46726eb5fb9d58a29c82a9', '2023-03-06 18:59:19', 0),
+('a52cec1e58c645cbadfd32c2c9cc04bf4d7b4c3880509cdcd9e85804aa5e616ee0a43c239b1f136d', 'a1061d3d033d9a0493010a4b8a3239c50677d524c8c2ac778479c86f4ddc7b8cd3519d9439e6d201', '2023-03-06 18:59:16', 0),
+('a5a21361e16ff44ce87ceaa434d181b298c5772539b647b07b8f287b585d293ad276d2088f748350', '69e33ebcd95b3599ffe8361d45c1ab1efab4a58cfef94c2621c310b86ce0a87422f9cc1bdc484e3b', '2023-03-06 18:59:36', 0),
+('aa556b5b4238463ff08832af4c16cac283983a9a97ae7ea254feb5f31b9fcd71a127ebfc3de358b3', '8be0e588e1c423799bfb7c7f08e51763a4039656925fe006e4a5fb6d91e6a93bcebd2cf2bfbca82d', '2023-03-06 19:29:48', 0),
 ('af18a7f002a5c830573542d3bbc9bedd7ecd147ebfb61688e95b00a57e15e5257c97f7e4007c58d0', '3d647c8aa5c0c4f4f361b14113fba397e19ba5680db24317f40e52e33aae7389b89aabd578544924', '2023-03-02 10:59:38', 0),
 ('af31aea6bcf3918d885ebbca1894594f75c14f92504e4d3df17e27e70ca1f026a84b23b91f70b2da', NULL, '2023-02-25 12:26:25', 0),
 ('b540659847f0e8473008e8662cea899957abcc0afccec0d62423c60d91b051fb868d8ee7dcc2365a', 'ffbf9c591e98caafeb2a7614839964427fe8b10041bd7e617d532e7356f274a08026c49b6117dfba', '2023-02-19 09:15:14', 0),
 ('b54e7e5d173d3f489c859cb28777067a888c38d32ca699085f6f16698d9eb0d249be550bf8aed71f', 'd899bc4e1dcaa0cdbd9f16b061a53f215aa5ca39fdeb395701c62275532edded425739a64b846f99', '2023-03-03 10:23:29', 0),
+('b7a1e096da3b54e90bd7db98f68d02b6689a9d3076baa7222b734364d5a3b2c0e744740d84349d40', 'bc572ec2f05aa2ab25be04217293ac83f0c88b1a56bb062384f087d8f88edd6b5f5a3f1b1e9123dd', '2023-03-17 13:39:37', 0),
+('b7fa1348cd3c8ee5ee31c452e888b70d346ac23645b28c86bd8ca7954356ce34c9c502e11e1a94df', '70c9f039817b4bd4fac9c8125e046387d6c9726e7fa5a82a5c8a523197c17a4ceaf3072e41383c90', '2023-03-08 09:36:49', 0),
+('b837f23f5347e0db10c6e4b1ad0bf503417e9fc4e1405a7d220c1a35dd2b4ccf3f39da476b5adc51', 'a29e13e8d524c352d593270f818aba87c707138abb9d2beac1e6f7ab4ebca61c53adbaa6455421a5', '2023-03-08 09:41:58', 0),
 ('c0c8e6cb2e3eb057ca8fedf0e1e789a97c8308c0caa6e144c3c449c3855a41aa021640aed653aed7', 'fb477cfe8527ed0a07e5d3bad1156e3422d9ef1943bcf815c8210dad1e361540e61870b464fae0e8', '2023-03-03 18:52:43', 0),
 ('c16c01fb6a8a9d9417dbc521b014c23cf7d4538684bb39df09889aa51b571a9ec27f3a9c705cc1ed', '6bf56c74a16454c9d76f7f37f7ed129f47d34e942c2faccaebfe1febf016e15d5f48d6d219a723c8', '2023-03-02 10:46:44', 0),
 ('c2ed3c126c90ea1356c399952fd21eaf795f00fb4b92a8c5d9e46dfe6f0de34100f64909f56479b7', '6db46a4f8daa9b7cfb4f814533439e6b6fd5c04d21fb4b3386611b49c6126476d7abe2f8f98b4ddc', '2023-03-01 15:55:23', 0),
 ('c8558432fc9ac94b83217ffc9648741203df4ad9c335886dbde078c2605ba429bc6c2d243f796d31', 'b28fefaacc0d346ae0fd0b5c221229b62506c19deebc4ccd201e2e6fc5e4a2bd766feb0cf8dc2525', '2023-02-12 10:10:38', 0),
 ('cb1c7ce94f03295b2261dff5c0f43eaa9adedeedb5b8ec97e5a21c713ba73123b9b6beff96738d8b', NULL, '2023-01-20 10:58:30', 0),
+('cba3ac512e0f4dce70bd7019bbb7318d9d51c749b520ea52adad13e78532d03afda0e8be1244d99d', '3012ee4b5e2136da871ab626d11c917d83037e89653ca9a89aa6bfe5ccfdbf39964965f4aa8ef354', '2023-03-08 09:42:00', 0),
 ('cd75a295951abbcf4fe30004b4ed6811e54b51defb56befa71d07194bf881a290357d9cb11ff46ba', '1f4e9b1f4e0d5dcb5a0d9ae36801888e7a2025d212cbc363ecd9d8433618fad4ba3daa37b9febdd5', '2023-02-12 09:21:24', 0),
 ('ce27d38e6e2ca66183b528a4ba995845fda0a52840a2806d11ed0f9e41d17b251d3d875bbc265f46', '269950fd8abd5893b928163025511547c0ab9627a6d58c7b3584fb6ed3ef298ec03b92e58899efc9', '2023-03-01 15:57:40', 0),
 ('cf0159ec01e46acb9e98ad573b4a807ae5b04a0b8fe82f9b0d618d36a50a56c96e6f7e198508b38a', NULL, '2023-02-25 15:07:44', 0),
+('cf219a944bd143af53e14277820bd456478e2f997e754bedfd5dbce40edbfba56a29ec52ac45b19a', '6cae7812c802aa58b7401e39cbceb26e493611473bd754adb7319a46e1fb67d336840203c104ec44', '2023-03-08 09:41:46', 0),
 ('cf4d13d4da36a84b56877617fd4851fe2de7226137538359cd4dbe411a7b091297689e745d5a4d17', '874de8515f582156c25099f49677b56b9ea2a0d5a21aff070445d3ca937cc5eec0970a71a20e3375', '2023-03-02 17:56:36', 0),
 ('cff9f82f4d1fadf304750d6cccacf48653dc5af9d0e557ff6b9798ed87b55beb8c8b4b9886ced2d6', NULL, '2023-02-25 15:47:55', 0),
 ('d0495d9443038a1115ff4c2027b6134798193942dce2639191df36c3d5bff05f64921b6ac10db92b', '619b8139c9dd76dbca2a0ef06bf8fc964250de29c721e0e69e471b745c67dad551cd42c2d25b05cf', '2023-03-01 18:15:57', 0),
+('d0cc7644216c5ceaed015f79e6724b3b56a9ecc3e5fe5983bb674237cfeb9b24d6d8a8ea1aa0f6c2', '6063429db4aa93e5ba7d35add6f020aae1c03a86925921508e440806d865bee16e407d1482c52827', '2023-03-17 10:33:20', 0),
 ('d24a189405df631e2a24d4e23bd9fabb5bf337e9a3300e54590b30f6b17eb8eb80d66746a6e40bf2', '148a6150b82aee0096c0dbcca2ec9827734e4f96daa89f8b0f8f72d1d1db1dd3f3f9206dee2cbebf', '2023-02-10 13:05:32', 0),
+('d259d6e760c4ad29d413476ad17eb3693bb2915333b7222670c729ada3023025875de3b3cec6b786', 'c96e51786fc96f45a84747a5ab2ab9094ac42843a770fce41904b1259c1c5cf361a32f3543a01b0c', '2023-03-08 09:42:02', 0),
 ('d30d5d45352d2d57c0b385d78a82cb4c97f4cfb6644cd0ae434102a4611820956c80894d70a451f3', '97ccac52f8d582fdd03208f240a1d21dd17e428155a8b4dd6c6c83232d8387cdceb6fffecfaf4c54', '2023-03-02 10:58:41', 0),
 ('d3b576632d8cf9ac57f34b293b43c581e260dde56168e2e9664945f8b1b0afecade60c5c37f8b432', '06600b8e28c62fc76a06683a66202a62c55817d228176812965d0f62c69714a474b6bc42729f7c4f', '2023-03-02 10:59:17', 0),
 ('d5a239a6263c9d9a3098d147c0a770354c792a61db60fddeb3010b4d47b715c70a88a404b158c709', '509d6024e87a8418a5ab96581fcbe92a6c165845420a750d079a1498e4cfe5d3d08ecdbb507c8a74', '2023-02-19 09:27:11', 0),
 ('d5d11eef88663f84019aa577be123c3a422ac67dcaaf8b96c2f7c4e47fa1f63f19cfeb8d5fded76c', 'f8bc684d61dfb7d7afa6d14cbc58fe7521de4cbab6d8bdc57d3dac12c07654cf0e1e48cab14ec6e1', '2023-03-02 10:58:52', 0),
 ('d95877f940b32dc88673df70065fd5b68c7dd3c0b31b957546322fe3038086c6b2f4c70f848689ef', NULL, '2023-02-25 11:42:51', 0),
 ('d9871fda0adde7095f08aad3dcf599f6a4bf5f830dbcf06debd1be55ce430c1c2ae4d91344a414ca', '30d7ef9d0989e6b1b03582de2d14ff5b4f8ed5b654b34b37619e6c133b527a32ce8a327470bfafd9', '2023-02-19 10:39:09', 0),
+('d99fef081be43c3c455274dd394af1fe31911a047b1520d425d43bcd7045f67c5bd1bc7d8502f61b', '3e7e0d24bd05701fef0a83284116d8f636476f217b40674c1b4063355fc3a1bd6294a11d0c2833e1', '2023-03-06 18:59:34', 0),
 ('db84f706ebbb5b181f40d02e7c6065aef6c2451e0ba03a4035914570cc2e986e3535fb1a2702841b', 'd6cb9d78e2f15c49e5e3e291b8624b27d87a2b9eb8f43834bfec3ef4396935aec43c7518ddc445c6', '2023-03-02 10:55:08', 0),
 ('dc48b74236fc37f75a3958b9d74d04312db10f74d6231da0104621110db9318ceb9015cacbed6d3d', '8358c7b1e37a510b7f1fef928d77f149b11a6e2d66fd6fe4d13e98ef1705a00f09ad3d82716e5a10', '2023-03-02 10:59:14', 0),
 ('dc8a403383f15cf9b2bb36d2462025a568516afa351b45edf5ced56cdfca252ef1806b8b3a42ba13', '4d8cc5045ab384fefe21dc27bd19ff99a27d22837bac595a4fe4c577406031132ce574b9e0588907', '2023-02-12 10:07:33', 0),
+('dcb57f68ac829697117e869ed9d2aa5de0bfb8d0eb0ad7e95f94a00f9cfafa1cc56da1ac35dd3cd3', 'f64923208c040455f1bb11fcfa0b43c9b8ea5eefd3817b8ed947cef2e3672448f46948b808ad0262', '2023-03-06 19:31:19', 0),
+('dd6dc85eed762a6ae19c4e82cd03045793768587a4ac433952a529dd8efa53b274d3a8f00c18f641', 'ba97d81e8f9e13f6f3dda10d773277beb850439f6ad34d8bbdc6b39f95fc63d3a4d21937e77d4e96', '2023-03-06 18:59:39', 0),
 ('df30cd9905246e2bc70042643197278a572078a3cb86e90f1a4ac025175e71796433a68e2c09621d', NULL, '2023-01-20 11:23:47', 0),
 ('dfa14583dafc5a8b5537d16f032482cae27388a584d4683b642154e85bb38f330cb829ba82091606', NULL, '2023-02-25 15:10:23', 0),
+('e15a145ce26656c5bfe115fe28894cb8527804e326310627d61ed6d6f743e66d47ff458e58febe87', '366ef231ddca5963698044241fe38e7dd288a3ab33b41641796b8796671b1c73e3e7f49319c3d3fc', '2023-03-08 09:36:33', 0),
 ('e366fd7ca17e471af9b040e4b7e28347b2c0b9154be4b9e0d13d4b02ca757271f719b7cf00abdc83', NULL, '2023-02-25 15:46:25', 0),
+('e6c263927875a1d0f635337bfe9a4509da9615cd5bbb3ab567087fa40551fdefb58f5158c8767c3e', '698c486d0dffe5ddc6ce59c043752deb70ecc71652afaed99c8156ebf93780650ebbe10d7274a199', '2023-03-08 09:38:14', 0),
 ('e8bd1c77ec55e3e6ef431b6f3862b7d31c3a4e097935486508335d44707066b22004a3896fb1d0c9', NULL, '2023-02-25 20:31:47', 0),
+('eba552ec04670cfb9d05bad2c5dd9f53a4dbdcfa9b1f0520b30408f90fd999614370661c74825dd7', '048126b01a8397f2adc2f5e124b611f717b18cfefcae8b0164cbcec173bc70a5df448eba1412220c', '2023-03-08 09:41:26', 0),
+('ec7f92278733147ecf33db349ac2d29039a4742244aa5a5b0c1379a5a9b6abaed8515a6967f10e5b', '661ed68a6b55a945a3039ddb6f1ebc662fe1b9025c7d12b4fcef1e1cf839250ec883b0096e576311', '2023-03-08 09:55:50', 0),
+('edc571d205153779e405d072ef23184b0e4fd5d724cc58d14634b19c377edb64d9b92d84e75bba9c', '9027a6d85ad35a55867a0895cbc4f5389fdb6e48cb03df3fb7266f98871cd1f413bc8b6d02ab5c5d', '2023-03-06 19:29:36', 0),
 ('efb1598ce25a51167136a065cff3aecc1302d7b10a0069a616dd33f47e358e98ca9279b9abbf58fe', '846dbc97921a6b1ed9a8b1f9857f8bf404b35c6b339b9751524c06d4afa329a25b2e43bba8321294', '2023-03-02 10:59:00', 0),
 ('efe3ec0ecc015d53f889fcd6df0788f2ce43b9bfd9f6040e0460aa1105ef1e931d4a41b317645183', NULL, '2023-02-24 16:04:05', 0),
+('effe01ed834d51ddde79918710db7b3ef7cd6a70e6bd55f493c6d0c5a4b051b24e1473958a3acd1b', 'a951e5a6403dc14d1d12a49c9b53ad688cc23fc5800a404591c3bfd494f69913ed722bb45ebf42a7', '2023-03-08 09:41:41', 0),
+('f10741dea08895b6f3e2184c9b3fd56ab0546f7e9317c2bf11ed1b8d06e52a1c8d9b0f5b526e90ea', '2e9b6fe9d4d5de16c3408137d16af1679558a3395934626ecfe5d358b3c98479734f3729f00ef119', '2023-03-08 09:37:30', 0),
 ('f2316f15b386a1635cee4bbf7d3c2adba842c296de53ab8773f2637b0b964697fbbbc1d13b4b59e9', NULL, '2023-02-25 15:40:25', 0),
+('f2aab9da5b4f0c410a26ef38d74bb8c1dc58ee20b452429fbd476782c962658c0aeda8f939d04f84', '980bb27d46be0a72a0ada29b7324e35dca6a2e07c442b98eb981d1390d35b9e8aed384e8c84d4590', '2023-03-08 09:37:57', 0),
 ('f37ceff86a3d0af01762198efaf641922acd4562deebf0bd03ca1a65a17284bb40084a879d762c68', '9929e27bd1b45032332539140512e8b8e247c7593c6a25e8bc326b390d6ed28f1a9400213be987dd', '2023-02-19 10:15:40', 0),
+('f414a53d1b7b2cfb78ee8fb884e9a43f0e137cbafda6386a79d178cef97889f0ac4c69d3f4f1fbe1', '4c5204d98555ff185dd63ac68a8f03c60ac2d5cb158aced499743f0933314c9bcc736d8cb72a363d', '2023-03-08 09:38:10', 0),
+('f99c1de94c8dc9e31d6667a28a2cd2b4d989a427426c3fb09a544a98f0465c2c4d28b47d17523b97', '231df5ef617ff3176ef5654ac1c057d78987f74fe0abd57142d2444666380d3158a0af60a10294ee', '2023-03-08 09:36:30', 0),
+('fcefbf9b5919a417df50eac049c144a3e742e84cd1ddc5b987eb1398e5c568a312c6311a07e9954e', '771c6606d2f29f95a47a2833628ea7a77577b09836698a75ba29c0fe7b192aca7d72bed919c43975', '2023-03-06 18:59:26', 0),
+('fdb6836b84d5fd7ba0e5873eeda3a3a41d6f74948a8554b1754fe18a1134e2206a1302e80a6ef910', '6178d8d1102b1905af4f184beb9d137565bbc1f4308b93eb819be82eca2c619f6caf754c09a40ef7', '2023-03-08 09:37:54', 0),
+('fe9d770895d0051e9adef7d31ea32b6a48be6e103f1c4a5d3e5bcf98af8cc2fc9061dbb754a24921', 'd467500f324eccb542bd2ada5e430bab9b8987c42616e9824871416bdb7811223f3fd75467b76f39', '2023-03-08 09:41:56', 0),
 ('ffdb7787286067a85641328c57c6199f7d80f43128078b8d04386c989cccba67cea9e23bd1f22f9f', '15e9eec1bf9978331fe200791e363530d005fb105e6d4078fcbf2ca7661e9bd74d4d3445dacf623a', '2023-03-01 16:42:20', 0);
 
 -- --------------------------------------------------------
@@ -2670,9 +2922,9 @@ INSERT INTO `oauth2_refresh_token` (`identifier`, `access_token`, `expiry`, `rev
 
 CREATE TABLE `user` (
   `id` int NOT NULL,
-  `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(180) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `roles` json NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -2752,6 +3004,251 @@ ALTER TABLE `oauth2_authorization_code`
 --
 ALTER TABLE `oauth2_refresh_token`
   ADD CONSTRAINT `FK_4DD90732B6A2DD68` FOREIGN KEY (`access_token`) REFERENCES `oauth2_access_token` (`identifier`) ON DELETE SET NULL;
+--
+-- Database: `cart`
+--
+CREATE DATABASE IF NOT EXISTS `cart` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `cart`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Cart`
+--
+
+CREATE TABLE `Cart` (
+  `id` varchar(140) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `customer_identifier` varchar(140) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `Cart`
+--
+
+INSERT INTO `Cart` (`id`, `customer_identifier`, `created`) VALUES
+('06bc0294-1485-45bc-a987-c30cbb3e0778', NULL, '2023-02-21 14:00:36'),
+('1afcd160-cd5c-486d-86b8-4a8a55f086a6', NULL, '2023-03-01 15:59:01'),
+('1e195315-3346-4aec-b74e-ee32271ff323', NULL, '2023-03-01 16:13:37'),
+('2ef0bd20-bcdc-45d6-b9a0-73eda8c419d8', NULL, '2023-03-01 16:02:13'),
+('2ff086c7-1ada-4f7a-b595-d0991163b163', NULL, '2023-03-01 16:04:36'),
+('39b37ed9-1f3f-46e3-97d4-ef066ef93090', NULL, '2023-03-01 16:12:49'),
+('3c3a3e6a-6b98-4948-bda5-ac4e4aa3997b', NULL, '2023-03-01 16:21:23'),
+('4222c1d9-036d-4a32-9caa-caa69b6bc9a7', NULL, '2023-02-20 16:12:00'),
+('4466f185-1f41-42bb-ba7d-c7979b60e35e', NULL, '2023-02-20 16:13:57'),
+('472cfd3b-3005-43e8-b842-58abe06fbcf3', NULL, '2023-03-01 16:04:33'),
+('48ec7e81-3ec5-4f31-866b-8ef4d1d7b642', NULL, '2023-03-01 16:02:36'),
+('4d7acf21-cbc1-40b1-a4bc-33741c35e9de', NULL, '2023-02-21 13:15:18'),
+('54655b9b-4ac1-400b-a703-c742d971b1ca', NULL, '2023-02-20 16:12:39'),
+('54aa6db3-aac5-4f9e-9e56-eccd159fbaf5', NULL, '2023-02-20 16:28:43'),
+('794b7848-a026-408f-b697-b4416bdb9940', NULL, '2023-03-01 16:07:46'),
+('7e75d9a0-fce2-46c5-a99d-de5bf0a4488b', NULL, '2023-03-01 16:08:33'),
+('8955aae5-0b44-4e53-9676-beeafa9c4eb8', NULL, '2023-03-01 16:07:59'),
+('992fc7f2-0812-4174-bd0b-16cb12a08a4e', NULL, '2023-03-01 16:06:35'),
+('a15aa2b9-158f-4a8d-b422-b936915e8567', NULL, '2023-03-01 16:00:51'),
+('b16e85e2-8f50-4317-8fb0-5a75075b9900', NULL, '2023-03-01 16:01:36'),
+('b17b3a27-017c-4eb6-8a68-96505e93c41f', NULL, '2023-03-01 16:06:55'),
+('c50d0de4-fdf4-40c1-91f0-7f0a703fe6b7', NULL, '2023-03-01 15:57:29'),
+('dd87387c-8ec0-47f7-9bc4-7e77a6d20dd3', NULL, '2023-04-25 15:58:49'),
+('e201cd8c-3141-44cd-9fda-1b5e4a5e1a3d', NULL, '2023-02-20 16:13:20'),
+('e446d88a-8142-4a03-bec9-5786171f71b2', NULL, '2023-02-21 11:15:35'),
+('e8d7a89d-c915-4848-b724-7c0f5553ef0f', NULL, '2023-03-01 16:21:40'),
+('f1d0dcec-4982-4619-ae7b-7289683af820', NULL, '2023-02-20 16:09:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carts_items`
+--
+
+CREATE TABLE `carts_items` (
+  `cart_id` varchar(140) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `item_id` varchar(140) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `carts_items`
+--
+
+INSERT INTO `carts_items` (`cart_id`, `item_id`) VALUES
+('4222c1d9-036d-4a32-9caa-caa69b6bc9a7', '1de93d9d-25ac-4752-b12b-8de34041238b'),
+('4d7acf21-cbc1-40b1-a4bc-33741c35e9de', '265771a7-fab4-4eb2-98c1-0ecd0d941906'),
+('f1d0dcec-4982-4619-ae7b-7289683af820', '2a3d5b1c-08af-456b-b1cf-c5bffac6c46d'),
+('06bc0294-1485-45bc-a987-c30cbb3e0778', '35fdaa94-1804-48cf-8f2a-174947ae5456'),
+('54aa6db3-aac5-4f9e-9e56-eccd159fbaf5', '53c6ae64-fd82-42f3-a5e6-b69069428bda'),
+('4466f185-1f41-42bb-ba7d-c7979b60e35e', '55f56735-4346-4efd-b7bc-4973a7bbada0'),
+('3c3a3e6a-6b98-4948-bda5-ac4e4aa3997b', '6d910808-c8d5-4275-8f14-53ae570d3a1d'),
+('8955aae5-0b44-4e53-9676-beeafa9c4eb8', '6fff40b3-df8a-402b-bc28-c3b142098001'),
+('b17b3a27-017c-4eb6-8a68-96505e93c41f', '77f48092-8c84-4f83-a412-7685e065c17f'),
+('e8d7a89d-c915-4848-b724-7c0f5553ef0f', '78566f8b-18ce-45f0-a27c-0e37bedf0b69'),
+('992fc7f2-0812-4174-bd0b-16cb12a08a4e', '7ad77f9b-e8b3-4dd7-ba0a-116d3fe6960a'),
+('e446d88a-8142-4a03-bec9-5786171f71b2', '96b61092-f111-4d7c-9270-67ea1a47acd7'),
+('54655b9b-4ac1-400b-a703-c742d971b1ca', 'b729759f-cb84-44ca-b081-a0b7275140ec'),
+('794b7848-a026-408f-b697-b4416bdb9940', 'b9cb941b-bbb4-405e-bfcc-8eef5f3fbb9e'),
+('7e75d9a0-fce2-46c5-a99d-de5bf0a4488b', 'd7cb989e-4e9d-481b-8515-4ff14ca32c6d'),
+('e446d88a-8142-4a03-bec9-5786171f71b2', 'ea0f1360-9ea8-4042-80de-2dc48713fc8e'),
+('e201cd8c-3141-44cd-9fda-1b5e4a5e1a3d', 'f8fd042a-506c-4842-ae11-ebbcfef5c586');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Item`
+--
+
+CREATE TABLE `Item` (
+  `id` varchar(140) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sku` varchar(140) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quantity` int NOT NULL,
+  `price` decimal(10,0) NOT NULL,
+  `created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `Item`
+--
+
+INSERT INTO `Item` (`id`, `sku`, `quantity`, `price`, `created`) VALUES
+('02c376e2-ea46-4c16-8484-ce68a0f3229a', 'asd', 4, '100', '2023-02-21 11:59:43'),
+('1de93d9d-25ac-4752-b12b-8de34041238b', 'asd', 1, '0', '2023-02-20 16:12:00'),
+('265771a7-fab4-4eb2-98c1-0ecd0d941906', 'asdddd', 1, '100', '2023-02-21 13:15:18'),
+('2a3d5b1c-08af-456b-b1cf-c5bffac6c46d', 'asd', 1, '0', '2023-02-20 16:09:58'),
+('35fdaa94-1804-48cf-8f2a-174947ae5456', 'asdddd', 100, '100', '2023-02-21 14:00:36'),
+('53c6ae64-fd82-42f3-a5e6-b69069428bda', 'asd', 1, '0', '2023-02-20 16:28:43'),
+('55f56735-4346-4efd-b7bc-4973a7bbada0', 'asd', 1, '0', '2023-02-20 16:13:57'),
+('6d910808-c8d5-4275-8f14-53ae570d3a1d', 'asdf', 1, '635', '2023-03-01 16:21:23'),
+('6fff40b3-df8a-402b-bc28-c3b142098001', 'asdf', 1, '100', '2023-03-01 16:07:59'),
+('77f48092-8c84-4f83-a412-7685e065c17f', 'asdf', 1, '100', '2023-03-01 16:06:55'),
+('78566f8b-18ce-45f0-a27c-0e37bedf0b69', 'asdf', 2, '635', '2023-03-01 16:21:40'),
+('7ad77f9b-e8b3-4dd7-ba0a-116d3fe6960a', 'asdf', 1, '100', '2023-03-01 16:06:35'),
+('7b6c9fa4-8713-496b-821c-f468d56ad02c', 'asd', 1, '100', '2023-02-21 11:15:35'),
+('9358e5ca-6395-4a40-ba6e-557cae602c7b', 'asdf', 1, '635', '2023-04-25 15:58:49'),
+('96b61092-f111-4d7c-9270-67ea1a47acd7', 'asd', 1, '100', '2023-02-21 12:01:00'),
+('acefe870-2584-47aa-ae3f-d6b7d6117b22', 'asd', 1, '200', '2023-02-20 16:00:00'),
+('b729759f-cb84-44ca-b081-a0b7275140ec', 'asd', 1, '0', '2023-02-20 16:12:39'),
+('b9cb941b-bbb4-405e-bfcc-8eef5f3fbb9e', 'asdf', 1, '100', '2023-03-01 16:07:46'),
+('d7cb989e-4e9d-481b-8515-4ff14ca32c6d', 'asdf', 1, '100', '2023-03-01 16:08:33'),
+('ea0f1360-9ea8-4042-80de-2dc48713fc8e', 'asd', 1, '100', '2023-02-21 12:00:10'),
+('f8fd042a-506c-4842-ae11-ebbcfef5c586', 'asd', 1, '0', '2023-02-20 16:13:20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messenger_messages`
+--
+
+CREATE TABLE `messenger_messages` (
+  `id` bigint NOT NULL,
+  `body` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `headers` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue_name` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `available_at` datetime NOT NULL,
+  `delivered_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `Cart`
+--
+ALTER TABLE `Cart`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `carts_items`
+--
+ALTER TABLE `carts_items`
+  ADD PRIMARY KEY (`cart_id`,`item_id`),
+  ADD UNIQUE KEY `UNIQ_6DBF3466126F525E` (`item_id`),
+  ADD KEY `IDX_6DBF34661AD5CDBF` (`cart_id`);
+
+--
+-- Indexes for table `Item`
+--
+ALTER TABLE `Item`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `messenger_messages`
+--
+ALTER TABLE `messenger_messages`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_75EA56E0FB7336F0` (`queue_name`),
+  ADD KEY `IDX_75EA56E0E3BD61CE` (`available_at`),
+  ADD KEY `IDX_75EA56E016BA31DB` (`delivered_at`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `messenger_messages`
+--
+ALTER TABLE `messenger_messages`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `carts_items`
+--
+ALTER TABLE `carts_items`
+  ADD CONSTRAINT `FK_6DBF3466126F525E` FOREIGN KEY (`item_id`) REFERENCES `Item` (`id`),
+  ADD CONSTRAINT `FK_6DBF34661AD5CDBF` FOREIGN KEY (`cart_id`) REFERENCES `Cart` (`id`);
+--
+-- Database: `catalog`
+--
+CREATE DATABASE IF NOT EXISTS `catalog` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+USE `catalog`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int NOT NULL,
+  `sku` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `description` mediumtext,
+  `netPrice` float DEFAULT NULL,
+  `vat` float DEFAULT NULL,
+  `attributes` json DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `sku`, `name`, `description`, `netPrice`, `vat`, `attributes`, `createdAt`, `updatedAt`) VALUES
+(1, 'asdf', 'teszt termék', 'teszt termék leírás', 500, 27, NULL, '2023-02-22 10:03:20', '2023-02-22 10:03:20');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Database: `customers`
 --
@@ -2908,7 +3405,7 @@ USE `slackdownloader`;
 CREATE TABLE `auditlog` (
   `id` int NOT NULL,
   `user_id` int NOT NULL,
-  `event_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `event_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `happened_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -2920,9 +3417,9 @@ CREATE TABLE `auditlog` (
 
 CREATE TABLE `messenger_messages` (
   `id` bigint NOT NULL,
-  `body` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `headers` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue_name` varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `headers` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue_name` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `available_at` datetime NOT NULL,
   `delivered_at` datetime DEFAULT NULL
@@ -2936,10 +3433,10 @@ CREATE TABLE `messenger_messages` (
 
 CREATE TABLE `user` (
   `id` int NOT NULL,
-  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `first_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(180) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
