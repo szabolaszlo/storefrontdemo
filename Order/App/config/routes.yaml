@@ -1,0 +1,4 @@
+example_api:
+    path: /
+    controller: App\Presentation\Api\Controller\ExampleController::index
+    methods:    [GET]

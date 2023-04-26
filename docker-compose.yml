@@ -49,6 +49,63 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
+# workshop
+  checkout_api:
+    build:
+      context: Checkout/Docker
+      dockerfile: Dockerfile
+    container_name: 'checkout_api'
+    volumes:
+      - ./Checkout/App:/var/www/html
+      - ./Checkout/Docker/php.ini:/etc/php81/conf.d/settings.ini
+      - ./Checkout/Docker/nginx.conf:/etc/nginx/conf.d/server.conf
+    ports:
+      - 8506:8507
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  shipping_api:
+    build:
+      context: Shipping/Docker
+      dockerfile: Dockerfile
+    container_name: 'shipping_api'
+    volumes:
+      - ./Shipping/App:/var/www/html
+      - ./Shipping/Docker/php.ini:/etc/php81/conf.d/settings.ini
+      - ./Shipping/Docker/nginx.conf:/etc/nginx/conf.d/server.conf
+    ports:
+      - 8505:8506
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  payment_api:
+    build:
+      context: Payment/Docker
+      dockerfile: Dockerfile
+    container_name: 'payment_api'
+    volumes:
+      - ./Payment/App:/var/www/html
+      - ./Payment/Docker/php.ini:/etc/php81/conf.d/settings.ini
+      - ./Payment/Docker/nginx.conf:/etc/nginx/conf.d/server.conf
+    ports:
+      - 8503:8504
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  order_api:
+    build:
+      context: Order/Docker
+      dockerfile: Dockerfile
+    container_name: 'order_api'
+    volumes:
+      - ./Order/App:/var/www/html
+      - ./Order/Docker/php.ini:/etc/php81/conf.d/settings.ini
+      - ./Order/Docker/nginx.conf:/etc/nginx/conf.d/server.conf
+    ports:
+      - 8501:8502
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
   storefront_php:
     build:
       context: Storefront/Docker/services/php

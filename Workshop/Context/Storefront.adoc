@@ -1,0 +1,34 @@
+# Storefront microservice
+
+## Leírás
+
+- Szükségünk van egy olyan oldalra, ami a pénztár folyamat GUI-ját adja. A Storefront backend fogja kezelni az összes további context apiját használni, hogy vezérelje a pénztár folyamatot.
+
+
+## Szükséges adatok
+
+Az, hogy milyen adatokra van szükségünk, a kezelt API-k adják majd.
+
+## Funkcionális követelmények
+
+* A kosár oldara helyezzük egy egy "Tovább a pénztárra gombot"
+** Ennek lenyomásokor a létező kosárból irányítson át a pénztár oldalra
+** A Storefront backendjén ilyenkor egy kosár id-val létrehozunk a Chechout API-n keresztül egy checkout session-t.
+* Legyen egy egyszerű checkout, amelyen a következő lépések vannak:
+1. Általános adatok megadása + Szállítási cím megadása
+2. Szállítási mód kiválasztása
+3. Fizetési mód kiválasztása + Számlázási cím megadása
+4. Rendelés összegzés (opcionális)
+5. Rendelés leadása
+* FIGYELEM! Nem kell a szépre törekedni, a lényeg, hogy működjön. Ha van időd, akkor lehet szépíteni.
+* Készítsetek egy sikerességet jelző oldalt, amelyre átirányítja a felhasználót, ha sikeresen leadta a rendelését.
+
+
+
+
+
+
+
+
+
+
