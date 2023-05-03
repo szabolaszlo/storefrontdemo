@@ -23,3 +23,21 @@ A regisztráció után elérhető felhasználói adatokat listázó oldalon legy
 http://localhost - Storefront frontend
 http://localhost:5000 - Admin microfrontend shell (acc: sanyi / sanyi)
 
+## API Gateway
+
+Minden microservice elé beékelődik az API Gateway, amely egy reverse proxy szerverként működik. A kéréseket továbbítja a megfelelő microservice felé, illetve ellőrizni tudja a JWT tokeneket validitás szempontjából.
+
+**Egyenlőre token authentikáció ki van kapcsolva!**
+
+Külső elérhetőség: http://localhost:8089
+
+Az egyes, API Gateway által proxyzott microservice-ek a következő képpen érhetőek el:
+
+- http://localhost:8089/customer/api/customers
+- http://localhost:8089/customer részt figyeli a gateway, és ha a kérés tartalmazza a /customer részt, akkor a customer microservice felé továbbítja a kérést.
+- /api/customers pedig már a customer microservice saját elérési útja.
+
+**Fontos!** Ha a kódban szeretnénk az api gatewayen keresztül használni egy microservice-t, akkor azt a következő képpen tegyük:
+
+- http://api_gateway_nginx:8080/customer/api/customers
+- dockeres környezet miatt a service azonosítója a host

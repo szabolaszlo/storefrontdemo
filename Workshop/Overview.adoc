@@ -43,6 +43,10 @@ https://gitlab.innonic.com/shoprenter/shipping/-/blob/master/docs/model.adoc
 * link:./Context/Payment.adoc[*Fizetés mód kezelés*]
 * link:./Context/Order.adoc[*Rendelés kezelés*]
 
+## Technikai információ
+- Minden API kérést, amelyet egy másik szervizhez intéztek, az API Gateway-en keresztül tegyétek.
+- Bövebb info  link:../README.md[*itt*].
+
 
 ## Péntár folyamat
 
