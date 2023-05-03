@@ -6,8 +6,8 @@
 
 ## Elérhetőség
 
-- http://localhost:8089/catalog - Szimpla termékoldal
-- http://localhost:8089/cart - Kosár oldal
+- http://localhost/catalog - Szimpla termékoldal
+- http://localhost/cart - Kosár oldal
 
 
 ## Szükséges adatok
