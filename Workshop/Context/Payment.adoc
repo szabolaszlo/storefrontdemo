@@ -4,6 +4,11 @@
 
 - Szükségünk van egy olyan microservice-re, amely szállítási mód alapján, vissza tud adni egy fizetési mód listát, ami tartalmazza az adott szállítási módnál haszhálható fizetési módokat
 
+## Elérhetőség
+
+Külső: http://localhost:8089/payment
+Kódból: http://api_gateway_nginx:8080/payment
+
 ## Fizetési módok kezelése
 
 ### Szükséges adatok

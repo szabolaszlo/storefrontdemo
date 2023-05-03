@@ -10,6 +10,11 @@
     - A számlázási adatok
     - A szállítás mód
 
+## Elérhetőség
+
+Külső: http://localhost:8089/checkout
+Kódból: http://api_gateway_nginx:8080/checkout
+
 ## Szükséges adatok
 
 * _Meg kell tudni adni egy kosarat_

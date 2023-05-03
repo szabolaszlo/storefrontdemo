@@ -4,6 +4,11 @@
 
 - Szükségünk van egy olyan microservice-re, amely megadott kosár adatok alapján, vissza tud adni egy szállítási mód listát, ami tartalmazza az adott kosárra alkalmazható szállítási módokat, és a szállítási módokhoz tartozó árakat.
 
+## Elérhetőség
+
+Külső: http://localhost:8089/shipping
+Kódból: http://api_gateway_nginx:8080/shipping
+
 
 ## Szükséges adatok
 

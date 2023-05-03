@@ -4,6 +4,11 @@
 
 - Szükségünk van egy olyan microservice-re, amely megadott pénztár azonosító alapján képes egy rendelést generálni.
 
+## Elérhetőség
+
+Külső: http://localhost:8089/order
+Kódból: http://api_gateway_nginx:8080/order
+
 
 ## Szükséges adatok
 

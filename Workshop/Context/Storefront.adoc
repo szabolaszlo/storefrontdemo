@@ -4,6 +4,11 @@
 
 - Szükségünk van egy olyan oldalra, ami a pénztár folyamat GUI-ját adja. A Storefront backend fogja kezelni az összes további context apiját használni, hogy vezérelje a pénztár folyamatot.
 
+## Elérhetőség
+
+- http://localhost:8089/catalog - Szimpla termékoldal
+- http://localhost:8089/cart - Kosár oldal
+
 
 ## Szükséges adatok
 
