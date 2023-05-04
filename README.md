@@ -16,7 +16,7 @@ A regisztráció után elérhető felhasználói adatokat listázó oldalon legy
 - lépj be a Symfonyt használó conténerekbe és telepítsd a composer csomagokat:
 - docker compose exec -u root cart_api_ngnix_php sh -c "composer install"
 - docker compose exec -u root oauth_server_ngnix_php sh -c "composer install"
-- docker compose exec -u root storefront_php sh sh -c "composer install"
+- docker compose exec -u root storefront_php sh -c "composer install"
 
 
 ## Urlek:
