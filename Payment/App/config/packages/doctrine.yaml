@@ -2,8 +2,13 @@ doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
         types:
-            payment_method_id: App\Infrastructure\Persistence\Doctrine\Type\PaymentMethodIdType
-            payment_id: App\Infrastructure\Persistence\Doctrine\Type\PaymentIdType
+            PaymentId:
+                class: App\Infrastructure\Persistence\Doctrine\Type\PaymentIdType
+                commented: true
+            PaymentMethodId:
+                class: App\Infrastructure\Persistence\Doctrine\Type\PaymentMethodIdType
+                commented: true
+
         # IMPORTANT: You MUST configure your server version,
         # either here or in the DATABASE_URL env var (see .env file)
         #server_version: '15'
