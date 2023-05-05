@@ -207,6 +207,7 @@ class Checkout {
     - shippingMethod: ShippingMethod
     - paymentMethod: PaymentMethod
     - status: CheckoutStatus [enum: PENDING, COMPLETED]
+    + checkoutTotal(): CheckoutTotal
 }
 
 class Customer {
@@ -246,6 +247,7 @@ Checkout <-- Address
 Checkout <- ShippingMethod
 PaymentMethod -> Checkout
 Checkout <-- CheckoutStatus
+Checkout <-- CheckoutTotal
 ----
 
 
