@@ -229,11 +229,15 @@ class Address {
 }
 
 class ShippingMethod {
-    - shippingMethodId
+    - shippingMethodId: UUID
+    - shippingMethodName: String
+    - shippingFee: Number
 }
 
 class PaymentMethod {
-    - paymentMethodId
+    - paymentMethodId: UUID
+    - paymentMethodName: String
+    - paymentFee: Number
 }
 
 class CheckoutTotal {
