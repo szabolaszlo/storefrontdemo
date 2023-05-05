@@ -70,7 +70,7 @@ Ha pénztárt sikeresen lezártuk és fizetetté válik, ez esetben el kell ind�
 
 A feladat a COD (kézpnzes fizetés) implementálását várja el. A következő képen egy COD és egy bankkártyás fizetés különbségét mutatja be:
 
-image::image/payment.png[]
+image::../image/payment.png[]
 
 
 

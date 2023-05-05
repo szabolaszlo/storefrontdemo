@@ -1,0 +1,10 @@
+== Create checkout
+
+[source,httprequest]
+----
+POST /checkout/
+
+{
+    "cartId": "123123123123"
+}
+----
