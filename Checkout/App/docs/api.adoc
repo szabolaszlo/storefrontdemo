@@ -1,0 +1,278 @@
+= Checkout API
+
+== Create checkout
+
+request:
+[source,httprequest]
+----
+POST /checkout/
+Content-type: application/json
+
+{
+    "cartId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed"
+}
+----
+
+response:
+[source,json]
+----
+
+{
+    "checkoutId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed"
+}
+----
+== Save Customer
+
+request
+[source,httprequest]
+----
+POST /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed/customer
+
+{
+    "email": ".."
+    "lastName": "asdf"
+    "firstName": "osidjf"
+    "phone": "osidfjosidjf"
+}
+----
+
+response
+[source,json]
+----
+  {
+    "msg": "OK"
+  }
+----
+
+== Save Shipping Address
+
+request:
+[source,httprequest]
+----
+POST /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed/shipping-address
+Content-Type: application/json
+
+{
+    "country": "HU"
+    "postcode": "1234"
+    "city": "Gotham"
+    "address": "Some str 123"
+}
+----
+
+response:
+[source,json]
+----
+{
+  "msg": "OK"
+}
+----
+
+== Save Payment Address
+request:
+[source,httprequest]
+----
+POST /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed/payment-address
+Content-Type: application/json
+
+{
+    "country": "HU"
+    "postcode": "1234"
+    "city": "Gotham"
+    "address": "Some str 123"
+}
+----
+
+response:
+[source,json]
+----
+{
+  "msg": "OK"
+}
+----
+
+== Save Shipping Method
+
+request:
+[source,httprequest]
+----
+POST /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed/shipping-method
+
+{
+    "shipingMethodId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed"
+}
+----
+
+response:
+[source,json]
+----
+
+{
+    "msg": "OK"
+}
+----
+
+== Save Payment Method
+
+request:
+[source,httprequest]
+----
+POST /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed/payment-method
+
+{
+    "paymentMethodId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed"
+}
+----
+
+response:
+[source,json]
+----
+
+{
+    "msg": "OK"
+}
+----
+
+== Confirm
+
+[source,httprequest]
+----
+POST /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed/confirm
+----
+
+response
+[source,json]
+----
+  {
+    "msg": "OK"
+  }
+----
+
+== Get checkout
+
+[source,httprequest]
+----
+GET /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed
+----
+
+[source,json]
+----
+{
+  "checkoutId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+  "status": "PENDING",
+  "customer": {
+    "email": "asd@asd.hu",
+    "lastName": "lastname",
+    "firstName": "firstname",
+    "phone": "phone"
+  },
+  "shippingAddress": {
+    "address": "some str 123",
+    "city": "Gotham",
+    "postcode": "1233",
+    "country": "HU"
+  },
+  "billingAddress": {
+    "address": "some str 123",
+    "city": "Gotham",
+    "postcode": "1233",
+    "country": "HU"
+  },
+  "shippingMethod": {
+    "shippingMethodId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+    "shippingMethodName": "GLS",
+    "shippingFee": 3123
+  },
+  "paymentMethod": {
+    "paymentMethodId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+    "paymentMethodName": "BARION",
+    "paymentFee": 123
+  },
+  "checkoutTotal": {
+    "value": 123.345,
+    "currency": "HUF"
+  }
+}
+----
+
+== Statuses
+
+* PENDING
+* COMPLETED
+
+[plantuml]
+----
+class Checkout {
+    - checkoutId: UUID
+    - cart: Cart
+    - customer: Customer
+    - shippingAddress: Address
+    - billingAddress: Address
+    - shippingMethod: ShippingMethod
+    - paymentMethod: PaymentMethod
+    - status: CheckoutStatus [enum: PENDING, COMPLETED]
+    + checkoutTotal(): CheckoutTotal
+}
+
+class Customer {
+    - email: String
+    - lastName: String
+    - firstName: String
+    - phone: String
+}
+
+class Address {
+    - address: String
+    - city: String
+    - postcode: String
+    - country: String
+}
+
+class ShippingMethod {
+    - shippingMethodId: UUID
+    - shippingMethodName: String
+    - shippingFee: Number
+}
+
+class PaymentMethod {
+    - paymentMethodId: UUID
+    - paymentMethodName: String
+    - paymentFee: Number
+}
+
+class CheckoutTotal {
+    - value: Number
+    - currency: String
+}
+
+enum CheckoutStatus {
+    PENDING
+    COMPLETED
+}
+
+Checkout <-- Customer
+Checkout <-- Address
+Checkout <- ShippingMethod
+PaymentMethod -> Checkout
+Checkout <-- CheckoutStatus
+Checkout <-- CheckoutTotal
+----
+
+
+[plantuml]
+----
+participant storefront
+participant cart
+participant checkout
+participant order
+participant shipping
+participant payment
+
+storefront -> checkout : create checkout
+checkout -> cart : get cart data
+cart -> checkout : return cart data
+checkout -> storefront : return checkoutId
+storefront -> storefront : show customer form
+storefront -> checkout : save customer
+checkout -> storefront : ok
+----
