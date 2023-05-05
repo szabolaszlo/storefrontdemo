@@ -10,5 +10,5 @@ payment_method_list_for_checkout:
 
 payment:
     path: /api/payment/initiate
-    controller: \App\Presentation\Api\Controller\InitiatePaymentController::index
+    controller: App\Presentation\Api\Controller\InitiatePaymentController::index
     methods: [POST]
