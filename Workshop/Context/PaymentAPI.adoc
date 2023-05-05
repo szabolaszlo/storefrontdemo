@@ -69,7 +69,7 @@ Szükséges adatok a fizetés indízásához:
 Lehetséges státuszok:
 SUCCESS, FAILED, PENDING
 
-Ha nem szükséges redirectUrl, akkor üres stringet ad vissza.
+Ha nem szükséges redirectUrl, akkor üres stringet ad vissza. Ha redirect szükséges, akkor a státusz PENDING.
 
 ```json
 {
