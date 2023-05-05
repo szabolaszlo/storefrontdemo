@@ -180,11 +180,13 @@ GET /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed
   },
   "shippingMethod": {
     "shippingMethodId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
-    ...
+    "shippingMethodName": "GLS",
+    "shippingFee": 3123
   },
   "paymentMethod": {
     "paymentMethodId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
-    ...
+    "paymentMethodName": "BARION",
+    "paymentFee": 123
   },
   "checkoutTotal": {
     "value": 123.345,
