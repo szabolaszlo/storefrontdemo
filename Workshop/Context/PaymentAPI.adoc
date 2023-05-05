@@ -3,13 +3,13 @@
 ## Fizetési Módok Listázása
 
 ```
-GET /list/{shippingId}
+GET /api/paymentMethod/list/{shippingId}
 ```
 
 A végpont a fizetési módok listáját adja vissza a megadott szállítási mód Id-hoz.
 
 ```
-GET /list/1
+GET /api/paymentMethod/list/1
 ```
 
 *Response:*
@@ -18,7 +18,7 @@ GET /list/1
     {
     "paymentMethods": [
         {
-        "id": 1,
+        "id": "5217588b-97e5-4bec-9e6c-1716397d4d3f",
         "name": "Készpénz",
         "description": "Készpénzben a futárnak kell kifizetni a rendelés összegét.",
         "fee": 0
@@ -30,7 +30,7 @@ GET /list/1
 ## Fizetés Indítása
 
 ```
-POST /start
+POST /api/payment/initiate
 ```
 
 Szükséges adatok a fizetés indízásához:
@@ -43,7 +43,7 @@ Szükséges adatok a fizetés indízásához:
 
 ```json
 {
-    "paymentMethodId": 1,
+    "paymentMethodId": "5217588b-97e5-4bec-9e6c-1716397d4d3f",
     "customer": {
         "email": "test@test.hu",
         "billingAddress": {
@@ -68,9 +68,52 @@ Ha nem szükséges redirectUrl, akkor üres stringet ad vissza. Ha redirect szü
 
 ```json
 {
+    "id": "5217588b-97e5-4bec-9e6c-1716397d4d3f",
+    "paymentMethodId": "5217588b-97e5-4bec-9e6c-1716397d4d3f",
+       "customer": {
+           "email": "test@test.hu",
+            "billingAddress": {
+               "country": "Magyarország",
+                "city": "Budapest",
+               "zipCode": "1111",
+               "address": "Teszt utca 1.",
+               "companyName": "Teszt Kft.",
+               "taxNumber": "12345678-1-11"
+           }
+      },
+    "amount": 10000
     "status": "SUCCESS",
     "redirectUrl": ""
 }
+```
+
+## Fizetési Mód lekérdezése
+
+```
+GET /api/paymentMethod/{paymentId}
+```
+
+A végpont a fizetési mód adatait adja vissza a megadott fizetési mód Id-hoz.
+
+```
+GET /api/paymentMethod/5217588b-97e5-4bec-9e6c-1716397d4d3f
+```
+
+*Respone:*
+
+```json
+    {
+        "id": 1,
+        "name": "Készpénz",
+        "description": "Készpénzben a futárnak kell kifizetni a rendelés összegét.",
+        "fee": 0,
+        "availableShippingMethods": [
+            {
+                "id": "bc1c7c64-ae7b-41ea-a29b-7dc3772b5c88"
+            }
+        ],
+        "enabled": true
+    }
 ```
 
 
