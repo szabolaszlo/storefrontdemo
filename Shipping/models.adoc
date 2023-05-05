@@ -1,0 +1,19 @@
+# Models
+
+[plantuml]
+----
+class ShippingMethod {
+    - id: string
+    - isEnabled: boolean
+    - name: string
+    - description: string
+    - shippingLane: ShippingLane
+}
+
+class ShippingLane {
+    - minGrossPrice: float
+    - maxGrossPrice: float
+    - cost: float
+}
+
+----
