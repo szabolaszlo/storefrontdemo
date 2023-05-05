@@ -101,4 +101,18 @@ class Checkout {
     - paymentMethod: PaymentMethod
     - status: CheckoutStatus [enum: PENDING, COMPLETED]
 }
+
+class Customer {
+    - email: String
+    - lastName: String
+    - firstName: String
+    - phone: String
+}
+
+class Address {
+    - address: String
+    - city: String
+    - postcode: String
+    - country: String
+}
 ----
