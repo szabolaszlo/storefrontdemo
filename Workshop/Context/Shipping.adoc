@@ -6,7 +6,7 @@
 
 ## Elérhetőség
 
-Külső: http://localhost:8089/shipping
+Külső: http://localhost:8090/shipping
 Kódból: http://api_gateway_nginx:8080/shipping
 
 

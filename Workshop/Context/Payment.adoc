@@ -21,6 +21,7 @@ Egy fizetési mód következő adatokból áll:
 * *bruttó illeték*
 * *engedélyezett szállítási módok listája* - lehet üres
 
+
 ### Funkcionális követelmények
 
 * Hozzatok létre egy GUI-s admin felületet, amelyen a fizetési módokat tudjátok kezelni. Létrehozni, módosítani, törölni tudjátok őket.
@@ -31,10 +32,10 @@ Egy fizetési mód következő adatokból áll:
 
 ## Fizetési folyamat
 
-### Szükséges adatok a fizetés indízásához
+### Szükséges adatok a fizetés indításához
 
 * *fizetési mód azonosítója*
-* *vevő adatait*
+* *vevő adatai*
 ** *email*
 ** *számlázási adatok*
 * *fizetendő összeg*
@@ -52,7 +53,7 @@ Egy fizetési mód következő adatokból áll:
 
 Csak a COD fizetést kell jelenleg implementálni. a Következő kép bemutatja, milyen különbségek vannak a fizetési folyamatok között.
 
-image::image/payment.png[]
+image::./../image/payment.png[]
 
 
 

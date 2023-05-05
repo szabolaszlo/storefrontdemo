@@ -1,0 +1,163 @@
+# Végpontok
+
+## Fizetési Módok Listázása
+
+```
+GET /list/{shippingId}
+```
+
+A végpont a fizetési módok listáját adja vissza a megadott szállítási mód Id-hoz.
+
+```
+GET /list/1
+```
+
+*Response:*
+
+```json
+    {
+    "paymentMethods": [
+        {
+        "id": 1,
+        "name": "Készpénz",
+        "description": "Készpénzben a futárnak kell kifizetni a rendelés összegét.",
+        "fee": 0,
+        "availableShippingMethods": [
+            {
+            "id": 1,
+            }
+        ]
+        }
+    ]
+    }
+```
+
+## Fizetés Indítása
+
+```
+POST /start
+```
+
+Szükséges adatok a fizetés indízásához:
+
+- fizetési mód azonosítója
+- vevő adatait
+- email
+- számlázási adatok
+- fizetendő összeg
+
+```json
+{
+    "paymentMethodId": 1,
+    "customer": {
+        "email": "test@test.hu",
+        "billingAddress": {
+            "country": "Magyarország",
+            "city": "Budapest",
+            "zipCode": "1111",
+            "address": "Teszt utca 1.",
+            "companyName": "Teszt Kft.",
+            "taxNumber": "12345678-1-11"
+        }
+    },
+    "amount": 10000
+}
+```
+
+*Response:*
+
+Lehetséges státuszok:
+SUCCESS, FAILED, PENDING
+
+Ha nem szükséges redirectUrl, akkor üres stringet ad vissza. Ha redirect szükséges, akkor a státusz PENDING.
+
+```json
+{
+    "status": "SUCCESS",
+    "redirectUrl": ""
+}
+```
+
+
+## Use Case-k
+
+*1. Fizetési módok listázása*
+
+*Story:*
+
+Én mint vevő szeretnék látni egy fizetési mód listát, a fizetési módok adataival, hogy számomra a legmegfelelőbbet választhassam ki.
+
+Követelmények:
+- A szállítási mód azonosítója alapján kell lekérni a fizetési módokat.
+- Csak az engedélyezett fizetési módokat kell visszaadni.
+
+*2. Fizetés indítása*
+
+*Story:*
+
+Én mint vevő szeretnék fizetni a rendelésemért, hogy megkapjam a megrendelt termékeket.
+
+*Követelmények:*
+- A fizetési mód azonosítója alapján kell fizetést indítani.
+- A fizetés indításához szükséges adatokat a vevő adja meg (számlázási adatok, email cím, fizetendő összeg, paymentId).
+
+*DOMAIN LAYER*
+
+PaymentMethod Domain Object:
+
+```php
+class PaymentMethod
+{
+    private integer $id;
+    private string $name;
+    private string $description;
+    private integer $fee;
+    private array $availableShippingMethods;
+}
+```
+
+ShippingMethod Domain Object:
+
+```php
+class ShippingMethodId
+{
+    private integer $id;
+}
+```
+
+*APPLICATION LAYER*
+
+InitiatePaymentCommand:
+
+```php
+class InitiatePaymentCommand
+{
+    private integer $paymentMethodId;
+    private Customer $customer;
+    private integer $amount;
+}
+```
+
+Customer ValueObject:
+
+```php
+class Customer
+{
+    private string $email;
+    private Address $billingAddress;
+}
+```
+
+Address ValueObject:
+
+```php
+class Address
+{
+    private string $country;
+    private string $city;
+    private string $zipCode;
+    private string $address;
+    private string $companyName;
+    private string $taxNumber;
+}
+```

@@ -8,15 +8,15 @@ A regisztráció után elérhető felhasználói adatokat listázó oldalon legy
 
 
 ## Beállítás
-- docker-compose up -d
+- docker compose up -d
 - lépj be a phpmyadminba (http://localhost:8080) root jogosultsággal! (usern: root, password: root)
 - importáld be a db_to_import.sql-t
-- docker-compose down
-- docker-compose up -d
+- docker compose down
+- docker compose up -d
 - lépj be a Symfonyt használó conténerekbe és telepítsd a composer csomagokat:
-- docker compose exec -u root cart_api_ngnix_php sh majd composer install majd exit
-- docker compose exec -u root oauth_server_ngnix_php sh majd composer install majd exit
-- docker compose exec -u root storefront_php sh majd composer install majd exit
+- docker compose exec -u root cart_api_ngnix_php sh -c "composer install"
+- docker compose exec -u root oauth_server_ngnix_php sh -c "composer install"
+- docker compose exec -u root storefront_php sh -c "composer install"
 
 
 ## Urlek:
