@@ -16,10 +16,23 @@ class Handler
 
     public function handle(Query $query): array
     {
-        return $this
+        $paymentMethods = $this
             ->queryService
             ->getCheckoutPaymentMethodListByShippingMethodId(
                 new ShippingMethodId($query->getShippingId())
             );
+
+        $responsePaymentMethods = ['paymentMethods' => []];
+
+        foreach ($paymentMethods as $paymentMethod){
+            $responsePaymentMethods['paymentMethods'] = [
+                'id' => $paymentMethod->getId()->getId(),
+                'name' => $paymentMethod->getName(),
+                'description' => $paymentMethod->getDescription(),
+                'fee' => $paymentMethod->getFee(),
+            ];
+        }
+
+        return $responsePaymentMethods;
     }
 }

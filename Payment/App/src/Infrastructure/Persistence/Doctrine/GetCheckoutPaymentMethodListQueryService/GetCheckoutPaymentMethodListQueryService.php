@@ -8,6 +8,11 @@ use App\Domain\PaymentMethodId;
 use App\Domain\ShippingMethodId;
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+ * Azért lett egy ilyen query service mert bizonyos feltételek alapjá szűrőgetni kell
+ * és azt mindet be lehet ide verni
+ * Persze a specifikaction pattern is megoldás lehetne ha időmilliomosak vagyunk
+ */
 class GetCheckoutPaymentMethodListQueryService implements QueryServiceInterface
 {
     private $entityManager;
@@ -19,8 +24,14 @@ class GetCheckoutPaymentMethodListQueryService implements QueryServiceInterface
 
     public function getCheckoutPaymentMethodListByShippingMethodId(ShippingMethodId $id):array
     {
-        return [$this->entityManager
+        $paymentMethods = $this
+            ->entityManager
             ->getRepository(PaymentMethod::class)
-            ->find(new PaymentMethodId('8b16ce29-eb46-11ed-83b7-0242ac1d000a'))];
+            ->findAll();
+        // Azért findAll mert ha rossz ID jön akkor nincs lista és hadd működjön
+
+        // Ide jöhetne akár adatbázis szinten hogy ShippingId szerint szűrjönk és azokat is ejtsük ki amelyek nincsenek engedélyezve
+
+        return $paymentMethods;
     }
 }
