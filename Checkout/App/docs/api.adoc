@@ -179,10 +179,12 @@ GET /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed
     "country": "HU"
   },
   "shippingMethod": {
-    "shippingMethodId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed"
+    "shippingMethodId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+    ...
   },
   "paymentMethod": {
-    "paymentMethodId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed"
+    "paymentMethodId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+    ...
   },
   "checkoutTotal": {
     "value": 123.345,
