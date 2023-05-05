@@ -2,22 +2,23 @@
 
 namespace App\Domain;
 
-class PaymentMethod
+class PaymentMethod implements \JsonSerializable
 {
     private PaymentMethodId $id;
     private string $name;
     private string $description;
     private int $fee;
-    private array $availableShippingMethods;
     private bool $isEnabled;
+
+    private array $availableShippingMethods;
 
     public function __construct(
         PaymentMethodId $id,
         string $name,
         string $description,
         int $fee,
-        bool $isEnabled,
-        array $availableShippingMethods
+        array $availableShippingMethods,
+        $isEnabled
     ) {
         $this->id = $id;
         $this->name = $name;
@@ -117,6 +118,17 @@ class PaymentMethod
     public function setIsEnabled(bool $isEnabled): void
     {
         $this->isEnabled = $isEnabled;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'fee' => $this->fee,
+            'description' => $this->description,
+            'isEnabled' => $this->isEnabled,
+        ];
     }
 }
 

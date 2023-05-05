@@ -3,7 +3,7 @@
         <id name="id" type="payment_method_id" />
         <field name="name" nullable="true"/>
         <field name="description"  type="string" />
-        <field name="fee"  type="integer" />
+        <field name="fee" type="integer" />
         <field name="availableShippingMethods" type="array" />
         <field name="isEnabled" type="boolean" />
     </entity>
