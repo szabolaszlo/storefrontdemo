@@ -21,12 +21,7 @@ GET /list/1
         "id": 1,
         "name": "Készpénz",
         "description": "Készpénzben a futárnak kell kifizetni a rendelés összegét.",
-        "fee": 0,
-        "availableShippingMethods": [
-            {
-            "id": 1,
-            }
-        ]
+        "fee": 0
         }
     ]
     }
