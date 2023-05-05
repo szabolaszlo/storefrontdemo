@@ -109,7 +109,11 @@ enum CheckoutStatus {
     COMPLETED
 }
 
-Checkout -> Customer
+Checkout <-- Customer
+Checkout <-- Address
+Checkout <- ShippingMethod
+PaymentMethod -> Checkout
+Checkout <-- CheckoutStatus
 ----
 
 
