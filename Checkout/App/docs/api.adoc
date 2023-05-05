@@ -140,6 +140,14 @@ response:
 POST /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed/confirm
 ----
 
+response
+[source,json]
+----
+  {
+    "msg": "OK"
+  }
+----
+
 == Get checkout
 
 [source,httprequest]
@@ -221,6 +229,11 @@ class ShippingMethod {
 
 class PaymentMethod {
     - paymentMethodId
+}
+
+class CheckoutTotal {
+    - value: Number
+    - currency: String
 }
 
 enum CheckoutStatus {
