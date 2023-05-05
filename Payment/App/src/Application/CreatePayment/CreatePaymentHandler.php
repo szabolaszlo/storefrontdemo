@@ -39,5 +39,7 @@ class CreatePaymentHandler
         $payment->setRedirectUrl(
             $this->redirectUrlFactory->createRedirectUrl($command->getPaymentId(), $command->getPaymentMethodId())
         );
+
+        $this->paymentRepository->add($payment);
     }
 }
