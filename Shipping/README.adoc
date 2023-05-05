@@ -51,7 +51,7 @@ Response:
             "isEnabled": true,
             "description": "GLS házhozszállítás",
             "cost": 1000,
-            "shippingLane": [
+            "shippingLanes": [
                 {
                     "minGrossPrice": 5000,
                     "maxGrossPrice": 100000,
@@ -70,7 +70,7 @@ Response:
             "isEnabled": false,
             "description": "DPD házhozszállítás",
             "cost": 1000,
-            "shippingLane": [
+            "shippingLanes": [
                 {
                     "minGrossPrice": 5000,
                     "maxGrossPrice": 100000,
@@ -88,7 +88,7 @@ Response:
             "name": "Személyes átvétel",
             "isEnabled": true,
             "description": "Személyes átvétel",
-            "shippingLane": [
+            "shippingLanes": [
                 {
                     "minGrossPrice": 1000,
                     "maxGrossPrice": 50000,
