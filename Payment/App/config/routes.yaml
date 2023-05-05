@@ -3,6 +3,11 @@ example_api:
     controller: App\Presentation\Api\Controller\ExampleController::index
     methods:    [GET]
 
+payment_method_list_for_checkout:
+    path: /api/paymentMethod/list/{shippingMethodId}
+    controller: \App\Presentation\Api\Controller\GetCheckoutPaymentMethodListController::index
+    methods: [GET]
+
 payment:
     path: /api/payment/initiate
     controller: \App\Presentation\Api\Controller\InitiatePaymentController::index

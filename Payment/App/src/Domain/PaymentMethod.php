@@ -27,17 +27,14 @@ class PaymentMethod
         $this->availableShippingMethods = $availableShippingMethods;
     }
     /**
-     * @return int
+     * @return PaymentMethodId
      */
-    public function getId(): int
+    public function getId(): PaymentMethodId
     {
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
+    public function setId(PaymentMethodId $id): void
     {
         $this->id = $id;
     }
