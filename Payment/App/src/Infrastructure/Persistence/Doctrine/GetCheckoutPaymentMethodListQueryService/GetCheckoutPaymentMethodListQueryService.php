@@ -19,8 +19,13 @@ class GetCheckoutPaymentMethodListQueryService implements QueryServiceInterface
 
     public function getCheckoutPaymentMethodListByShippingMethodId(ShippingMethodId $id):array
     {
-        return [$this->entityManager
+        $paymentMethods = $this
+            ->entityManager
             ->getRepository(PaymentMethod::class)
-            ->find(new PaymentMethodId('8b16ce29-eb46-11ed-83b7-0242ac1d000a'))];
+            ->findAll();
+
+        //Filter payment methods by shipping method id
+
+        return $paymentMethods;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Domain;
 
-class PaymentMethod implements \JsonSerializable
+class PaymentMethod
 {
     private PaymentMethodId $id;
     private string $name;
@@ -120,16 +120,6 @@ class PaymentMethod implements \JsonSerializable
         $this->isEnabled = $isEnabled;
     }
 
-    public function jsonSerialize(): mixed
-    {
-        return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'fee' => $this->fee,
-            'description' => $this->description,
-            'isEnabled' => $this->isEnabled,
-        ];
-    }
 }
 
 
