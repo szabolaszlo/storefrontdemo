@@ -1,0 +1,79 @@
+# Végpontok
+
+## Fizetési Módok Listázása
+
+```
+GET /list/{shippingId}
+```
+
+A végpont a fizetési módok listáját adja vissza a megadott szállítási mód Id-hoz.
+
+```
+GET /list/1
+```
+
+*Response:*
+
+```json
+    {
+    "paymentMethods": [
+        {
+        "id": 1,
+        "name": "Készpénz",
+        "description": "Készpénzben a futárnak kell kifizetni a rendelés összegét.",
+        "fee": 0,
+        "availableShippingMethods": [
+            {
+            "id": 1,
+            }
+        ]
+        }
+    ]
+    }
+```
+
+## Fizetés Indítása
+
+```
+POST /start
+```
+
+Szükséges adatok a fizetés indízásához:
+
+- fizetési mód azonosítója
+- vevő adatait
+- email
+- számlázási adatok
+- fizetendő összeg
+
+```json
+{
+    "paymentMethodId": 1,
+    "customer": {
+        "email": "test@test.hu",
+        "billingAddress": {
+            "country": "Magyarország",
+            "city": "Budapest",
+            "zipCode": "1111",
+            "address": "Teszt utca 1.",
+            "companyName": "Teszt Kft.",
+            "taxNumber": "12345678-1-11"
+        }
+    },
+    "amount": 10000
+}
+```
+
+*Response:*
+
+Lehetséges státuszok:
+SUCCESS, FAILED, PENDING
+
+Ha nem szükséges redirectUrl, akkor üres stringet ad vissza.
+
+```json
+{
+    "status": "SUCCESS",
+    "redirectUrl": ""
+}
+```
