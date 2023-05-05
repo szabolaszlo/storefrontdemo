@@ -4,27 +4,34 @@ namespace App\Application\GetPaymentQuery;
 
 use App\Application\DTO\PaymentDTO;
 use App\Application\Service\PaymentRedirectUrlFactory;
+use App\Domain\PaymentId;
 use App\Domain\PaymentRepositoryInterface;
 
 class GetPaymentHandler
 {
     private PaymentRepositoryInterface $paymentRepository;
 
-    private PaymentRedirectUrlFactory $redirectUrlFactory;
-
     public function __construct(
         PaymentRepositoryInterface $paymentRepository,
-        PaymentRedirectUrlFactory $redirectUrlFactory
     ) {
         $this->paymentRepository = $paymentRepository;
-        $this->redirectUrlFactory = $redirectUrlFactory;
     }
 
     public function execute(GetPaymentQuery $query): PaymentDTO
     {
-        return new PaymentDTO(
-
+        $payment = $this->paymentRepository->get(
+            new PaymentId($query->getPaymentId())
         );
+
+        $dto = new PaymentDTO();
+        $dto->paymentId = $payment->getPaymentId()->getId();
+        $dto->paymentMethodId = $payment->getPaymentMethodId()->getId();
+        $dto->customer = $payment->getCustomer();
+        $dto->amount = $payment->getAmount();
+        $dto->status = $payment->getStatus();
+        $dto->redirectUrl = $payment->getRedirectUrl();
+
+        return $dto;
     }
 
 }

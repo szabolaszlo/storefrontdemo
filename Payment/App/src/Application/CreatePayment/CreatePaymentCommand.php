@@ -4,6 +4,8 @@ namespace App\Application\CreatePayment;
 
 class CreatePaymentCommand
 {
+    private string $paymentId;
+
     private string $paymentMethodId;
 
     private array $customer;
@@ -13,11 +15,13 @@ class CreatePaymentCommand
     private string $initialState;
 
     public function __construct(
+        string $paymentId,
         string $paymentMethodId,
         array $customer,
         float $amount,
         ?string $initialState = null
     ) {
+        $this->paymentId = $paymentId;
         $this->paymentMethodId = $paymentMethodId;
         $this->customer = $customer;
         $this->amount = $amount;
@@ -54,6 +58,14 @@ class CreatePaymentCommand
     public function getInitialState(): string
     {
         return $this->initialState;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaymentId(): string
+    {
+        return $this->paymentId;
     }
 
 }

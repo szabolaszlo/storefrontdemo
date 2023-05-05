@@ -1,1 +1,17 @@
 POST 127.0.0.0:8503/api/payment/initiate
+
+{
+    "paymentMethodId": "5217588b-97e5-4bec-9e6c-1716397d4d3f",
+    "customer": {
+        "email": "test@test.hu",
+        "billingAddress": {
+            "country": "Magyarország",
+            "city": "Budapest",
+            "zipCode": "1111",
+            "address": "Teszt utca 1.",
+            "companyName": "Teszt Kft.",
+            "taxNumber": "12345678-1-11"
+        }
+    },
+    "amount": 10000
+}

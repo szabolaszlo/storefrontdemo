@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
+use Ramsey\Uuid\Uuid;
+
 class InitiatePaymentController extends AbstractController
 {
     public function index (
@@ -18,20 +20,20 @@ class InitiatePaymentController extends AbstractController
         GetPaymentHandler $getPaymentHandler
     ): JsonResponse
     {
-        return new JsonResponse('ok');
+        $payload = json_decode(
+            $request->getContent(),
+            true
+        );
 
-        $paymentId = 'asd';
-
-        // TODO payment method query
-        $paymentMethod->getType();
-
+        $paymentId = Uuid::uuid4()->toString();
 
         $createPaymentHandler->execute(
             new CreatePaymentCommand(
-                $request->request->get('paymentMethodId', ''),
-
-                $request->request->get('amount', 0.0),
-
+                $paymentId,
+                $payload['paymentMethodId'],
+                $payload['customer'],
+                (float)$payload['amount'],
+                'SUCCESS'
             )
         );
 
