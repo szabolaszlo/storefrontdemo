@@ -1,9 +1,12 @@
+= Checkout API
+
 == Create checkout
 
 request:
 [source,httprequest]
 ----
 POST /checkout/
+Content-type: application/json
 
 {
     "cartId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed"
@@ -43,7 +46,50 @@ response
 
 == Save Shipping Address
 
+request:
+[source,httprequest]
+----
+POST /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed/shipping-address
+Content-Type: application/json
+
+{
+    "country": "HU"
+    "postcode": "1234"
+    "city": "Gotham"
+    "address": "Some str 123"
+}
+----
+
+response:
+[source,json]
+----
+{
+  "msg": "OK"
+}
+----
+
 == Save Payment Address
+request:
+[source,httprequest]
+----
+POST /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed/payment-address
+Content-Type: application/json
+
+{
+    "country": "HU"
+    "postcode": "1234"
+    "city": "Gotham"
+    "address": "Some str 123"
+}
+----
+
+response:
+[source,json]
+----
+{
+  "msg": "OK"
+}
+----
 
 == Save Shipping Method
 
@@ -101,6 +147,42 @@ POST /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed/confirm
 GET /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed
 ----
 
+[source,json]
+----
+{
+  "checkoutId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+  "status": "PENDING",
+  "customer": {
+    "email": "asd@asd.hu",
+    "lastName": "lastname",
+    "firstName": "firstname",
+    "phone": "phone"
+  },
+  "shippingAddress": {
+    "address": "some str 123",
+    "city": "Gotham",
+    "postcode": "1233",
+    "country": "HU"
+  },
+  "billingAddress": {
+    "address": "some str 123",
+    "city": "Gotham",
+    "postcode": "1233",
+    "country": "HU"
+  },
+  "shippingMethod": {
+    "shippingMethodId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed"
+  },
+  "paymentMethod": {
+    "paymentMethodId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed"
+  },
+  "checkoutTotal": {
+    "value": 123.345,
+    "currency": "HUF"
+  }
+}
+----
+
 == Statuses
 
 * PENDING
@@ -110,9 +192,10 @@ GET /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed
 ----
 class Checkout {
     - checkoutId: UUID
+    - cart: Cart
     - customer: Customer
     - shippingAddress: Address
-    - paymentAddress: Address
+    - billingAddress: Address
     - shippingMethod: ShippingMethod
     - paymentMethod: PaymentMethod
     - status: CheckoutStatus [enum: PENDING, COMPLETED]
