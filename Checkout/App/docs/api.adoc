@@ -70,26 +70,6 @@ GET /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed
 * PENDING
 * COMPLETED
 
-
-[plantuml]
-----
-participant storefront
-participant cart
-participant checkout
-participant order
-participant shipping
-participant payment
-
-storefront -> checkout : create checkout
-checkout -> cart : get cart data
-cart -> checkout : return cart data
-checkout -> storefront : return checkoutId
-storefront -> storefront : show customer form
-storefront -> checkout : save customer
-checkout -> storefront : ok
-
-----
-
 [plantuml]
 ----
 class Checkout {
@@ -115,4 +95,38 @@ class Address {
     - postcode: String
     - country: String
 }
+
+class ShippingMethod {
+    - shippingMethodId
+}
+
+class PaymentMethod {
+    - paymentMethodId
+}
+
+enum CheckoutStatus {
+    PENDING
+    COMPLETED
+}
+
+Checkout -> Customer
+----
+
+
+[plantuml]
+----
+participant storefront
+participant cart
+participant checkout
+participant order
+participant shipping
+participant payment
+
+storefront -> checkout : create checkout
+checkout -> cart : get cart data
+cart -> checkout : return cart data
+checkout -> storefront : return checkoutId
+storefront -> storefront : show customer form
+storefront -> checkout : save customer
+checkout -> storefront : ok
 ----
