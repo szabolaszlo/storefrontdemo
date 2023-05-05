@@ -12,3 +12,8 @@ payment:
     path: /api/payment/initiate
     controller: App\Presentation\Api\Controller\InitiatePaymentController::index
     methods: [POST]
+
+payment_method:
+    path: /api/paymentMethod/{paymentMethodId}
+    controller: \App\Presentation\Api\Controller\PaymentMethodController::index
+    methods: [GET]

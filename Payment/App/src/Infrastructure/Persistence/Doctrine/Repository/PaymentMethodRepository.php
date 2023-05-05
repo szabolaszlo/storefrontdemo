@@ -2,7 +2,6 @@
 
 namespace App\Infrastructure\Persistence\Doctrine\Repository;
 
-use App\Domain\Cart;
 use App\Domain\PaymentMethod;
 use App\Domain\PaymentMethodId;
 use App\Domain\PaymentMethodRepositoryInterface;

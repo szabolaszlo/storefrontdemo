@@ -35,6 +35,9 @@ class PaymentMethod
         return $this->id;
     }
 
+    /**
+     * @param PaymentMethodId $id
+     */
     public function setId(PaymentMethodId $id): void
     {
         $this->id = $id;
