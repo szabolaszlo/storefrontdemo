@@ -1,0 +1,20 @@
+{
+  "name": "storefrontdemo-storefront",
+  "version": "1.0.0",
+  "description": "Storefront réteg célja hogy összekösse a különböző microservicek működését egy adott kliens számára (böngésző server side rendering)",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "codeceptjs": "^3.4.1",
+    "codeceptjs-chai": "^2.3.5",
+    "playwright": "^1.33.0"
+  }
+}
