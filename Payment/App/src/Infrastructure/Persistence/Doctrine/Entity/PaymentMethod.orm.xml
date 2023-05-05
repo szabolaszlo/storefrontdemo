@@ -1,0 +1,10 @@
+<doctrine-mapping>
+    <entity name="App\Domain\PaymentMethod" table="payment_method" repository-class="App\Infrastructure\Persistence\Doctrine\Repository\CartRepository">
+        <id name="id" type="payment_method_id" />
+        <field name="name" nullable="true"/>
+        <field name="description"  type="string" />
+        <field name="fee"  type="integer" />
+        <field name="availableShippingMethods" type="array" />
+        <field name="isEnabled" type="boolean" />
+    </entity>
+</doctrine-mapping>
