@@ -1,0 +1,12 @@
+<doctrine-mapping>
+    <entity name="App\Domain\Payment" table="payment" repository-class="App\Infrastructure\Persistence\Doctrine\Repository\PaymentRepository">
+        <id name="paymentId" type="payment_id">
+            <generator strategy="NONE" />
+        </id>
+        <field name="paymentMethodId" type="payment_method_id" column="payment_method_id" />
+        <field name="customer" type="array" />
+        <field name="amount" type="decimal"/>
+        <field name="status"  type="string" />
+        <field name="redirectUrl" type="string" column="redirect_url"/>
+    </entity>
+</doctrine-mapping>

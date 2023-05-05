@@ -4,33 +4,21 @@ namespace App\Infrastructure\Persistence\Doctrine\Repository;
 
 use App\Domain\Payment;
 use App\Domain\PaymentId;
+use App\Domain\PaymentMethod;
 use App\Domain\PaymentMethodId;
+use \App\Domain\PaymentRepositoryInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
 
-class PaymentRepository implements \App\Domain\PaymentRepositoryInterface
+class PaymentRepository extends ServiceEntityRepository implements PaymentRepositoryInterface
 {
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, PaymentMethod::class);
+    }
 
     public function get(PaymentId $id): Payment
     {
-
-            $testPayment = new Payment();
-            $testPayment->setPaymentId(
-               $id
-            );
-            $testPayment->setPaymentMethodId(
-                new PaymentMethodId('test method id')
-            );
-            $testPayment->setCustomer(
-                [
-                    'email'=> 'test@test.com',
-                    'billingAddress' => []
-                ]
-            );
-
-            $testPayment->setAmount(11.0);
-            $testPayment->setStatus('SUCCESS');
-            $testPayment->setRedirectUrl('redirect url');
-
-            return $testPayment;
-
+        return $this->find($id);
     }
 }
