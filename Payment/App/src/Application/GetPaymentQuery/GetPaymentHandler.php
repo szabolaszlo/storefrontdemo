@@ -24,7 +24,7 @@ class GetPaymentHandler
         );
 
         $dto = new PaymentDTO();
-        $dto->paymentId = $payment->getPaymentId()->getId();
+        $dto->id = $payment->getPaymentId()->getId();
         $dto->paymentMethodId = $payment->getPaymentMethodId()->getId();
         $dto->customer = $payment->getCustomer();
         $dto->amount = $payment->getAmount();

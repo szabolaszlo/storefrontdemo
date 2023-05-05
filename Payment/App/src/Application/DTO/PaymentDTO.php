@@ -4,7 +4,8 @@ namespace App\Application\DTO;
 
 class PaymentDTO
 {
-    public string $paymentId;
+    public string $id;
+
     public string $paymentMethodId;
 
     public array $customer;
