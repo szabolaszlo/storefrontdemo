@@ -12,7 +12,7 @@
 
 ## Elérhetőség
 
-Külső: http://localhost:8089/checkout
+Külső: http://localhost:8090/checkout
 Kódból: http://api_gateway_nginx:8080/checkout
 
 ## Szükséges adatok

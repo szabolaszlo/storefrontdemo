@@ -6,7 +6,7 @@
 
 ## Elérhetőség
 
-Külső: http://localhost:8089/order
+Külső: http://localhost:8090/order
 Kódból: http://api_gateway_nginx:8080/order
 
 
