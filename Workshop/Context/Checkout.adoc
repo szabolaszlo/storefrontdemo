@@ -72,8 +72,3 @@ A feladat a COD (kézpnzes fizetés) implementálását várja el. A következő
 
 image::../image/payment.png[]
 
-
-
-
-
-
