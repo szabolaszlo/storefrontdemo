@@ -30,7 +30,7 @@ Egy szállítási módhoz  következő adatokból áll:
 * Kell egy végpont, ami a kosár adatait várja, és visszaadja a kosár szállítási módjait, és azok árait.
 ** Meg kell tudnotok állapítani, milyen adatra van szükségeket, hogy a megfelelő szállítási módokat vissza tudjátok adni.
 ** A követelmény:
-*** A kosár tartalmazza a szállítási címet, és a szállítási cím tartományát.
+*** A kosár tartalmazza a kosár összértékét.
     *** Csak az engedélyezett szállítási módokat adjátok vissza.
     *** Csak azokat a szállítási módokat adjátok vissza, amely megfelel a kosár jelenlegi összértékének és beleesnek a szállítási mód által kijelölt tartományba.
 

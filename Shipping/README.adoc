@@ -1,0 +1,117 @@
+# Endpoints:
+
+GET - /shipping-methods?cartTotal={cartTotal} - get available shipping methods by cart total
+
+Response:
+
+```
+{
+    "shippingMethods": [
+        {
+            "id":"e446d88a-8142-4a03-bec9-5786171f71b2",
+            "name": "GLS",
+            "isEnabled": true,
+            "description": "GLS házhozszállítás",
+            "cost": 1000,
+            "shippingLanes": [
+                {
+                    "minGrossPrice": 5000,
+                    "maxGrossPrice": 100000,
+                    "cost": 900
+                }
+            ]
+        },
+        {
+            "id":"e446d88a-8142-4a03-bec9-1231235435",
+            "name": "Személyes átvétel",
+            "isEnabled": true,
+            "description": "Személyes átvétel",
+            "shippingLanes": [
+                {
+                    "minGrossPrice": 1000,
+                    "maxGrossPrice": 50000,
+                    "cost": 600
+                }
+            ]
+        }
+    ]
+}
+```
+
+GET - /shipping-methods - get all shipping methods
+
+Response:
+
+```
+{
+    "shippingMethods": [
+        {
+            "id":"e446d88a-8142-4a03-bec9-5786171f71b2",
+            "name": "GLS",
+            "isEnabled": true,
+            "description": "GLS házhozszállítás",
+            "cost": 1000,
+            "shippingLane": [
+                {
+                    "minGrossPrice": 5000,
+                    "maxGrossPrice": 100000,
+                    "cost": 900
+                },
+                {
+                    "minGrossPrice": 100001,
+                    "maxGrossPrice": 999999,
+                    "cost": 0
+                }
+            ]
+        },
+        {
+            "id":"e446d88a-8142-4a03-bec9-5786171f71b2",
+            "name": "DPD",
+            "isEnabled": false,
+            "description": "DPD házhozszállítás",
+            "cost": 1000,
+            "shippingLane": [
+                {
+                    "minGrossPrice": 5000,
+                    "maxGrossPrice": 100000,
+                    "cost": 900
+                },
+                {
+                    "minGrossPrice": 100001,
+                    "maxGrossPrice": 999999,
+                    "cost": 0
+                }
+            ]
+        },
+        {
+            "id":"e446d88a-8142-4a03-bec9-1231235435",
+            "name": "Személyes átvétel",
+            "isEnabled": true,
+            "description": "Személyes átvétel",
+            "shippingLane": [
+                {
+                    "minGrossPrice": 1000,
+                    "maxGrossPrice": 50000,
+                    "cost": 600
+                },
+                {
+                    "minGrossPrice": 50001,
+                    "maxGrossPrice": 100000,
+                    "cost": 300
+                },
+                {
+                    "minGrossPrice": 100001,
+                    "maxGrossPrice": 999999,
+                    "cost": 0
+                }
+            ]
+        }
+    ]
+}
+```
+
+
+
+
+
+
