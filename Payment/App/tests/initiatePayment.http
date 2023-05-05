@@ -7,7 +7,7 @@ POST 127.0.0.0:8503/api/payment/initiate
         "billingAddress": {
             "country": "Magyarország",
             "city": "Budapest",
-            "zipCode": "1111",
+            "zipCode": 1111,
             "address": "Teszt utca 1.",
             "companyName": "Teszt Kft.",
             "taxNumber": "12345678-1-11"
