@@ -21,6 +21,7 @@ Egy fizetési mód következő adatokból áll:
 * *bruttó illeték*
 * *engedélyezett szállítási módok listája* - lehet üres
 
+
 ### Funkcionális követelmények
 
 * Hozzatok létre egy GUI-s admin felületet, amelyen a fizetési módokat tudjátok kezelni. Létrehozni, módosítani, törölni tudjátok őket.
