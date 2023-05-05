@@ -41,15 +41,51 @@ response
   }
 ----
 
-
-
 == Save Shipping Address
 
 == Save Payment Address
 
 == Save Shipping Method
 
+request:
+[source,httprequest]
+----
+POST /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed/shipping-method
+
+{
+    "shipingMethodId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed"
+}
+----
+
+response:
+[source,json]
+----
+
+{
+    "msg": "OK"
+}
+----
+
 == Save Payment Method
+
+request:
+[source,httprequest]
+----
+POST /checkout/1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed/payment-method
+
+{
+    "paymentMethodId": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed"
+}
+----
+
+response:
+[source,json]
+----
+
+{
+    "msg": "OK"
+}
+----
 
 == Confirm
 
