@@ -20,7 +20,7 @@ A bundle tartalmazza a szükséges táblákat, amiket létre kell hoznod
 
 Futtatnod kell ezt a parancsot a containeren belül:
 
-```docker exec -it oauth_server_ngnix_php /bin/sh```
+```docker exec -it oauth_server_nginx_php /bin/sh```
 
 
 
